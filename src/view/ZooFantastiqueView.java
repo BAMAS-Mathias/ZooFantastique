@@ -5,7 +5,7 @@ import models.ZooFantastique;
 
 import java.util.ArrayList;
 
-public class ZooFantastiqueView {
+public class ZooFantastiqueView{
 
     private ZooFantastique zooFantastique;
 
@@ -18,8 +18,10 @@ public class ZooFantastiqueView {
     }
 
     public void displayAllEnclos(ArrayList<Enclos> listeEnclos) {
-        for(Enclos enclos : listeEnclos){
-            System.out.println(enclos.toString());
+        for(int i = 0; i < listeEnclos.size(); ++i){
+            System.out.println(i+1 + " - " + listeEnclos.get(i));
         }
     }
+
+
 }

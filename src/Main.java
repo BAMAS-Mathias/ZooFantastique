@@ -21,6 +21,7 @@ public class Main {
         System.out.println("Bienvenue dans le zoo : " + zoo.getNom() + "\n");
         System.out.println("Entrez une commande pour intéragir\n");
         System.out.println("E - Lister tous les enclos");
+        System.out.println("V [n] - Visiter un enclos");
 
         Scanner scanner = new Scanner(System.in);
 

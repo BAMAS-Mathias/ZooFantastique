@@ -32,13 +32,7 @@ public class Enclos {
 
     @Override
     public String toString() {
-        return "Enclos{" +
-                "nom='" + nom + '\'' +
-                ", supperficie=" + supperficie +
-                ", nbCreatureMax=" + nbCreatureMax +
-                ", nbCreaturePresente=" + nbCreaturePresente +
-                ", propreteDegre=" + propreteDegre +
-                '}';
+        return "[Enclos] " + nom + ", superficie :" + supperficie + ", nombre de créature : " + nbCreaturePresente;
     }
 
     public void addCreature(Creature creature){
