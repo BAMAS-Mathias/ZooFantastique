@@ -1,8 +1,6 @@
 package models.interfaces;
 
-public class IFly {
+public interface IFly {
 
-    public void fly(){
-        System.out.println("je vole");
-    }
+    public void fly();
 }
