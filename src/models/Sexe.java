@@ -2,5 +2,5 @@ package models;
 
 public enum Sexe {
 
-    MALE, FEMALE;
+    MALE,FEMELLE,HOMME,FEMME;
 }
