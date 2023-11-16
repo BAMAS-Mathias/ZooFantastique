@@ -1,6 +1,6 @@
 package controllers;
 
-import models.Enclos;
+import models.enclos.Enclos;
 import models.ZooFantastique;
 import view.ZooFantastiqueView;
 

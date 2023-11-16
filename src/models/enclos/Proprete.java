@@ -1,4 +1,4 @@
-package models;
+package models.enclos;
 
 public enum Proprete {
 

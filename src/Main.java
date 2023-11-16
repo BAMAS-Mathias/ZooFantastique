@@ -1,5 +1,5 @@
 import controllers.ZooFantastiqueController;
-import models.Enclos;
+import models.enclos.Enclos;
 import models.ZooFantastique;
 
 import java.util.Scanner;

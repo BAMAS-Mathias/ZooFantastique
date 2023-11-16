@@ -1,4 +1,4 @@
-package models.creatures;
+package models.creatures.vivipares;
 
 import models.Vivipare;
 import models.interfaces.ISwim;

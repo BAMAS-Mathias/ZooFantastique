@@ -1,5 +1,7 @@
 package models;
 
+import models.enclos.Enclos;
+
 public class MaitreDeZoo extends Humain{
 
     private String nom;

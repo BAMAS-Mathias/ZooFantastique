@@ -1,4 +1,6 @@
-package models;
+package models.enclos;
+
+import models.Creature;
 
 import java.util.ArrayList;
 
