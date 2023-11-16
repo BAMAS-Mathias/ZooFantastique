@@ -45,16 +45,13 @@ public class Enclos {
      */
     private ArrayList<Creature> creaturesPresentes;
 
-    /**
-     * Construit un nouvel enclos avec les paramètres spécifiés.
-     *
-     * @param nom             Le nom de l'enclos.
-     * @param superficie      La superficie de l'enclos.
-     * @param nbCreatureMax   Le nombre maximal de créatures autorisées.
-     * @param nbCreaturePresente Le nombre actuel de créatures présentes.
-     * @param propreteDegre   Le degré de propreté de l'enclos.
-     */
 
+    /**
+     *
+     * @param nom
+     * @param supperficie
+     * @param nbCreatureMax
+     */
     public Enclos(String nom, double supperficie, int nbCreatureMax) {
         this.nom = nom;
         this.superficie = supperficie;
@@ -75,7 +72,7 @@ public class Enclos {
 
     @Override
     public String toString() {
-        return "[Enclos] " + nom + ", superficie :" + supperficie + ", nombre de créature : " + nbCreaturePresente;
+        return "[Enclos] " + nom + ", superficie :" + superficie + ", nombre de créature : " + nbCreaturePresente;
     }
 
     /**
