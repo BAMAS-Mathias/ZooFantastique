@@ -1,6 +1,5 @@
 
-import models.creatures.Dragon;
-import models.Oeuf;
+import models.creatures.ovipares.Dragon;
 import org.junit.*;
 import org.junit.Test;
 

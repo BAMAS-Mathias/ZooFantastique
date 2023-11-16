@@ -1,6 +1,6 @@
 package models;
 
-import java.util.ArrayList;
+import models.enclos.Enclos;
 
 import java.util.ArrayList;
 

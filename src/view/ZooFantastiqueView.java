@@ -1,6 +1,6 @@
 package view;
 
-import models.Enclos;
+import models.enclos.Enclos;
 import models.ZooFantastique;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package models.creatures;
+package models.creatures.ovipares;
 
 import models.Oeuf;
 import models.Ovipare;

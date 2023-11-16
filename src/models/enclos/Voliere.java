@@ -1,4 +1,4 @@
-package models;
+package models.enclos;
 
 /**
  * La classe {@code Voliere} représente un type spécifique d'enclos destiné à héberger

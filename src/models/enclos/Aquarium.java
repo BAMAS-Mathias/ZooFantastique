@@ -1,4 +1,4 @@
-package models;
+package models.enclos;
 
 /**
  * La classe {@code Aquarium} représente un type d'enclos spécifique destiné à
