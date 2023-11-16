@@ -24,7 +24,7 @@ public class Megalodon extends Ovipare implements ISwim {
      */
     @Override
     public Oeuf pondre() {
-        return new Oeuf(this, this);
+        return new Oeuf(this);
     }
 
     /**

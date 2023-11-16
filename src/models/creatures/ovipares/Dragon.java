@@ -31,7 +31,7 @@ public class Dragon extends Ovipare implements IRun, ISwim, IFly, IRevive {
      */
     @Override
     public Oeuf pondre() {
-        return new Oeuf(this, this);
+        return new Oeuf(this);
     }
 
     /**
