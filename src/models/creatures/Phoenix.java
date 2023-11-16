@@ -1,5 +1,6 @@
 package models.creatures;
 
+import models.Oeuf;
 import models.Ovipare;
 import models.interfaces.IFly;
 import models.interfaces.IRevive;
@@ -25,8 +26,8 @@ public class Phoenix extends Ovipare implements IRevive, IFly {
      * Pond des œufs en tant que Phoenix.
      */
     @Override
-    public void pondre() {
-        System.out.println("Le phoenix met bas");
+    public Oeuf pondre() {
+        return new Oeuf(this, this);
     }
 
     /**

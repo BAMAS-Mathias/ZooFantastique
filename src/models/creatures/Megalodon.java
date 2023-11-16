@@ -1,5 +1,6 @@
 package models.creatures;
 
+import models.Oeuf;
 import models.Ovipare;
 import models.interfaces.ISwim;
 
@@ -22,8 +23,8 @@ public class Megalodon extends Ovipare implements ISwim {
      * Pond des œufs en tant que Megalodon.
      */
     @Override
-    public void pondre() {
-        System.out.println("Le megalodon met bas");
+    public Oeuf pondre() {
+        return new Oeuf(this, this);
     }
 
     /**

@@ -1,5 +1,6 @@
 package models.creatures;
 
+import models.Oeuf;
 import models.Ovipare;
 import models.interfaces.IFly;
 import models.interfaces.IRevive;
@@ -29,8 +30,8 @@ public class Dragon extends Ovipare implements IRun, ISwim, IFly, IRevive {
      * Pond des œufs en tant que dragon.
      */
     @Override
-    public void pondre() {
-        System.out.println("Le dragon met bas");
+    public Oeuf pondre() {
+        return new Oeuf(this, this);
     }
 
     /**

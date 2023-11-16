@@ -1,5 +1,6 @@
 package models.creatures;
 
+import models.Oeuf;
 import models.Ovipare;
 import models.interfaces.ISwim;
 
@@ -19,8 +20,8 @@ public class Kraken extends Ovipare implements ISwim {
      * Pond des œufs en tant que Kraken.
      */
     @Override
-    public void pondre() {
-        System.out.println("Kraken met bas");
+    public Oeuf pondre() {
+        return new Oeuf(this, this);
     }
 
     /**
