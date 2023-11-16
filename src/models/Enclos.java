@@ -12,14 +12,23 @@ public class Enclos {
     private ArrayList<Creature> creaturesPresentes;
 
 
-    public Enclos(String nom, double supperficie, int nbCreatureMax, int nbCreaturePresente, Proprete propreteDegre) {
+    public Enclos(String nom, double supperficie, int nbCreatureMax) {
         this.nom = nom;
         this.supperficie = supperficie;
         this.nbCreatureMax = nbCreatureMax;
-        this.nbCreaturePresente = nbCreaturePresente;
-        this.propreteDegre = propreteDegre;
+        this.nbCreaturePresente = 0;
+        this.propreteDegre = Proprete.BON;
         creaturesPresentes = new ArrayList<Creature>();
     }
+
+    public Enclos(String nom, double supperficie) {
+        this(nom, supperficie, 10);
+    }
+
+    public Enclos(String nom) {
+        this(nom, 50);
+    }
+
 
     @Override
     public String toString() {

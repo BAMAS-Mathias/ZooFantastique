@@ -3,8 +3,8 @@ package models;
 public class Voliere extends Enclos{
 
 
-    public Voliere(String nom, double supperficie, int nbCreatureMax, int nbCreaturePresente, Proprete propreteDegre) {
-        super(nom, supperficie, nbCreatureMax, nbCreaturePresente, propreteDegre);
+    public Voliere(String nom, double supperficie, int nbCreatureMax) {
+        super(nom, supperficie, nbCreatureMax );
     }
 
     @Override
