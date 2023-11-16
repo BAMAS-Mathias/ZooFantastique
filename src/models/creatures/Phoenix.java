@@ -22,28 +22,4 @@ public class Phoenix extends Ovipare implements IRevive, IFly {
         System.out.println("Le phoenix revit par magie ");
     }
 
-    @Override
-    public void manger() {
-
-    }
-
-    @Override
-    public void emettreSon() {
-
-    }
-
-    @Override
-    public void soin() {
-
-    }
-
-    @Override
-    public void wakeUpOrSleep() {
-
-    }
-
-    @Override
-    public void vieillir() {
-
-    }
 }
