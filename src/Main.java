@@ -22,6 +22,7 @@ public class Main {
         System.out.println("Entrez une commande pour intéragir\n");
         System.out.println("E - Lister tous les enclos");
         System.out.println("V [n] - Visiter un enclos");
+        System.out.println("Q - Quitter le zoo ");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -29,6 +30,9 @@ public class Main {
             case 'E':
                 new ZooFantastiqueController(zoo).listerEnclos();
                 break;
+            case 'Q':
+                return;
+
         }
 
         interactWithZoo();
