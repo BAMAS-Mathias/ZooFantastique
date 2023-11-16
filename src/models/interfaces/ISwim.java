@@ -1,8 +1,6 @@
 package models.interfaces;
 
-public class ISwim {
+public interface ISwim {
 
-    public void swim(){
-        System.out.println("je nage");
-    }
+    public void swim();
 }
