@@ -11,10 +11,24 @@ public abstract class Creature {
     private boolean isSleeping;
     private double sante;
 
-    public abstract void manger();
-    public abstract void emettreSon();
-    public abstract void soin();
-    public abstract void wakeUpOrSleep();
-    public abstract void vieillir();
+    public void manger() {
+
+    }
+
+    public void emettreSon() {
+
+    }
+
+    public void soin() {
+
+    }
+
+    public void wakeUpOrSleep() {
+
+    }
+
+    public void vieillir() {
+
+    }
 
 }
