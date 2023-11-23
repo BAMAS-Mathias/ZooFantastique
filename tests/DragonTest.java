@@ -1,5 +1,5 @@
 
-import models.creatures.ovipares.Dragon;
+import ZooFantastique.models.creatures.ovipares.Dragon;
 import org.junit.*;
 import org.junit.Test;
 
