@@ -1,5 +1,6 @@
 package controllers;
 
+import models.ZooFantastique;
 import models.enclos.Enclos;
 import view.EnclosView;
 
@@ -19,6 +20,12 @@ import view.EnclosView;
  * @see view.EnclosView
  */
 public class EnclosController {
+
+    private ZooFantastique zoo;
+
+    public EnclosController(ZooFantastique zoo) {
+        this.zoo = zoo;
+    }
 
     /**
      * Affiche des informations sur les enclos en utilisant la {@link view.EnclosView} associée.

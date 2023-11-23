@@ -1,3 +1,4 @@
+import controllers.EnclosController;
 import controllers.ZooFantastiqueController;
 import models.enclos.Enclos;
 import models.ZooFantastique;
@@ -25,13 +26,17 @@ public class Main {
         System.out.println("Q - Quitter le zoo ");
 
         Scanner scanner = new Scanner(System.in);
+        String input = scanner.next();
 
-        switch (Character.toUpperCase(scanner.next().charAt(0))){
+        switch (Character.toUpperCase(input.charAt(0))){
             case 'E':
                 new ZooFantastiqueController(zoo).listerEnclos();
                 break;
             case 'Q':
                 return;
+            case 'V':
+                //new EnclosController(zoo).visiterEnclos(Integer.valueOf(input.charAt(3)));
+                break;
 
         }
 
