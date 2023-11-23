@@ -104,7 +104,10 @@ public class Enclos {
      * TODO : Implémenter la logique de nourrissage spécifique.
      */
     public void feedCreature() {
-        // TODO : Implémenter la logique de nourrissage spécifique.
+        for(Creature creature : creaturesPresentes) {
+            creature.nourrir();
+        }
+        System.out.println("Les créatures ont été nourries avec succès.");
     }
 
     public ArrayList<Creature> getCreaturesPresentes() {
@@ -120,6 +123,9 @@ public class Enclos {
         }
     }
 
+    public void setName(String s) {
+        this.nom= s;
+    }
 }
 
 

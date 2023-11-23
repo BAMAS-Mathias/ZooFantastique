@@ -58,7 +58,7 @@ public abstract class Creature {
     /**
      * Permet à la créature de manger.
      */
-    public void manger() {
+    public void nourrir() {
         // Implémentation spécifique pour chaque créature
     }
 
