@@ -5,6 +5,8 @@ import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.view.EnclosView;
 import ZooFantastique.ZooMain;
 
+import java.util.Scanner;
+
 /**
  * La classe {@code EnclosController} est responsable de contrôler les interactions
  * liées aux enclos dans l'application. Elle facilite la communication entre
@@ -45,6 +47,24 @@ public class EnclosController {
 
     public void afficherCreatures(Enclos enclos){
         // TODO Afficher les creatures
+    }
+
+    public void creerEnclos(String nomEnclos, int capaciteMaxAnimaux) {
+        Enclos nouvelEnclos = new Enclos(nomEnclos, capaciteMaxAnimaux);
+        zoo.addEnclos(nouvelEnclos);
+        System.out.println("Nouvel enclos créé avec succès : " + nouvelEnclos);
+        editEnclosName(nouvelEnclos);
+
+    }
+
+    public void editEnclosName(Enclos enclos){
+        System.out.println("Entrer le nom de votre enclos : ");
+        Scanner scanner = new Scanner(System.in);
+        String enclosName = (scanner.nextLine());
+        enclos.setName(enclosName);
+        System.out.println("Votre nom d'enclos est: "+ enclosName);
+
+
     }
 
 }
