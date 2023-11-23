@@ -24,6 +24,7 @@ public class Main {
         System.out.println("E - Lister tous les enclos");
         System.out.println("V [n] - Visiter un enclos");
         System.out.println("Q - Quitter le zoo ");
+        System.out.println("C - Creer un enclos");
 
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
@@ -36,6 +37,9 @@ public class Main {
                 return;
             case 'V':
                 //new EnclosController(zoo).visiterEnclos(Integer.valueOf(input.charAt(3)));
+                break;
+            case 'C':
+                new EnclosController(zoo).creerEnclos("Nom de l'enclos", 50);
                 break;
 
         }

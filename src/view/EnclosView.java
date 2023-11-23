@@ -6,11 +6,15 @@ public class EnclosView {
 
     private Enclos enclos;
 
-    public EnclosView(Enclos enclos){
+    public EnclosView(Enclos enclos) {
         this.enclos = enclos;
     }
 
-    public void displayEnclos(){
-        System.out.println(enclos.toString());
+    public void displayEnclos() {
+        if (enclos != null) {
+            System.out.println(enclos.toString());
+        } else {
+            System.out.println("Aucun enclos à afficher.");
+        }
     }
 }

@@ -116,6 +116,9 @@ public class Enclos {
         }
     }
 
+    public void setName(String s) {
+        this.nom= s;
+    }
 }
 
 
