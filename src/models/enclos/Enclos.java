@@ -99,13 +99,13 @@ public class Enclos {
         creaturesPresentes.remove(creature);
     }
 
-    /**
-     * Nourrit toutes les créatures présentes dans l'enclos.
-     * TODO : Implémenter la logique de nourrissage spécifique.
-     */
     public void feedCreature() {
-        // TODO : Implémenter la logique de nourrissage spécifique.
+        for(Creature creature : creaturesPresentes) {
+            creature.nourrir();
+        }
+        System.out.println("Les créatures ont été nourries avec succès.");
     }
+
 
     /**
      * Effectue l'entretien de l'enclos en fonction de certaines conditions.
