@@ -1,5 +1,6 @@
 package models.creatures.vivipares;
 
+import controllers.Exceptions.BirthException;
 import models.Vivipare;
 import models.interfaces.IRun;
 
@@ -25,8 +26,17 @@ public class Lycanthrope extends Vivipare implements IRun {
      * La mise en œuvre spécifique doit être fournie dans les classes dérivées.
      */
     @Override
-    public void mettreBas() {
-        // Implémentation spécifique de la mise bas pour le Lycanthrope
+    public Lycanthrope giveBirth() {
+        try {
+            if(this.isReadyToGiveBirth(true)) {
+                return new Lycanthrope();
+            } else {
+                throw new BirthException("Cette Lycanthrope ne peut pas mettre bas.");
+            }
+        } catch (BirthException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     /**

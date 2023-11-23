@@ -20,7 +20,7 @@ public class Kraken extends Ovipare implements ISwim {
      * Pond des œufs en tant que Kraken.
      */
     @Override
-    public Oeuf pondre() {
+    public Oeuf lay() {
         return new Oeuf( this);
     }
 

@@ -23,7 +23,7 @@ public class Megalodon extends Ovipare implements ISwim {
      * Pond des œufs en tant que Megalodon.
      */
     @Override
-    public Oeuf pondre() {
+    public Oeuf lay() {
         return new Oeuf(this);
     }
 

@@ -30,7 +30,7 @@ public class Dragon extends Ovipare implements IRun, ISwim, IFly, IRevive {
      * Pond des œufs en tant que dragon.
      */
     @Override
-    public Oeuf pondre() {
+    public Oeuf lay() {
         return new Oeuf(this);
     }
 

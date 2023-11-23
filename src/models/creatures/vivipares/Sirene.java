@@ -1,7 +1,10 @@
 package models.creatures.vivipares;
 
+import controllers.Exceptions.BirthException;
 import models.Vivipare;
 import models.interfaces.ISwim;
+
+import java.sql.SQLOutput;
 
 /**
  * La classe {@code Sirene} représente une créature fantastique de type vivipare
@@ -24,8 +27,17 @@ public class Sirene extends Vivipare implements ISwim {
      * La mise en œuvre spécifique doit être fournie dans les classes dérivées.
      */
     @Override
-    public void mettreBas() {
-        // Implémentation spécifique de la mise bas pour la Sirène
+    public Sirene giveBirth() {
+        try {
+            if(this.isReadyToGiveBirth(true)) {
+                return new Sirene();
+            } else {
+                throw new BirthException("Cette Sirène ne peut pas mettre bas");
+            }
+        } catch (BirthException e){
+            System.out.println(e.getMessage());
+            return null;
+        }
     }
 
     /**

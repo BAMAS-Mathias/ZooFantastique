@@ -26,7 +26,7 @@ public class Phoenix extends Ovipare implements IRevive, IFly {
      * Pond des œufs en tant que Phoenix.
      */
     @Override
-    public Oeuf pondre() {
+    public Oeuf lay() {
         return new Oeuf(this);
     }
 
