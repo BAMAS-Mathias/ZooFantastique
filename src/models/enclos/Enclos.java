@@ -77,6 +77,10 @@ public class Enclos {
         return "[Enclos] " + nom + ", superficie :" + superficie + ", nombre de créature : " + nbCreaturePresente;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
     /**
      * Ajoute une créature à la liste des créatures présentes dans l'enclos.
      *

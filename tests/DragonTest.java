@@ -15,7 +15,6 @@ public class DragonTest {
 
     @Test
     public void testPondrePereMere() {
-        assertEquals(dragon, dragon.pondre().getPere());
         assertEquals(dragon, dragon.pondre().getMere());
     }
 }

@@ -26,7 +26,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        switch (scanner.next().charAt(0)){
+        switch (Character.toUpperCase(scanner.next().charAt(0))){
             case 'E':
                 new ZooFantastiqueController(zoo).listerEnclos();
                 break;
@@ -36,6 +36,20 @@ public class Main {
         }
 
         interactWithZoo();
+    }
+
+    public static void interactWithEnclos(Enclos enclos){
+
+        System.out.println("Vous etes dans l'enclos " + enclos.getNom());
+        System.out.println("Q - Quitter l'enclos");
+
+        Scanner scanner = new Scanner(System.in);
+
+        switch(Character.toUpperCase(scanner.next().charAt(0))){
+            case 'Q':
+                interactWithZoo();
+                break;
+        }
     }
 
     public static void editZooName(){
