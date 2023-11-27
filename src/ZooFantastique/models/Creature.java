@@ -89,4 +89,8 @@ public abstract class Creature {
     public void vieillir() {
         // Implémentation spécifique pour chaque créature
     }
+
+    public String getNom() {
+        return nom;
+    }
 }

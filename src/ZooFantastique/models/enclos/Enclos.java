@@ -87,6 +87,7 @@ public class Enclos {
      * @param creature La créature à ajouter.
      */
     public void addCreature(Creature creature) {
+        nbCreaturePresente++;
         creaturesPresentes.add(creature);
     }
 
@@ -121,6 +122,10 @@ public class Enclos {
         if (creaturesPresentes.isEmpty() && propreteDegre.equals(Proprete.MAUVAIS)) {
             propreteDegre = Proprete.BON;
         }
+    }
+
+    public boolean isEmpty() {
+        return creaturesPresentes.isEmpty();
     }
 
     public void setName(String s) {

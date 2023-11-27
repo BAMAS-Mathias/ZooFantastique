@@ -1,7 +1,8 @@
-package models.creatures.vivipares;
+package ZooFantastique.models.creatures.vivipares;
 
-import models.Vivipare;
-import models.interfaces.ISwim;
+import ZooFantastique.models.Vivipare;
+import ZooFantastique.models.interfaces.ISwim;
+import controllers.Exceptions.BirthException;
 
 /**
  * La classe {@code Sirene} représente une créature fantastique de type vivipare

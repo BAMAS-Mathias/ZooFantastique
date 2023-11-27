@@ -1,7 +1,8 @@
-package models.creatures.vivipares;
+package ZooFantastique.models.creatures.vivipares;
 
-import models.Vivipare;
-import models.interfaces.IRun;
+import ZooFantastique.models.Vivipare;
+import ZooFantastique.models.interfaces.IRun;
+import controllers.Exceptions.BirthException;
 
 /**
  * La classe {@code Lycanthrope} représente une créature fantastique de type vivipare,

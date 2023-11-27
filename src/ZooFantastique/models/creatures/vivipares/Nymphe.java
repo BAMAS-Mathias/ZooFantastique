@@ -1,7 +1,8 @@
-package models.creatures.vivipares;
+package ZooFantastique.models.creatures.vivipares;
 
-import models.Vivipare;
-import models.interfaces.IRevive;
+import ZooFantastique.models.Vivipare;
+import ZooFantastique.models.interfaces.IRevive;
+import controllers.Exceptions.BirthException;
 
 /**
  * La classe {@code Nymphe} représente une créature fantastique de type vivipare

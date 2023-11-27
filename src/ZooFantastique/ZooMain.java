@@ -59,6 +59,9 @@ public class ZooMain {
         clearScreen();
         System.out.println("Vous etes dans l'enclos " + enclos.getNom());
         System.out.println("Q - Quitter l'enclos");
+        System.out.println("A - Ajouter une créature");
+        System.out.println("D - Afficher les créatures");
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -66,6 +69,14 @@ public class ZooMain {
             case 'Q':
                 clearScreen();
                 interactWithZoo();
+                break;
+            case 'A':
+                new EnclosController(zoo).ajouterCreature(enclos);
+                interactWithEnclos(enclos);
+                break;
+            case 'D':
+                new EnclosController(zoo).afficherCreatures(enclos);
+                interactWithEnclos(enclos);
                 break;
         }
     }
