@@ -51,4 +51,8 @@ public class EnclosView {
     public void displayCreatureSelectionError(){
         System.out.println("Mauvais identifiant de créature");
     }
+
+    public void displayEnclosAlreadyCleanMessage(){
+        System.out.println("L'enclos est déja propre !");
+    }
 }

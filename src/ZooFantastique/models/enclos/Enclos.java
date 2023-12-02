@@ -139,6 +139,14 @@ public class Enclos {
     public int getNbCreaturePresente(){
         return nbCreaturePresente;
     }
+
+    public Proprete getPropreteDegre(){
+        return propreteDegre;
+    }
+
+    public void clean(){
+        propreteDegre = Proprete.BON;
+    }
 }
 
 

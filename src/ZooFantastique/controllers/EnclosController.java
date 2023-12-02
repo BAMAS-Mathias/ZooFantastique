@@ -4,6 +4,7 @@ import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.CreatureFactory;
 import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.models.enclos.Enclos;
+import ZooFantastique.models.enclos.Proprete;
 import ZooFantastique.view.EnclosView;
 import ZooFantastique.ZooMain;
 
@@ -94,6 +95,15 @@ public class EnclosController {
         }catch (Exception e){
             System.out.println("Entrer le nom de la creature que vous voulez ajouter : ");
             userInput = scanner.nextLine();
+        }
+    }
+
+    public void nettoyerEnclos(Enclos enclos){
+        EnclosView enclosView = new EnclosView(enclos);
+        if(enclos.getPropreteDegre() == Proprete.BON){
+            enclosView.displayEnclosAlreadyCleanMessage();
+        }else{
+            enclos.clean();
         }
     }
 

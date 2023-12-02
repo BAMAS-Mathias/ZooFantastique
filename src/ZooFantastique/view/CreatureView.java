@@ -12,4 +12,12 @@ public class CreatureView {
     public void displayCreatureSound(String son){
         System.out.println(son);
     }
+
+    public void displayHealMessage(){
+        System.out.println("La creature a été soignée avec succès ");
+    }
+
+    public void displayCreatureFullHealthMessage(){
+        System.out.println("La santé de la créature est déja au maximum");
+    }
 }

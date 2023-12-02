@@ -22,4 +22,14 @@ public class CreatureController {
             new EnclosView(enclos).displayCreatureSelectionError();
         }
     }
+
+    public void soignerCreature(Creature creature){
+        CreatureView creatureView =  new CreatureView();
+        if(creature.getSante() == creature.getSanteMax()){
+            creatureView.displayCreatureFullHealthMessage();
+        }else{
+            creature.heal();
+            creatureView.displayHealMessage();
+        }
+    }
 }

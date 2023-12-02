@@ -61,6 +61,8 @@ public abstract class Creature {
      */
     private double sante;
 
+    private double santeMax;
+
     private String sonEmit;
 
     public Creature(Enclos enclos, String sonEmit){
@@ -114,5 +116,17 @@ public abstract class Creature {
 
     public Enclos getEnclos(){
         return enclos;
+    }
+
+    public double getSante(){
+        return sante;
+    }
+
+    public double getSanteMax(){
+        return santeMax;
+    }
+
+    public void heal(){
+        sante = santeMax;
     }
 }

@@ -85,6 +85,8 @@ public class ZooMain {
             case 'C':
                 new CreatureController().visiterCreature(Character.getNumericValue(input.charAt(2)), enclos);
                 break;
+            case 'N':
+                new EnclosController(zoo).nettoyerEnclos(enclos);
 
         }
         //interactWithEnclos(enclos);
@@ -102,6 +104,9 @@ public class ZooMain {
                 break;
             case 'E':
                 new CreatureController().emettreSon(creature);
+                break;
+            case 'S':
+                new CreatureController().soignerCreature(creature);
                 break;
         }
         interactWithCreature(creature);
