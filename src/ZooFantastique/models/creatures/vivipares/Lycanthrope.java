@@ -1,8 +1,7 @@
 package ZooFantastique.models.creatures.vivipares;
 
-import ZooFantastique.models.Vivipare;
+import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IRun;
-import controllers.Exceptions.BirthException;
 
 /**
  * La classe {@code Lycanthrope} représente une créature fantastique de type vivipare,
@@ -21,22 +20,8 @@ import controllers.Exceptions.BirthException;
  */
 public class Lycanthrope extends Vivipare implements IRun {
 
-    /**
-     * Méthode abstraite représentant le processus de mise bas chez le Lycanthrope.
-     * La mise en œuvre spécifique doit être fournie dans les classes dérivées.
-     */
-    @Override
-    public Lycanthrope giveBirth() {
-        try {
-            if(this.isReadyToGiveBirth(true)) {
-                return new Lycanthrope();
-            } else {
-                throw new BirthException("Cette Lycanthrope ne peut pas mettre bas.");
-            }
-        } catch (BirthException e){
-            System.out.println(e.getMessage());
-            return null;
-        }
+    public Lycanthrope(Enclos enclos) {
+        super(enclos, "%SON LYCANTHROPE%");
     }
 
     /**

@@ -1,6 +1,6 @@
 package ZooFantastique.view;
 
-import ZooFantastique.models.Creature;
+import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.enclos.Enclos;
 
 import java.util.ArrayList;
@@ -39,4 +39,16 @@ public class EnclosView {
         }
     }
 
+    public void displayEnclosPossibleActions(){
+        System.out.println("Q - Quitter l'enclos");
+        if(enclos.getNbCreaturePresente() < enclos.getNbCreatureMax()){
+            System.out.println("A - Ajouter une créature");
+        }
+        System.out.println("D - Afficher les créatures");
+
+    }
+
+    public void displayCreatureSelectionError(){
+        System.out.println("Mauvais identifiant de créature");
+    }
 }

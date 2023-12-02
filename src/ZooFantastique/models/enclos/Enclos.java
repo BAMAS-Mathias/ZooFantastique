@@ -1,6 +1,6 @@
 package ZooFantastique.models.enclos;
 
-import ZooFantastique.models.Creature;
+import ZooFantastique.models.creatures.Creature;
 
 import java.util.ArrayList;
 
@@ -130,6 +130,14 @@ public class Enclos {
 
     public void setName(String s) {
         this.nom= s;
+    }
+
+    public int getNbCreatureMax(){
+        return nbCreatureMax;
+    }
+
+    public int getNbCreaturePresente(){
+        return nbCreaturePresente;
     }
 }
 

@@ -1,5 +1,6 @@
 package ZooFantastique.models;
 
+import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.enclos.Enclos;
 
 public class MaitreDeZoo extends Humain{

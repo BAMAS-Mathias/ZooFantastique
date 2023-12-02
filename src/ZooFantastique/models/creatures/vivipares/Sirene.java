@@ -1,8 +1,7 @@
 package ZooFantastique.models.creatures.vivipares;
 
-import ZooFantastique.models.Vivipare;
+import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.ISwim;
-import controllers.Exceptions.BirthException;
 
 /**
  * La classe {@code Sirene} représente une créature fantastique de type vivipare
@@ -20,23 +19,10 @@ import controllers.Exceptions.BirthException;
  */
 public class Sirene extends Vivipare implements ISwim {
 
-    /**
-     * Méthode abstraite représentant le processus de mise bas chez la Sirène.
-     * La mise en œuvre spécifique doit être fournie dans les classes dérivées.
-     */
-    @Override
-    public Sirene giveBirth() {
-        try {
-            if(this.isReadyToGiveBirth(true)) {
-                return new Sirene();
-            } else {
-                throw new BirthException("Cette Sirène ne peut pas mettre bas");
-            }
-        } catch (BirthException e){
-            System.out.println(e.getMessage());
-            return null;
-        }
+    public Sirene(Enclos enclos) {
+        super(enclos, "%SON SIRENE%");
     }
+
 
     /**
      * Permet à la Sirène de nager avec grâce.

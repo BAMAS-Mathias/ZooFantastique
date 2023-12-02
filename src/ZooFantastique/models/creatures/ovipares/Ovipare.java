@@ -1,12 +1,20 @@
-package ZooFantastique.models;
+package ZooFantastique.models.creatures.ovipares;
+
+import ZooFantastique.models.creatures.Creature;
+import ZooFantastique.models.Oeuf;
+import ZooFantastique.models.enclos.Enclos;
 
 import java.util.ArrayList;
 
-public abstract class Ovipare extends Creature{
+public abstract class Ovipare extends Creature {
 
     private ArrayList<Oeuf> eggList = new ArrayList<>();
     private int gestatingTime;
     public static int nbOvipare = 0;
+
+    public Ovipare(Enclos enclos, String sonEmit) {
+        super(enclos, sonEmit);
+    }
 
     public ArrayList<Oeuf> getEggList() {
         return eggList;

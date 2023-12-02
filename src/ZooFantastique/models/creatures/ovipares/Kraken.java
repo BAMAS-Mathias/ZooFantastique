@@ -1,7 +1,7 @@
 package ZooFantastique.models.creatures.ovipares;
 
 import ZooFantastique.models.Oeuf;
-import ZooFantastique.models.Ovipare;
+import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.ISwim;
 
 /**
@@ -15,6 +15,10 @@ import ZooFantastique.models.interfaces.ISwim;
  ISwim
  */
 public class Kraken extends Ovipare implements ISwim {
+
+    public Kraken(Enclos enclos) {
+        super(enclos,"%SON KRAKEN%");
+    }
 
     /**
      * Pond des œufs en tant que Kraken.

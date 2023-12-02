@@ -1,9 +1,12 @@
 package ZooFantastique;
 
+import ZooFantastique.controllers.CreatureController;
 import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.controllers.ZooFantastiqueController;
+import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.ZooFantastique;
+import ZooFantastique.view.CreatureView;
 
 import java.util.Scanner;
 
@@ -48,24 +51,25 @@ public class ZooMain {
                 new EnclosController(zoo).creerEnclos("Nom de l'enclos", 50);
                 break;
 
-        }
 
-        System.out.println(input);
+        }
 
         interactWithZoo();
     }
 
     public static void interactWithEnclos(Enclos enclos){
-        clearScreen();
         System.out.println("Vous etes dans l'enclos " + enclos.getNom());
         System.out.println("Q - Quitter l'enclos");
         System.out.println("A - Ajouter une créature");
         System.out.println("D - Afficher les créatures");
+        System.out.println("C [n] - Visiter creature");
+
 
 
         Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
 
-        switch(Character.toUpperCase(scanner.next().charAt(0))){
+        switch(Character.toUpperCase(input.charAt(0))){
             case 'Q':
                 clearScreen();
                 interactWithZoo();
@@ -78,7 +82,29 @@ public class ZooMain {
                 new EnclosController(zoo).afficherCreatures(enclos);
                 interactWithEnclos(enclos);
                 break;
+            case 'C':
+                new CreatureController().visiterCreature(Character.getNumericValue(input.charAt(2)), enclos);
+                break;
+
         }
+        //interactWithEnclos(enclos);
+    }
+
+    public static void interactWithCreature(Creature creature){
+        clearScreen();
+        (new CreatureView()).displayActions();
+
+        Scanner scanner = new Scanner(System.in);
+
+        switch(Character.toUpperCase(scanner.next().charAt(0))){
+            case 'Q':
+                interactWithEnclos(creature.getEnclos());
+                break;
+            case 'E':
+                new CreatureController().emettreSon(creature);
+                break;
+        }
+        interactWithCreature(creature);
     }
 
     public static void editZooName(){

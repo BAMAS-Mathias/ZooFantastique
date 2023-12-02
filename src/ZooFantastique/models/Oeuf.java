@@ -1,9 +1,6 @@
 package ZooFantastique.models;
 
-import ZooFantastique.models.creatures.ovipares.Dragon;
-import ZooFantastique.models.creatures.ovipares.Kraken;
-import ZooFantastique.models.creatures.ovipares.Megalodon;
-import ZooFantastique.models.creatures.ovipares.Phoenix;
+import ZooFantastique.models.creatures.ovipares.*;
 
 import java.util.Random;
 
@@ -38,7 +35,7 @@ public class Oeuf {
         return mere;
     }
 
-    public Ovipare hatch() {
+    /*public Ovipare hatch() {
         if(mere.getEggList().contains(this)) {
             mere.getEggList().remove(this);
             if(mere instanceof Dragon){
@@ -53,5 +50,5 @@ public class Oeuf {
         } else {
             return null;
         }
-    }
+    }*/
 }

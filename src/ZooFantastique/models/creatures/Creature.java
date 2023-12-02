@@ -1,4 +1,8 @@
-package ZooFantastique.models;
+package ZooFantastique.models.creatures;
+
+import ZooFantastique.models.Age;
+import ZooFantastique.models.Sexe;
+import ZooFantastique.models.enclos.Enclos;
 
 /**
  * La classe abstraite {@code Creature} représente une entité vivante générique
@@ -50,10 +54,19 @@ public abstract class Creature {
      */
     private boolean isSleeping;
 
+    private Enclos enclos;
+
     /**
      * La santé de la créature.
      */
     private double sante;
+
+    private String sonEmit;
+
+    public Creature(Enclos enclos, String sonEmit){
+        this.enclos = enclos;
+        this.sonEmit = sonEmit;
+    }
 
     /**
      * Permet à la créature de manger.
@@ -65,9 +78,10 @@ public abstract class Creature {
     /**
      * Permet à la créature d'émettre un son.
      */
-    public void emettreSon() {
-        // Implémentation spécifique pour chaque créature
+    public void emettreSon(){
+        System.out.println(sonEmit);
     }
+
 
     /**
      * Permet à la créature de recevoir des soins.
@@ -92,5 +106,13 @@ public abstract class Creature {
 
     public String getNom() {
         return nom;
+    }
+
+    public String getSonEmit(){
+        return sonEmit;
+    }
+
+    public Enclos getEnclos(){
+        return enclos;
     }
 }

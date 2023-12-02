@@ -1,7 +1,7 @@
 package ZooFantastique.models.creatures.ovipares;
 
 import ZooFantastique.models.Oeuf;
-import ZooFantastique.models.Ovipare;
+import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IFly;
 import ZooFantastique.models.interfaces.IRevive;
 ;
@@ -21,6 +21,10 @@ import ZooFantastique.models.interfaces.IRevive;
  * @see IRevive
  */
 public class Phoenix extends Ovipare implements IRevive, IFly {
+
+    public Phoenix(Enclos enclos) {
+        super(enclos, "%SON PHOENIX%");
+    }
 
     /**
      * Pond des œufs en tant que Phoenix.

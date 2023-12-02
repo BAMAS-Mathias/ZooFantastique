@@ -1,7 +1,7 @@
 package ZooFantastique.models.creatures.ovipares;
 
 import ZooFantastique.models.Oeuf;
-import ZooFantastique.models.Ovipare;
+import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IFly;
 import ZooFantastique.models.interfaces.IRevive;
 import ZooFantastique.models.interfaces.IRun;
@@ -25,6 +25,11 @@ import ZooFantastique.models.interfaces.ISwim;
  * @see IRevive
  */
 public class Dragon extends Ovipare implements IRun, ISwim, IFly, IRevive {
+
+
+    public Dragon(Enclos enclos) {
+        super(enclos, "%SON DRAGON%");
+    }
 
     /**
      * Pond des œufs en tant que dragon.

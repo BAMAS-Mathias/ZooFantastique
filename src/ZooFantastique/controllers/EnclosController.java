@@ -1,7 +1,7 @@
 package ZooFantastique.controllers;
 
-import ZooFantastique.models.Creature;
-import ZooFantastique.models.CreatureFactory;
+import ZooFantastique.models.creatures.Creature;
+import ZooFantastique.models.creatures.CreatureFactory;
 import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.view.EnclosView;
@@ -74,22 +74,23 @@ public class EnclosController {
     public void ajouterCreature(Enclos enclos){
         EnclosView enclosView = new EnclosView(enclos);
         ArrayList<String> creatureNameList = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-        String userInput = "";
 
 
         if(!enclos.isEmpty()){ // L'enclos contient deja une creature donc on a seulement un type possible
-            creatureNameList.add(enclos.getCreaturesPresentes().get(0).getNom());
+            creatureNameList.add(enclos.getCreaturesPresentes().get(0).getClass().getName());
         }
         else{ // L'enclos est vide donc on a tous les types possibles
             creatureNameList.addAll(Arrays.asList("Dragon","Kraken","Magalodon","Phoenix","Licorne","Lycanthrope","Nymphe","Sirene"));
         }
 
         enclosView.displayPossibleCreatureToAdd(creatureNameList);
+        Scanner scanner = new Scanner(System.in);
+        String userInput = "";
+
         try{
             int indexCreature = Integer.parseInt(scanner.nextLine());
             CreatureFactory creatureFactory = new CreatureFactory();
-            enclos.addCreature(creatureFactory.createCreature(creatureNameList.get(indexCreature - 1)));
+            enclos.addCreature(creatureFactory.createCreature(creatureNameList.get(indexCreature - 1), enclos));
         }catch (Exception e){
             System.out.println("Entrer le nom de la creature que vous voulez ajouter : ");
             userInput = scanner.nextLine();

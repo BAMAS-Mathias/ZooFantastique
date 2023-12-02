@@ -1,8 +1,7 @@
 package ZooFantastique.models.creatures.vivipares;
 
-import ZooFantastique.models.Vivipare;
+import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IRevive;
-import controllers.Exceptions.BirthException;
 
 /**
  * La classe {@code Nymphe} représente une créature fantastique de type vivipare
@@ -20,22 +19,8 @@ import controllers.Exceptions.BirthException;
  */
 public class Nymphe extends Vivipare implements IRevive {
 
-    /**
-     * Méthode abstraite représentant le processus de mise bas chez la Nymphe.
-     * La mise en œuvre spécifique doit être fournie dans les classes dérivées.
-     */
-    @Override
-    public Nymphe giveBirth() {
-        try {
-            if(this.isReadyToGiveBirth(true)) {
-                return new Nymphe();
-            } else {
-                throw new BirthException("Cette Nymphe ne peut pas mettre bas");
-            }
-        } catch (BirthException e){
-            System.out.println(e.getMessage());
-            return null;
-        }
+    public Nymphe(Enclos enclos) {
+        super(enclos, "%SON NYMPHE%");
     }
 
     /**
