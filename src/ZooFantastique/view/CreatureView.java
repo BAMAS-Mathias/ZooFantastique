@@ -20,4 +20,12 @@ public class CreatureView {
     public void displayCreatureFullHealthMessage(){
         System.out.println("La santé de la créature est déja au maximum");
     }
+
+    public void displayInputErrorMessage(){
+        System.out.println("La valeur entrée est incorrect");
+    }
+
+    public void displaySuccessTransferMessage(){
+        System.out.println("La créature a été transférée avec succès");
+    }
 }

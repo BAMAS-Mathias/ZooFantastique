@@ -20,7 +20,7 @@ import ZooFantastique.models.interfaces.IRun;
 public class Licorne extends Vivipare implements IRun {
 
     public Licorne(Enclos enclos) {
-        super(enclos,"%SON LICORNE%");
+        super("Licorne", enclos,"%SON LICORNE%");
     }
 
 

@@ -55,4 +55,12 @@ public class EnclosView {
     public void displayEnclosAlreadyCleanMessage(){
         System.out.println("L'enclos est déja propre !");
     }
+
+    public void displayEmptyNameError(){
+        System.out.println("Nom invalide, l'enclos ne peut pas avoir un nom vide");
+    }
+
+    public void displaySuccessFullNameEditMessage(){
+        System.out.println("Le nom de l'enclos a été changé avec succès");
+    }
 }

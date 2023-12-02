@@ -17,7 +17,7 @@ import ZooFantastique.models.interfaces.ISwim;
 public class Kraken extends Ovipare implements ISwim {
 
     public Kraken(Enclos enclos) {
-        super(enclos,"%SON KRAKEN%");
+        super("Kraken",enclos,"%SON KRAKEN%");
     }
 
     /**

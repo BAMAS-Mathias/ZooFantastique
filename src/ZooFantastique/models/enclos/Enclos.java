@@ -147,6 +147,7 @@ public class Enclos {
     public void clean(){
         propreteDegre = Proprete.BON;
     }
+
 }
 
 

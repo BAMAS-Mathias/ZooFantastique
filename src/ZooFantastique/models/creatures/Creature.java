@@ -65,9 +65,10 @@ public abstract class Creature {
 
     private String sonEmit;
 
-    public Creature(Enclos enclos, String sonEmit){
+    public Creature(String nom, Enclos enclos, String sonEmit){
         this.enclos = enclos;
         this.sonEmit = sonEmit;
+        this.nom = nom;
     }
 
     /**
@@ -128,5 +129,13 @@ public abstract class Creature {
 
     public void heal(){
         sante = santeMax;
+    }
+
+    public String getNomEspece(){
+        return nom;
+    }
+
+    public void setEnclos(Enclos enclos){
+        this.enclos = enclos;
     }
 }

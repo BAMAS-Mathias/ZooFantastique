@@ -107,4 +107,18 @@ public class EnclosController {
         }
     }
 
+    public void renameEnclos(Enclos enclos){
+        System.out.println("Donner le nouveau nom de l'enclos");
+        EnclosView enclosView = new EnclosView(enclos);
+        Scanner scanner = new Scanner(System.in);
+        String enclosName = scanner.nextLine();
+        if(enclosName.isEmpty()){
+            enclosView.displayEmptyNameError();
+        }else{
+            enclos.setName(enclosName);
+            enclosView.displaySuccessFullNameEditMessage();
+        }
+
+    }
+
 }

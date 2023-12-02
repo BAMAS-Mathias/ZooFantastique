@@ -21,7 +21,7 @@ import ZooFantastique.models.interfaces.IRun;
 public class Lycanthrope extends Vivipare implements IRun {
 
     public Lycanthrope(Enclos enclos) {
-        super(enclos, "%SON LYCANTHROPE%");
+        super("Lycanthrope", enclos, "%SON LYCANTHROPE%");
     }
 
     /**

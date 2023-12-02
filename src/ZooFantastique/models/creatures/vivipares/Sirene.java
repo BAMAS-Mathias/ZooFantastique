@@ -20,7 +20,7 @@ import ZooFantastique.models.interfaces.ISwim;
 public class Sirene extends Vivipare implements ISwim {
 
     public Sirene(Enclos enclos) {
-        super(enclos, "%SON SIRENE%");
+        super("Sirene", enclos, "%SON SIRENE%");
     }
 
 

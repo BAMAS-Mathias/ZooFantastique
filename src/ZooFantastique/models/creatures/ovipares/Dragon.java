@@ -28,7 +28,7 @@ public class Dragon extends Ovipare implements IRun, ISwim, IFly, IRevive {
 
 
     public Dragon(Enclos enclos) {
-        super(enclos, "%SON DRAGON%");
+        super("Dragon", enclos, "%SON DRAGON%");
     }
 
     /**

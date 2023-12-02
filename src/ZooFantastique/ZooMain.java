@@ -27,7 +27,7 @@ public class ZooMain {
     }
 
     public static void interactWithZoo(){
-        System.out.println("Test Entrez une commande pour intéragir\n");
+        System.out.println("Entrez une commande pour intéragir\n");
         System.out.println("E - Lister tous les enclos");
         System.out.println("V [n] - Visiter un enclos");
         System.out.println("Q - Quitter le zoo ");
@@ -63,6 +63,7 @@ public class ZooMain {
         System.out.println("A - Ajouter une créature");
         System.out.println("D - Afficher les créatures");
         System.out.println("C [n] - Visiter creature");
+        System.out.println("D - Renommer enclos");
 
 
 
@@ -87,9 +88,13 @@ public class ZooMain {
                 break;
             case 'N':
                 new EnclosController(zoo).nettoyerEnclos(enclos);
+                break;
+            case 'R':
+                new EnclosController(zoo).renameEnclos(enclos);
+                break;
 
         }
-        //interactWithEnclos(enclos);
+        interactWithEnclos(enclos);
     }
 
     public static void interactWithCreature(Creature creature){
@@ -107,6 +112,9 @@ public class ZooMain {
                 break;
             case 'S':
                 new CreatureController().soignerCreature(creature);
+                break;
+            case 'T':
+                new CreatureController().transfererCreature(creature);
                 break;
         }
         interactWithCreature(creature);
@@ -127,5 +135,8 @@ public class ZooMain {
         System.out.flush();
     }
 
+    public static ZooFantastique getZoo(){
+        return zoo;
+    }
 
 }

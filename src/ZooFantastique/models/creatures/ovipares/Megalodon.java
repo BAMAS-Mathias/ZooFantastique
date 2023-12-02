@@ -20,7 +20,7 @@ import ZooFantastique.models.interfaces.ISwim;
 public class Megalodon extends Ovipare implements ISwim {
 
     public Megalodon(Enclos enclos) {
-        super(enclos, "%SON MEGALODON%");
+        super("Megalodon",enclos, "%SON MEGALODON%");
     }
 
     /**

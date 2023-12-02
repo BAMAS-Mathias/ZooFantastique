@@ -12,8 +12,8 @@ public abstract class Ovipare extends Creature {
     private int gestatingTime;
     public static int nbOvipare = 0;
 
-    public Ovipare(Enclos enclos, String sonEmit) {
-        super(enclos, sonEmit);
+    public Ovipare(String nom, Enclos enclos, String sonEmit) {
+        super(nom, enclos, sonEmit);
     }
 
     public ArrayList<Oeuf> getEggList() {

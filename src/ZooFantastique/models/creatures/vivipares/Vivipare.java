@@ -11,8 +11,8 @@ public abstract class Vivipare extends Creature {
     private boolean isReadyToGiveBirth = false;
     private int gestatingTime;
 
-    public Vivipare(Enclos enclos, String sonEmit) {
-        super(enclos, sonEmit);
+    public Vivipare(String nom, Enclos enclos, String sonEmit) {
+        super(nom, enclos, sonEmit);
     }
 
     public int getGestatingTime(){

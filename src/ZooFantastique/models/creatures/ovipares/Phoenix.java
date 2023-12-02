@@ -23,7 +23,7 @@ import ZooFantastique.models.interfaces.IRevive;
 public class Phoenix extends Ovipare implements IRevive, IFly {
 
     public Phoenix(Enclos enclos) {
-        super(enclos, "%SON PHOENIX%");
+        super("Phoenix", enclos, "%SON PHOENIX%");
     }
 
     /**

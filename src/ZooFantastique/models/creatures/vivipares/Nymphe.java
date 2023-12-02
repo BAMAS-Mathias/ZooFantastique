@@ -20,7 +20,7 @@ import ZooFantastique.models.interfaces.IRevive;
 public class Nymphe extends Vivipare implements IRevive {
 
     public Nymphe(Enclos enclos) {
-        super(enclos, "%SON NYMPHE%");
+        super("Nymphe", enclos, "%SON NYMPHE%");
     }
 
     /**
