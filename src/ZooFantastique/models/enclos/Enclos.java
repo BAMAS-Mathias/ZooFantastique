@@ -148,6 +148,11 @@ public class Enclos {
         propreteDegre = Proprete.BON;
     }
 
+    public void nourrirAllCreature(){
+        for(Creature creature : getCreaturesPresentes()){
+            creature.feed();
+        }
+    }
 }
 
 

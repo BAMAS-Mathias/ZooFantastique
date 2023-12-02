@@ -92,6 +92,9 @@ public class ZooMain {
             case 'R':
                 new EnclosController(zoo).renameEnclos(enclos);
                 break;
+            case 'F':
+                new EnclosController(zoo).nourrirAllCreatures(enclos);
+                break;
 
         }
         interactWithEnclos(enclos);

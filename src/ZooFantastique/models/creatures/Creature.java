@@ -138,4 +138,8 @@ public abstract class Creature {
     public void setEnclos(Enclos enclos){
         this.enclos = enclos;
     }
+
+    public void feed(){
+        isHungry = false;
+    }
 }

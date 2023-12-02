@@ -63,4 +63,8 @@ public class EnclosView {
     public void displaySuccessFullNameEditMessage(){
         System.out.println("Le nom de l'enclos a été changé avec succès");
     }
+
+    public void displaySuccessFeedMessage(){
+        System.out.println("Toutes les créature ont été nourries avec succès");
+    }
 }

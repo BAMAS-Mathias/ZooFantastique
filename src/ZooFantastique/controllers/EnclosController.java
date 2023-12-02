@@ -118,7 +118,12 @@ public class EnclosController {
             enclos.setName(enclosName);
             enclosView.displaySuccessFullNameEditMessage();
         }
+    }
 
+    public void nourrirAllCreatures(Enclos enclos){
+        EnclosView enclosView = new EnclosView(enclos);
+        enclos.nourrirAllCreature();
+        enclosView.displaySuccessFeedMessage();
     }
 
 }
