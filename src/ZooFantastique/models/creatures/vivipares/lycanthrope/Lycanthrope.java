@@ -1,5 +1,6 @@
-package ZooFantastique.models.creatures.vivipares;
+package ZooFantastique.models.creatures.vivipares.lycanthrope;
 
+import ZooFantastique.models.creatures.vivipares.Vivipare;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IRun;
 
@@ -20,6 +21,13 @@ import ZooFantastique.models.interfaces.IRun;
  */
 public class Lycanthrope extends Vivipare implements IRun {
 
+    private double force;
+    private double facteurDomination;
+    private int rang;
+    private double niveau;
+    private double impétuosité;
+    private Meute meute;
+
     public Lycanthrope(Enclos enclos) {
         super("Lycanthrope", enclos, "%SON LYCANTHROPE%");
     }
@@ -31,4 +39,19 @@ public class Lycanthrope extends Vivipare implements IRun {
     public void run() {
         // Implémentation spécifique de la course pour le Lycanthrope
     }
+
+    public void hurler(){
+        // TODO : Implémenter le hurlement du Lycanthrope
+    }
+
+    public void quitterMeute(){
+        // TODO : Implémenter le départ du Lycanthrope de la meute
+    }
+
+    public void transformer(){
+        // TODO : Implémenter la transformation du Lycanthrope
+    }
+
+
+
 }

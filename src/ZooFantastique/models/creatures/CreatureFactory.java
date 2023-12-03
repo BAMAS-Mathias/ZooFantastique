@@ -5,7 +5,7 @@ import ZooFantastique.models.creatures.ovipares.Kraken;
 import ZooFantastique.models.creatures.ovipares.Megalodon;
 import ZooFantastique.models.creatures.ovipares.Phoenix;
 import ZooFantastique.models.creatures.vivipares.Licorne;
-import ZooFantastique.models.creatures.vivipares.Lycanthrope;
+import ZooFantastique.models.creatures.vivipares.lycanthrope.Lycanthrope;
 import ZooFantastique.models.creatures.vivipares.Nymphe;
 import ZooFantastique.models.creatures.vivipares.Sirene;
 import ZooFantastique.models.enclos.Enclos;
