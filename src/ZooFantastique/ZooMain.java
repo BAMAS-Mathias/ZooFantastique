@@ -37,6 +37,7 @@ public class ZooMain {
         System.out.println("V [n] - Visiter un enclos");
         System.out.println("Q - Quitter le zoo ");
         System.out.println("C - Creer un enclos");
+        System.out.println("Nombre total de créature : " + Creature.getNbCreature());
         System.out.println("Temps actuel : " + tps.toString());
 
 

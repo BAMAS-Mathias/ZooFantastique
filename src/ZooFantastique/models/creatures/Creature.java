@@ -19,6 +19,8 @@ import ZooFantastique.models.enclos.Enclos;
  */
 public abstract class Creature {
 
+    private static int nbCreature = 0;
+
     /**
      * Le nom de la créature.
      */
@@ -69,6 +71,7 @@ public abstract class Creature {
         this.enclos = enclos;
         this.sonEmit = sonEmit;
         this.nom = nom;
+        ++nbCreature;
     }
 
     /**
@@ -141,5 +144,9 @@ public abstract class Creature {
 
     public void feed(){
         isHungry = false;
+    }
+
+    public static int getNbCreature() {
+        return nbCreature;
     }
 }
