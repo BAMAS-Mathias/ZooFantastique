@@ -3,6 +3,7 @@ package ZooFantastique;
 import ZooFantastique.controllers.CreatureController;
 import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.controllers.ZooFantastiqueController;
+import ZooFantastique.models.Temps;
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.ZooFantastique;
@@ -14,7 +15,11 @@ public class ZooMain {
 
     private static ZooFantastique zoo = new ZooFantastique(10);
 
+    private static Temps tps = new Temps();
+    private static Thread th = new Thread(tps);
+
     public static void main(String[] args) {
+        th.start();
         clearScreen();
         zoo.addEnclos(new Enclos("Enclos 1"));
         zoo.addEnclos(new Enclos("Enclos 2"));
@@ -32,6 +37,8 @@ public class ZooMain {
         System.out.println("V [n] - Visiter un enclos");
         System.out.println("Q - Quitter le zoo ");
         System.out.println("C - Creer un enclos");
+        System.out.println("Temps actuel : " + tps.toString());
+
 
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
@@ -50,8 +57,6 @@ public class ZooMain {
             case 'C':
                 new EnclosController(zoo).creerEnclos("Nom de l'enclos", 50);
                 break;
-
-
         }
 
         interactWithZoo();
