@@ -7,7 +7,6 @@
 - [Problèmes rencontrés](#problemes-rencontres)
 - [Synthèse](#synthese)
 
----
 
 ## Etude de cas
 
@@ -49,13 +48,12 @@ Gestion temporelle pour les changements d'état aléatoires.
 ### 4. Diagramme de Classes
  ![image de notre UML](Zoofantastique.png)
 
-## 5. Implémentation TD4
+### 5. Implémentation TD4
 
 Après avoir implémenté tout le TD3 qui était de mettre en place un ZooFantastique avec les enclos et les animaux dans celui-ci. Nous allons mettre en place le TD4 qui consiste à prendre le ZooFantastique et mettre une colonie de lycanthropes avec plusieurs aspects.
 
 ---
 
-### Bilan Technique
 ### 6. Analyse des Besoins
 
 ### Lycanthrope
@@ -73,7 +71,7 @@ Après avoir implémenté tout le TD3 qui était de mettre en place un ZooFantas
 - Ensemble de meutes proches, simulant une colonie.
 - Gère le cycle temporel, les créations de nouvelles meutes, la saison des amours, les hurlements, les transformations.
 
-## 2. Conception
+### 7. Conception
 
 ### Classes Principales
 
@@ -81,7 +79,7 @@ Après avoir implémenté tout le TD3 qui était de mettre en place un ZooFantas
 - **Meute :** Organise les lycanthropes selon une hiérarchie stricte, gère la reproduction.
 - **ColonieDeLycanthropes :** Gère l'ensemble des meutes, la simulation temporelle.
 
-### Diagramme de Classes
+### 8. Diagramme de Classes
 ![image de notre UML sur les colonies](Zoo2.png)
 
 
