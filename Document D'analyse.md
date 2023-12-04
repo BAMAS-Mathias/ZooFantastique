@@ -47,7 +47,7 @@ Gestion temporelle pour les changements d'état aléatoires.
 - ZooFantastique : Classe principale du zoo, gère l'ensemble du système.
 
 ### 4. Diagramme de Classes
- ![image de notre UML](Zoofantastique.jpg)
+ ![image de notre UML](Zoofantastique.png)
 
 ### 5. Implémentation TD4
 
@@ -57,18 +57,6 @@ Après avoir implémenté tout le TD3 qui était de mettre en place un ZooFantas
 
 ## Bilan Technique
 
-*Votre bilan technique ici, avec des sections sur les choix technologiques, les performances, les problèmes rencontrés, les solutions apportées, etc.*
 
----
-
-## Problèmes rencontrés
-
-*Liste des principaux problèmes rencontrés pendant le développement, avec les correctifs et les solutions apportées.*
-
----
-
-## Synthèse
-
-*Une synthèse des points clés abordés dans ce document d'analyse, mettant en évidence les aspects importants de la conception et de l'implémentation de votre Zoo Fantastique.*
 
 
