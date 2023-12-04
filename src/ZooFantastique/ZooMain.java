@@ -8,16 +8,33 @@ import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.view.CreatureView;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Scanner;
 
-public class ZooMain {
+public class ZooMain extends Application {
 
     private static ZooFantastique zoo = new ZooFantastique(10);
 
     private static Temps tps = new Temps();
     private static Thread th = new Thread(tps);
 
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+
+        AnchorPane root = new FXMLLoader(getClass().getResource("fxml/mainMenuFXML.fxml")).load();
+        primaryStage.setTitle("Zoo Fantastique");
+        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.show();
+    }
+
+    /*
     public static void main(String[] args) {
         th.start();
         clearScreen();
@@ -29,7 +46,7 @@ public class ZooMain {
         System.out.println("Bienvenue dans le zoo : " + zoo.getNom() + "\n");
 
         interactWithZoo();
-    }
+    }*/
 
     public static void interactWithZoo(){
         System.out.println("Entrez une commande pour intéragir\n");
