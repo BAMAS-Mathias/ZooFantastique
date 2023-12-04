@@ -49,14 +49,14 @@ Gestion temporelle pour les changements d'état aléatoires.
 ### 4. Diagramme de Classes
  ![image de notre UML](Zoofantastique.png)
 
-### 5. Implémentation TD4
+## 5. Implémentation TD4
 
 Après avoir implémenté tout le TD3 qui était de mettre en place un ZooFantastique avec les enclos et les animaux dans celui-ci. Nous allons mettre en place le TD4 qui consiste à prendre le ZooFantastique et mettre une colonie de lycanthropes avec plusieurs aspects.
 
 ---
 
-## Bilan Technique
-## 6. Analyse des Besoins
+### Bilan Technique
+### 6. Analyse des Besoins
 
 ### Lycanthrope
 
