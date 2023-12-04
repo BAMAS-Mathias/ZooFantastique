@@ -56,7 +56,33 @@ Après avoir implémenté tout le TD3 qui était de mettre en place un ZooFantas
 ---
 
 ## Bilan Technique
+## 6. Analyse des Besoins
 
+### Lycanthrope
+
+- Représente une créature avec des caractéristiques spécifiques.
+- Capacités telles que hurler, se séparer de la meute, se transformer en humain.
+
+### Meute
+
+- Organise les lycanthropes selon une hiérarchie stricte.
+- Gère la reproduction, la formation du couple Alpha, et l'évolution naturelle de la hiérarchie.
+
+### Colonie de Lycanthropes
+
+- Ensemble de meutes proches, simulant une colonie.
+- Gère le cycle temporel, les créations de nouvelles meutes, la saison des amours, les hurlements, les transformations.
+
+## 2. Conception
+
+### Classes Principales
+
+- **Lycanthrope :** Modèle de base pour toutes les créatures.
+- **Meute :** Organise les lycanthropes selon une hiérarchie stricte, gère la reproduction.
+- **ColonieDeLycanthropes :** Gère l'ensemble des meutes, la simulation temporelle.
+
+### Diagramme de Classes
+![image de notre UML sur les colonies](Zoo2.png)
 
 
 
