@@ -40,18 +40,21 @@ public class Lycanthrope extends Vivipare implements IRun {
         // Implémentation spécifique de la course pour le Lycanthrope
     }
 
-    public void hurler(){
+    public void hurler() {
         // TODO : Implémenter le hurlement du Lycanthrope
     }
 
-    public void quitterMeute(){
+    public void quitterMeute() {
         // TODO : Implémenter le départ du Lycanthrope de la meute
     }
 
-    public void transformer(){
+    public void transformer() {
         // TODO : Implémenter la transformation du Lycanthrope
     }
 
+    public void hurlementRetour() {
+        // TODO : Implémenter le hurlement de retour du Lycanthrope
+    }
 
 
 }
