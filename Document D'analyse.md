@@ -83,7 +83,7 @@ Après avoir implémenté tout le TD3 qui était de mettre en place un ZooFantas
 ### 8. Diagramme de Classes
 ![image de notre UML sur les colonies](Zoo2.png)
 
-# Bilan-Technique 
+# Bilan Technique 
 
 ## Choix Technologiques
 
@@ -99,7 +99,7 @@ Nous avons opté pour une approche orientée objet avec l'utilisation de classes
 
 Le système est conçu pour être scalable en ajoutant de nouveaux types de créatures, enclos, et fonctionnalités. Cependant, une évaluation plus approfondie de la scalabilité peut être nécessaire à mesure que le nombre d'entités et d'actions augmente.
 
-## Problèmes Rencontrés
+# Problèmes Rencontrés
 
 ### Problèmes Majeurs
 
