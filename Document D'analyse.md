@@ -83,7 +83,7 @@ Après avoir implémenté tout le TD3 qui était de mettre en place un ZooFantas
 ### 8. Diagramme de Classes
 ![image de notre UML sur les colonies](Zoo2.png)
 
-# Bilan Technique - Zoo Fantastique
+# Bilan-Technique 
 
 ## Choix Technologiques
 
