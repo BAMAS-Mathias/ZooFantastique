@@ -1,3 +1,4 @@
+
 # Document d'Analyse Zoo Fantastique
 
 ## Sommaire
@@ -12,19 +13,19 @@
 
 ### 1. Introduction
 
-L'objectif de cette étude de cas est de concevoir et développer une application de simulation de zoo fantastique en Java. Le zoo fantastique doit permettre la gestion de différentes créatures, enclos et être dirigé par un maître de zoo fantastique. L'application doit également modéliser l'aspect temporel de la gestion du zoo avec plusieurs actions au sein du zoo.
+L'objectif de cette étude de cas est de concevoir et développer une application de simulation de zoo fantastique en Java. Le zoo fantastique doit permettre la gestion de différentes créatures, enclos et être dirigé par un maître de zoo fantastique.On doit également modéliser l'aspect temporel de la gestion du zoo avec plusieurs actions au sein du zoo.
 
 ### 2. Analyse des Besoins
 
 #### Créatures
 Représentent différentes espèces telles que lycanthropes, licornes, nymphes, krakens, sirènes, mégalodons, phénix et dragons.
 Chaque créature a des caractéristiques communes : nom, sexe, poids, taille, âge, faim, sommeil, santé.
-Des actions spécifiques à chaque type de créature, comme courir, nager ou voler.
+Des actions spécifiques à chaque type de créature, comme courir, nager, voler ou hurler.
 
 #### Enclos
 Contiennent des créatures du même type.
 Caractéristiques : nom, superficie, capacité maximale, propreté.
-Enclos spécifiques : volières et aquariums, avec des attributs supplémentaires.
+Enclos spécifiques : volières et aquariums, avec des attributs supplémentaires(salinité de l'eau et l'état du toit de cage).
 
 #### Maître de Zoo Fantastique
 Gère les enclos, nourrit les créatures, nettoie les enclos, transfère les créatures.
@@ -81,3 +82,32 @@ Après avoir implémenté tout le TD3 qui était de mettre en place un ZooFantas
 
 ### 8. Diagramme de Classes
 ![image de notre UML sur les colonies](Zoo2.png)
+
+# Bilan Technique 
+
+## Choix Technologiques
+
+### Langage de Programmation
+
+Nous avons choisi Java comme langage principal pour le développement de notre application.
+
+### Modèle de Conception
+
+Nous avons opté pour une approche orientée objet avec l'utilisation de classes pour modéliser les entités du zoo fantastique.Et du Model MVC pour la structure de notre code.
+
+### Scalabilité
+
+Le système est conçu pour être scalable en ajoutant de nouveaux types de créatures, enclos, et fonctionnalités. Cependant, une évaluation plus approfondie de la scalabilité peut être nécessaire à mesure que le nombre d'entités et d'actions augmente.
+
+# Problèmes Rencontrés
+
+### Problèmes Majeurs
+
+Coming soon...
+
+### Solutions Apportées
+
+Coming soon...
+
+## Synthèse
+Coming soon...
