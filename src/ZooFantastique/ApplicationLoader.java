@@ -1,4 +1,5 @@
-import ZooFantastique.ZooMain;
+package ZooFantastique;
+
 import javafx.application.Application;
 
 public class ApplicationLoader {

@@ -8,29 +8,37 @@ import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.view.CreatureView;
+import ZooFantastique.view.ZooWelcomeView;
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class ZooMain extends Application {
 
     private static ZooFantastique zoo = new ZooFantastique(10);
-
+    private static Stage primaryStage;
     private static Temps tps = new Temps();
     private static Thread th = new Thread(tps);
 
+    @FXML
+    private Button button;
+
+    @FXML
+    private TextArea text;
+
     @Override
     public void start(Stage primaryStage) throws IOException {
-
-        AnchorPane root = new FXMLLoader(getClass().getResource("fxml/mainMenuFXML.fxml")).load();
+        ZooMain.primaryStage = primaryStage;
         primaryStage.setTitle("Zoo Fantastique");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        new ZooWelcomeView().displayView();
         primaryStage.show();
     }
 
@@ -163,6 +171,10 @@ public class ZooMain extends Application {
 
     public static ZooFantastique getZoo(){
         return zoo;
+    }
+
+    public static Stage getPrimaryStage() {
+        return primaryStage;
     }
 
 }
