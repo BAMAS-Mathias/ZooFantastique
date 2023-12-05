@@ -3,6 +3,8 @@ package ZooFantastique.view;
 import ZooFantastique.ZooMain;
 import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.models.enclos.Enclos;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -60,7 +63,7 @@ public class MainMenuView implements Initializable {
             enclosTile.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent mouseEvent) {
-                    new EnclosController(ZooMain.getZoo()).visiterEnclos(enclos);
+                    new EnclosController().examinerEnclos(enclos);
                 }
             });
         }
@@ -72,5 +75,12 @@ public class MainMenuView implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         zooNameText.setText(ZooMain.getZoo().getNom());
         initEnclosContainer();
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(0.25), e -> {
+                    zooNameText.setText(ZooMain.getTps().getDate());
+                })
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 }

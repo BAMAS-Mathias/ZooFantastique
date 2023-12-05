@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ZooFantastique.view.MainMenuView"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <VBox>
+        <HBox prefHeight="50" prefWidth="800">
+            <Text fx:id="zooNameText"></Text>
+        </HBox>
+        <GridPane fx:id="enclosContainer" prefHeight="350" prefWidth="800"></GridPane>
+        <GridPane fx:id="actionButtonBox"></GridPane>
+    </VBox>
+
+</AnchorPane>

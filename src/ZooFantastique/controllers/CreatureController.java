@@ -23,7 +23,7 @@ public class CreatureController {
             Creature creature = enclos.getCreaturesPresentes().get(creatureIndex - 1);
             ZooMain.interactWithCreature(creature);
         }catch (IndexOutOfBoundsException e){
-            new EnclosView(enclos).displayCreatureSelectionError();
+            new EnclosView().setEnclos(enclos).displayCreatureSelectionError();
         }
     }
 

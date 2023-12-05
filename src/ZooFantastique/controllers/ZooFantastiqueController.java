@@ -32,6 +32,14 @@ public class ZooFantastiqueController{
         this.zooFantastique = zooFantastique;
     }
 
+    public void visitZoo(){
+        try {
+            new MainMenuView().displayView();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void startZoo(String nomZoo){
         zooFantastique.setNom(nomZoo);
 

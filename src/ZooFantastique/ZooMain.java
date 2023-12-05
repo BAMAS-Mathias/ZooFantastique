@@ -3,29 +3,27 @@ package ZooFantastique;
 import ZooFantastique.controllers.CreatureController;
 import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.controllers.ZooFantastiqueController;
-import ZooFantastique.models.Temps;
+import ZooFantastique.models.TimeManager;
 import ZooFantastique.models.creatures.Creature;
+import ZooFantastique.models.creatures.ovipares.Phoenix;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.view.CreatureView;
 import ZooFantastique.view.ZooWelcomeView;
 import javafx.application.Application;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class ZooMain extends Application {
 
     private static ZooFantastique zoo = new ZooFantastique(10);
     private static Stage primaryStage;
-    private static Temps tps = new Temps();
+    private static TimeManager tps = new TimeManager();
     private static Thread th = new Thread(tps);
 
     @FXML
@@ -37,9 +35,11 @@ public class ZooMain extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         ZooMain.primaryStage = primaryStage;
+        th.start();
         zoo.addEnclos(new Enclos("Enclos 1"));
         zoo.addEnclos(new Enclos("Enclos 2"));
         zoo.addEnclos(new Enclos("Enclos de rayan"));
+        zoo.getListeDesEnclos().get(0).addCreature(new Phoenix(zoo.getListeDesEnclos().get(0)));
         primaryStage.setTitle("Zoo Fantastique");
         new ZooWelcomeView().displayView();
         primaryStage.show();
@@ -81,10 +81,10 @@ public class ZooMain extends Application {
                 return;
             case 'V':
                 clearScreen();
-                new EnclosController(zoo).visiterEnclos(Character.getNumericValue(input.charAt(2)));
+                /*new EnclosController(zoo).visiterEnclos(Character.getNumericValue(input.charAt(2)));*/
                 break;
             case 'C':
-                new EnclosController(zoo).creerEnclos("Nom de l'enclos", 50);
+                new EnclosController().creerEnclos("Nom de l'enclos", 50);
                 break;
         }
 
@@ -110,24 +110,24 @@ public class ZooMain extends Application {
                 interactWithZoo();
                 break;
             case 'A':
-                new EnclosController(zoo).ajouterCreature(enclos);
+                new EnclosController().ajouterCreature(enclos);
                 interactWithEnclos(enclos);
                 break;
             case 'D':
-                new EnclosController(zoo).afficherCreatures(enclos);
+                new EnclosController().afficherCreatures(enclos);
                 interactWithEnclos(enclos);
                 break;
             case 'C':
                 new CreatureController().visiterCreature(Character.getNumericValue(input.charAt(2)), enclos);
                 break;
             case 'N':
-                new EnclosController(zoo).nettoyerEnclos(enclos);
+                new EnclosController().nettoyerEnclos(enclos);
                 break;
             case 'R':
-                new EnclosController(zoo).renameEnclos(enclos);
+                new EnclosController().renameEnclos(enclos);
                 break;
             case 'F':
-                new EnclosController(zoo).nourrirAllCreatures(enclos);
+                new EnclosController().nourrirAllCreatures(enclos);
                 break;
 
         }
@@ -180,4 +180,7 @@ public class ZooMain extends Application {
         return primaryStage;
     }
 
+    public static TimeManager getTps() {
+        return tps;
+    }
 }

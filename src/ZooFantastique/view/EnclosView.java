@@ -1,20 +1,40 @@
 package ZooFantastique.view;
 
+import ZooFantastique.ZooMain;
+import ZooFantastique.controllers.ZooFantastiqueController;
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.enclos.Enclos;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class EnclosView {
+public class EnclosView implements Initializable {
+
+    @FXML
+    private Text enclosName;
+
+    @FXML
+    private GridPane creaturesContainer;
+
+    @FXML
+    private Button returnButton;
 
     private Enclos enclos;
+    private final int creaturePerRow = 3;
+
+    public EnclosView(){}
 
     public EnclosView(Enclos enclos){
         this.enclos = enclos;
-    }
-
-    public void displayEnclos(){
-        System.out.println(enclos.toString());
     }
 
     public void displayEnclosVisitMessage(){
@@ -66,5 +86,33 @@ public class EnclosView {
 
     public void displaySuccessFeedMessage(){
         System.out.println("Toutes les créature ont été nourries avec succès");
+    }
+
+    public void displayCreatures(){
+        for(int i = 0; i < enclos.getNbCreaturePresente(); ++i){
+            Creature creature = enclos.getCreaturesPresentes().get(i);
+            VBox creatureVBbox = new VBox();
+            creatureVBbox.getChildren().add(new Text(creature.getNom()));
+            creatureVBbox.setPrefSize(100, 100);
+            creatureVBbox.setStyle("-fx-background-color: green");
+            creatureVBbox.setCursor(Cursor.HAND);
+            creaturesContainer.add(creatureVBbox, i%creaturePerRow, i/creaturePerRow);
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(() -> {
+            enclosName.setText(enclos.getNom());
+            displayCreatures();
+            returnButton.setOnAction(event -> {
+                new ZooFantastiqueController(ZooMain.getZoo()).visitZoo();
+            });
+        });
+    }
+
+    public EnclosView setEnclos(Enclos enclos){
+        this.enclos = enclos;
+        return this;
     }
 }

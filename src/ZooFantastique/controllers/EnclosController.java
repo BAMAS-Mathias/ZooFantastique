@@ -7,6 +7,8 @@ import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.enclos.Proprete;
 import ZooFantastique.view.EnclosView;
 import ZooFantastique.ZooMain;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,26 +33,27 @@ public class EnclosController {
 
     private ZooFantastique zoo;
 
-    public EnclosController(ZooFantastique zoo) {
-        this.zoo = zoo;
+    public EnclosController() {
+        zoo = ZooMain.getZoo();
     }
 
     /**
      * Affiche des informations sur les enclos en utilisant la {@link ZooFantastique.view.EnclosView} associée.
      */
-    public void examinerEnclos() {
-        EnclosView enclosView = new EnclosView(null);
-        enclosView.displayEnclos();
-    }
+    public void examinerEnclos(Enclos enclos) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/EnclosViewFXML.fxml"));
+        loader.setControllerFactory(c -> new EnclosView(enclos));
 
-    public void visiterEnclos(Enclos enclos){
-        EnclosView enclosView = new EnclosView(enclos);
-        ZooMain.interactWithEnclos(enclos);
+        try{
+            ZooMain.getPrimaryStage().setScene(new Scene(loader.load()));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void afficherCreatures(Enclos enclos){
         ArrayList<Creature> creatures = enclos.getCreaturesPresentes();
-        EnclosView enclosView = new EnclosView(enclos);
+        EnclosView enclosView = new EnclosView();
         enclosView.displayCreatures(creatures);
     }
 
@@ -71,7 +74,7 @@ public class EnclosController {
     }
 
     public void ajouterCreature(Enclos enclos){
-        EnclosView enclosView = new EnclosView(enclos);
+        EnclosView enclosView = new EnclosView().setEnclos(enclos);
         ArrayList<String> creatureNameList = new ArrayList<>();
 
 
@@ -97,7 +100,7 @@ public class EnclosController {
     }
 
     public void nettoyerEnclos(Enclos enclos){
-        EnclosView enclosView = new EnclosView(enclos);
+        EnclosView enclosView = new EnclosView().setEnclos(enclos);
         if(enclos.getPropreteDegre() == Proprete.BON){
             enclosView.displayEnclosAlreadyCleanMessage();
         }else{
@@ -107,7 +110,7 @@ public class EnclosController {
 
     public void renameEnclos(Enclos enclos){
         System.out.println("Donner le nouveau nom de l'enclos");
-        EnclosView enclosView = new EnclosView(enclos);
+        EnclosView enclosView = new EnclosView().setEnclos(enclos);
         Scanner scanner = new Scanner(System.in);
         String enclosName = scanner.nextLine();
         if(enclosName.isEmpty()){
@@ -119,7 +122,7 @@ public class EnclosController {
     }
 
     public void nourrirAllCreatures(Enclos enclos){
-        EnclosView enclosView = new EnclosView(enclos);
+        EnclosView enclosView = new EnclosView().setEnclos(enclos);
         enclos.nourrirAllCreature();
         enclosView.displaySuccessFeedMessage();
     }
