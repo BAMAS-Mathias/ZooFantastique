@@ -94,7 +94,6 @@ Nous avons choisi Java comme langage principal pour le développement de notre a
 ### Modèle de Conception
 
 Nous avons opté pour une approche orientée objet avec l'utilisation de classes pour modéliser les entités du zoo fantastique.Et du Model MVC pour la structure de notre code.
- aux actions de l'utilisateur, avec des temps de réponse rapides pour les opérations courantes telles que la gestion des enclos, la nourriture des créatures, etc.
 
 ### Scalabilité
 
