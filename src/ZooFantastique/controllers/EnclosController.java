@@ -8,8 +8,12 @@ import ZooFantastique.models.enclos.Proprete;
 import ZooFantastique.view.EnclosView;
 import ZooFantastique.ZooMain;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 
+import javax.management.Notification;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -60,18 +64,9 @@ public class EnclosController {
     public void creerEnclos(String nomEnclos, int capaciteMaxAnimaux) {
         Enclos nouvelEnclos = new Enclos(nomEnclos, capaciteMaxAnimaux);
         zoo.addEnclos(nouvelEnclos);
-        System.out.println("Nouvel enclos créé avec succès : " + nouvelEnclos);
-        editEnclosName(nouvelEnclos);
-
+        nouvelEnclos.setName(nomEnclos);
     }
 
-    public void editEnclosName(Enclos enclos){
-        System.out.println("Entrer le nom de votre enclos : ");
-        Scanner scanner = new Scanner(System.in);
-        String enclosName = (scanner.nextLine());
-        enclos.setName(enclosName);
-        System.out.println("Votre nom d'enclos est: "+ enclosName);
-    }
 
     public void ajouterCreature(Enclos enclos){
         EnclosView enclosView = new EnclosView().setEnclos(enclos);
@@ -106,6 +101,8 @@ public class EnclosController {
         }else{
             enclos.clean();
         }
+        Notifications.create().title("Enclos").text("L'enclos a été nettoyé").showInformation();
+        examinerEnclos(enclos);
     }
 
     public void renameEnclos(Enclos enclos){
@@ -125,6 +122,7 @@ public class EnclosController {
         EnclosView enclosView = new EnclosView().setEnclos(enclos);
         enclos.nourrirAllCreature();
         enclosView.displaySuccessFeedMessage();
+        Notifications.create().title("Enclos").text("Les créatures ont été nourries").hideAfter(Duration.seconds(1)).position(Pos.TOP_RIGHT).showInformation();
     }
 
 }

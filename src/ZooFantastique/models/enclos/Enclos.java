@@ -3,6 +3,7 @@ package ZooFantastique.models.enclos;
 import ZooFantastique.models.creatures.Creature;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * La classe {@code Enclos} représente un espace clos destiné à héberger des créatures.
@@ -51,25 +52,21 @@ public class Enclos {
     /**
      *
      * @param nom
-     * @param supperficie
      * @param nbCreatureMax
      */
-    public Enclos(String nom, double supperficie, int nbCreatureMax) {
+    public Enclos(String nom, int nbCreatureMax) {
         this.nom = nom;
-        this.superficie = supperficie;
-        this.nbCreatureMax = nbCreatureMax;
+        this.superficie = new Random().nextInt(50) +  30;
+        this.nbCreatureMax = (int) superficie / 3;
         this.nbCreaturePresente = 0;
         this.propreteDegre = Proprete.BON;
         creaturesPresentes = new ArrayList<Creature>();
     }
 
-    public Enclos(String nom, double supperficie) {
-        this(nom, supperficie, 10);
+    public Enclos(String nom) {
+        this(nom, 10);
     }
 
-    public Enclos(String nom) {
-        this(nom, 50);
-    }
 
 
     @Override
@@ -152,6 +149,10 @@ public class Enclos {
         for(Creature creature : getCreaturesPresentes()){
             creature.feed();
         }
+    }
+
+    public double getSuperficie() {
+        return superficie;
     }
 }
 

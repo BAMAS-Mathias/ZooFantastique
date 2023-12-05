@@ -14,11 +14,10 @@ public class Voliere extends Enclos {
     /**
      *
      * @param nom
-     * @param superficie
      * @param nbCreatureMax
      */
-    public Voliere(String nom, double superficie, int nbCreatureMax) {
-        super(nom, superficie, nbCreatureMax );
+    public Voliere(String nom, int nbCreatureMax) {
+        super(nom, nbCreatureMax );
     }
 
     /**

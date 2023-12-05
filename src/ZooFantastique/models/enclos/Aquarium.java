@@ -26,16 +26,13 @@ public class Aquarium extends Enclos {
      * Construit un nouvel aquarium avec les paramètres spécifiés.
      *
      * @param nom                Le nom de l'aquarium.
-     * @param superficie         La superficie de l'aquarium.
      * @param nbCreatureMax      Le nombre maximum de créatures pouvant être hébergées.
-     * @param nbCreaturePresente Le nombre actuel de créatures présentes.
-     * @param propreteDegre      Le degré de propreté de l'aquarium.
      * @param profondeur         La profondeur de l'aquarium.
      * @param salinite           La salinité de l'eau dans l'aquarium.
      */
 
-    public Aquarium(String nom, double supperficie, int nbCreatureMax, double profondeur, double salinite) {
-        super(nom, supperficie, nbCreatureMax);
+    public Aquarium(String nom, int nbCreatureMax, double profondeur, double salinite) {
+        super(nom, nbCreatureMax);
         this.profondeur = profondeur;
         this.salinite = salinite;
     }

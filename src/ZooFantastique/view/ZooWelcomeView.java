@@ -5,9 +5,11 @@ import ZooFantastique.controllers.ZooFantastiqueController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -17,7 +19,7 @@ import java.util.ResourceBundle;
 public class ZooWelcomeView implements Initializable {
 
     @FXML
-    private TextArea zooNameArea;
+    private TextField zooNameArea;
 
     @FXML
     private Button confirmEditButton;
@@ -30,8 +32,10 @@ public class ZooWelcomeView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        confirmEditButton.setCursor(Cursor.HAND);
         confirmEditButton.setOnAction(actionEvent -> {
             new ZooFantastiqueController(ZooMain.getZoo()).startZoo(zooNameArea.getText());
         });
+
     }
 }

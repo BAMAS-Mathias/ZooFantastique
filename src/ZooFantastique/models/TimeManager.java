@@ -26,26 +26,27 @@ public class TimeManager implements Runnable {
     public void run() {
         ArrayList<String> mois31Jours = new ArrayList<>(Arrays.asList("Janvier", "Mars", "Mai", "Juillet", "Août", "Octobre", "Décembre"));
 
-        try {
-            Thread.sleep(250);
-            if(jour == 28 && mois.equals("Fevrier")){
-                jour = 1;
-                mois = "Mars";
-            } else if(jour == 30 && !mois31Jours.contains(mois)){
-                jour = 1;
-                mois = listeMois.get(listeMois.indexOf(mois) + 1 % 12);
-            } else if(jour == 31 && mois31Jours.contains(mois)){
-                if(mois.equals("Décembre")){
-                    annee++;
+        while(true) {
+            try {
+                Thread.sleep(250);
+                if (jour == 28 && mois.equals("Fevrier")) {
+                    jour = 1;
+                    mois = "Mars";
+                } else if (jour == 30 && !mois31Jours.contains(mois)) {
+                    jour = 1;
+                    mois = listeMois.get((listeMois.indexOf(mois) + 1) % 12);
+                } else if (jour == 31 && mois31Jours.contains(mois)) {
+                    if (mois.equals("Décembre")) {
+                        annee++;
+                    }
+                    jour = 1;
+                    mois = listeMois.get((listeMois.indexOf(mois) + 1) % 12);
+                } else {
+                    jour++;
                 }
-                jour = 1;
-                mois = listeMois.get(listeMois.indexOf(mois) + 1 % 12);
-            } else {
-                jour++;
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-            run();
-        } catch (InterruptedException e){
-            e.printStackTrace();
         }
     }
 

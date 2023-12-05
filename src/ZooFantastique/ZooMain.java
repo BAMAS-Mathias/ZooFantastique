@@ -118,7 +118,7 @@ public class ZooMain extends Application {
                 interactWithEnclos(enclos);
                 break;
             case 'C':
-                new CreatureController().visiterCreature(Character.getNumericValue(input.charAt(2)), enclos);
+                new CreatureController().visiterCreature(null);
                 break;
             case 'N':
                 new EnclosController().nettoyerEnclos(enclos);
@@ -136,7 +136,7 @@ public class ZooMain extends Application {
 
     public static void interactWithCreature(Creature creature){
         clearScreen();
-        (new CreatureView()).displayActions();
+        (new CreatureView(creature)).displayActions();
 
         Scanner scanner = new Scanner(System.in);
 

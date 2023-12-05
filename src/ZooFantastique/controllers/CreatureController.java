@@ -6,6 +6,8 @@ import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.view.CreatureView;
 import ZooFantastique.view.EnclosView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -14,21 +16,23 @@ public class CreatureController {
 
 
     public void emettreSon(Creature creature){
-        CreatureView creatureView = new CreatureView();
+        CreatureView creatureView = new CreatureView(creature);
         creatureView.displayCreatureSound(creature.getSonEmit());
     }
 
-    public void visiterCreature(int creatureIndex, Enclos enclos){
+    public void visiterCreature(Creature creature){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/CreatureViewFXML.fxml"));
+        loader.setControllerFactory(c -> new CreatureView(creature));
+
         try{
-            Creature creature = enclos.getCreaturesPresentes().get(creatureIndex - 1);
-            ZooMain.interactWithCreature(creature);
-        }catch (IndexOutOfBoundsException e){
-            new EnclosView().setEnclos(enclos).displayCreatureSelectionError();
+            ZooMain.getPrimaryStage().setScene(new Scene(loader.load()));
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
 
     public void soignerCreature(Creature creature){
-        CreatureView creatureView =  new CreatureView();
+        CreatureView creatureView =  new CreatureView(creature);
         if(creature.getSante() == creature.getSanteMax()){
             creatureView.displayCreatureFullHealthMessage();
         }else{
@@ -38,7 +42,7 @@ public class CreatureController {
     }
 
     public void transfererCreature(Creature creature){
-        CreatureView creatureView = new CreatureView();
+        CreatureView creatureView = new CreatureView(creature);
         Scanner scanner = new Scanner(System.in);
         ArrayList<Enclos> enclosPossible = getEnclosForTransfer(creature);
         for(int i = 0; i < enclosPossible.size(); ++i){

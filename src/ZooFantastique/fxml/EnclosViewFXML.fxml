@@ -1,15 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.Button?>
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ZooFantastique.view.EnclosView">
 
-    <HBox prefHeight="41.0" prefWidth="269.0">
-        <Text fx:id="enclosName" />
-    </HBox>
-    <HBox />
-    <GridPane fx:id="creaturesContainer" layoutX="261.0" layoutY="64.0" prefHeight="445.0" prefWidth="514.0" />
-    <Button fx:id="returnButton" text="Retour"></Button>
+    <VBox>
+        <HBox prefHeight="41.0" prefWidth="269.0">
+
+        </HBox>
+        <HBox>
+            <VBox prefWidth="325">
+                <HBox alignment="CENTER_LEFT">
+                    <Text> Nom :
+                      <font>
+                         <Font size="16.0" />
+                      </font>
+                    </Text>
+                    <Text fx:id="enclosNameText" style="-fx-font-weight: bold;">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin></Text>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </HBox>
+                <HBox alignment="BOTTOM_LEFT">
+                    <Text> Superficie :
+                      <font>
+                         <Font size="16.0" />
+                      </font>
+                    </Text>
+                    <Text fx:id="enclosSuperficieText" style="-fx-font-weight: bold;">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin></Text>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER_LEFT">
+                    <Text> Nombre de créatures :
+                      <font>
+                         <Font size="16.0" />
+                      </font>
+                    </Text>
+                    <Text fx:id="enclosNbCreaturesText" style="-fx-font-weight: bold;">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin></Text>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER_LEFT">
+                    <Text> Nombre maximum de créatures :
+                      <font>
+                         <Font size="16.0" />
+                      </font>
+                    </Text>
+                    <Text fx:id="enclosNbCreaturesMaxText" style="-fx-font-weight: bold;">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin></Text>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </HBox>
+                <HBox alignment="CENTER_LEFT">
+                    <Text>Degré de propreté :
+                      <font>
+                         <Font size="16.0" />
+                      </font>
+                    </Text>
+                    <Text fx:id="prepreteDegreText" style="-fx-font-weight: bold;">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+                  <HBox.margin>
+                     <Insets left="10.0" />
+                  </HBox.margin></Text>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+                </HBox>
+            <HBox.margin>
+               <Insets left="20.0" top="20.0" />
+            </HBox.margin>
+            </VBox>
+            <GridPane fx:id="creaturesContainer" layoutX="261.0" layoutY="64.0" prefHeight="445.0" prefWidth="514.0" />
+        </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+              <Button fx:id="returnButton" text="Retour" />
+              <Button fx:id="cleanButton" text="Nettoyer" />
+              <Button fx:id="feedAllButton" text="Nourrir les créatures" />
+         </children>
+      </HBox>
+    </VBox>
 </AnchorPane>

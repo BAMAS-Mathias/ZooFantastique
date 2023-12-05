@@ -1,9 +1,12 @@
 package ZooFantastique.view;
 
 import ZooFantastique.ZooMain;
+import ZooFantastique.controllers.CreatureController;
+import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.controllers.ZooFantastiqueController;
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.enclos.Enclos;
+import ZooFantastique.models.enclos.Proprete;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,6 +30,27 @@ public class EnclosView implements Initializable {
 
     @FXML
     private Button returnButton;
+
+    @FXML
+    private Text enclosNameText;
+
+    @FXML
+    private Text enclosSuperficieText;
+
+    @FXML
+    private Text enclosNbCreaturesText;
+
+    @FXML
+    private Text enclosNbCreaturesMaxText;
+
+    @FXML
+    private Text prepreteDegreText;
+
+    @FXML
+    private Button cleanButton;
+
+    @FXML
+    private Button feedAllButton;
 
     private Enclos enclos;
     private final int creaturePerRow = 3;
@@ -65,7 +89,6 @@ public class EnclosView implements Initializable {
             System.out.println("A - Ajouter une créature");
         }
         System.out.println("D - Afficher les créatures");
-
     }
 
     public void displayCreatureSelectionError(){
@@ -97,18 +120,39 @@ public class EnclosView implements Initializable {
             creatureVBbox.setStyle("-fx-background-color: green");
             creatureVBbox.setCursor(Cursor.HAND);
             creaturesContainer.add(creatureVBbox, i%creaturePerRow, i/creaturePerRow);
+
+            creatureVBbox.setOnMouseClicked(event -> {
+                new CreatureController().visiterCreature(creature);
+            });
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(() -> {
-            enclosName.setText(enclos.getNom());
-            displayCreatures();
-            returnButton.setOnAction(event -> {
-                new ZooFantastiqueController(ZooMain.getZoo()).visitZoo();
-            });
+        displayCreatures();
+        returnButton.setOnAction(event -> {
+            new ZooFantastiqueController(ZooMain.getZoo()).visitZoo();
         });
+        cleanButton.setOnAction(event -> {
+            (new EnclosController()).nettoyerEnclos(enclos);
+        });
+        feedAllButton.setOnAction(event -> {
+            (new EnclosController()).nourrirAllCreatures(enclos);
+        });
+
+        initButtonIfNeeded();
+        enclosNameText.setText(enclos.getNom());
+        enclosSuperficieText.setText(String.valueOf(enclos.getSuperficie()));
+        enclosNbCreaturesText.setText(String.valueOf(enclos.getNbCreaturePresente()));
+        enclosNbCreaturesMaxText.setText(String.valueOf(enclos.getNbCreatureMax()));
+        prepreteDegreText.setText(String.valueOf(enclos.getPropreteDegre()));
+    }
+
+    public void initButtonIfNeeded(){
+        if(enclos.getPropreteDegre() == Proprete.BON){
+            cleanButton.setVisible(false);
+            cleanButton.setManaged(false);
+        }
     }
 
     public EnclosView setEnclos(Enclos enclos){
