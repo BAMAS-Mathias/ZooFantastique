@@ -43,9 +43,7 @@ public class EnclosController {
         enclosView.displayEnclos();
     }
 
-    public void visiterEnclos(int indexEnclos){
-        System.out.println(indexEnclos);
-        Enclos enclos = zoo.getListeDesEnclos().get(indexEnclos - 1);
+    public void visiterEnclos(Enclos enclos){
         EnclosView enclosView = new EnclosView(enclos);
         ZooMain.interactWithEnclos(enclos);
     }

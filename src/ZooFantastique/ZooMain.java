@@ -37,6 +37,9 @@ public class ZooMain extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         ZooMain.primaryStage = primaryStage;
+        zoo.addEnclos(new Enclos("Enclos 1"));
+        zoo.addEnclos(new Enclos("Enclos 2"));
+        zoo.addEnclos(new Enclos("Enclos de rayan"));
         primaryStage.setTitle("Zoo Fantastique");
         new ZooWelcomeView().displayView();
         primaryStage.show();

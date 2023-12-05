@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ZooFantastique.view.ZooWelcomeView"
+            prefHeight="600.0" prefWidth="800.0">
+
+    <VBox prefWidth="800" prefHeight="600" alignment="CENTER">
+        <Text>Nom de votre Zoo</Text>
+        <TextArea fx:id="zooNameArea" maxWidth="200" prefHeight="20"></TextArea>
+        <Button fx:id="confirmEditButton" text="Confirmer"></Button>
+    </VBox>
+</AnchorPane>
