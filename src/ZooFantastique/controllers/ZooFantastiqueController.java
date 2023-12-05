@@ -2,17 +2,17 @@ package ZooFantastique.controllers;
 
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.ZooFantastique;
+import ZooFantastique.view.CreateEnclosView;
 import ZooFantastique.view.MainMenuView;
-import ZooFantastique.view.ZooFantastiqueView;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.text.Text;
+import ZooFantastique.ZooMain;
 
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
 public class ZooFantastiqueController{
 
@@ -48,7 +48,16 @@ public class ZooFantastiqueController{
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
 
+    public void creerEnclos(){
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/CreateEnclosViewFXML.fxml"));
+        loader.setControllerFactory(c -> new CreateEnclosView());
+        try{
+            ZooMain.getPrimaryStage().setScene(new Scene(loader.load()));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void editName(String name){

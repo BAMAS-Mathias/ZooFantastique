@@ -84,7 +84,7 @@ public class ZooMain extends Application {
                 /*new EnclosController(zoo).visiterEnclos(Character.getNumericValue(input.charAt(2)));*/
                 break;
             case 'C':
-                new EnclosController().creerEnclos("Nom de l'enclos", 50);
+                new EnclosController().creerEnclos("Nom de l'enclos", "test");
                 break;
         }
 

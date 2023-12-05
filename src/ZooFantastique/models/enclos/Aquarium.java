@@ -1,5 +1,7 @@
 package ZooFantastique.models.enclos;
 
+import java.util.Random;
+
 /**
  * La classe {@code Aquarium} représente un type d'enclos spécifique destiné à
  * héberger des créatures aquatiques. Elle étend les fonctionnalités de la classe
@@ -26,15 +28,12 @@ public class Aquarium extends Enclos {
      * Construit un nouvel aquarium avec les paramètres spécifiés.
      *
      * @param nom                Le nom de l'aquarium.
-     * @param nbCreatureMax      Le nombre maximum de créatures pouvant être hébergées.
-     * @param profondeur         La profondeur de l'aquarium.
-     * @param salinite           La salinité de l'eau dans l'aquarium.
      */
 
-    public Aquarium(String nom, int nbCreatureMax, double profondeur, double salinite) {
-        super(nom, nbCreatureMax);
-        this.profondeur = profondeur;
-        this.salinite = salinite;
+    public Aquarium(String nom) {
+        super(nom);
+        this.profondeur = new Random().nextInt(20) + 20;
+        this.salinite = 35 + new Random().nextInt(5);
     }
 
     /**

@@ -89,9 +89,9 @@ public class MainMenuView implements Initializable {
                     zooNameText.setText(ZooMain.getTps().getDate());
                 })
         );
+
         createEnclosButton.setOnAction(actionEvent -> {
-            new EnclosController().creerEnclos(createEnclosNameTextArea.getText(), 10);
-            new ZooFantastiqueController(ZooMain.getZoo()).visitZoo();
+            new ZooFantastiqueController(ZooMain.getZoo()).creerEnclos();
         });
 
         timeline.setCycleCount(Timeline.INDEFINITE);

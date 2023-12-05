@@ -4,7 +4,9 @@ import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.CreatureFactory;
 import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.models.enclos.Enclos;
+import ZooFantastique.models.enclos.EnclosFactory;
 import ZooFantastique.models.enclos.Proprete;
+import ZooFantastique.view.CreateEnclosView;
 import ZooFantastique.view.EnclosView;
 import ZooFantastique.ZooMain;
 import javafx.fxml.FXMLLoader;
@@ -61,12 +63,10 @@ public class EnclosController {
         enclosView.displayCreatures(creatures);
     }
 
-    public void creerEnclos(String nomEnclos, int capaciteMaxAnimaux) {
-        Enclos nouvelEnclos = new Enclos(nomEnclos, capaciteMaxAnimaux);
+    public void creerEnclos(String nomEnclos, String typeEnclos) {
+        Enclos nouvelEnclos = new EnclosFactory().build(typeEnclos, nomEnclos);
         zoo.addEnclos(nouvelEnclos);
-        nouvelEnclos.setName(nomEnclos);
     }
-
 
     public void ajouterCreature(Enclos enclos){
         EnclosView enclosView = new EnclosView().setEnclos(enclos);
@@ -96,13 +96,12 @@ public class EnclosController {
 
     public void nettoyerEnclos(Enclos enclos){
         EnclosView enclosView = new EnclosView().setEnclos(enclos);
-        if(enclos.getPropreteDegre() == Proprete.BON){
-            enclosView.displayEnclosAlreadyCleanMessage();
-        }else{
+        if(enclos.getPropreteDegre() != Proprete.BON && enclos.isEmpty()){
             enclos.clean();
+            Notifications.create().title("Enclos").text("L'enclos a été nettoyé").showInformation();
+            examinerEnclos(enclos);
         }
-        Notifications.create().title("Enclos").text("L'enclos a été nettoyé").showInformation();
-        examinerEnclos(enclos);
+
     }
 
     public void renameEnclos(Enclos enclos){

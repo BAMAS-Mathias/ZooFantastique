@@ -149,7 +149,7 @@ public class EnclosView implements Initializable {
     }
 
     public void initButtonIfNeeded(){
-        if(enclos.getPropreteDegre() == Proprete.BON){
+        if(enclos.getPropreteDegre() == Proprete.BON || !enclos.isEmpty()){
             cleanButton.setVisible(false);
             cleanButton.setManaged(false);
         }
