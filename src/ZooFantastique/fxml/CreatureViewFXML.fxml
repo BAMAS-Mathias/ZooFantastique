@@ -3,12 +3,62 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            prefHeight="600.0" prefWidth="800.0"
-            fx:controller="ZooFantastique.view.CreatureView">
-
-    <HBox>
-        <Button fx:id="returnButton" text="Retour"></Button>
-    </HBox>
+<?import javafx.scene.text.Text?>
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ZooFantastique.view.CreatureView">
+   <VBox prefHeight="600.0" prefWidth="800.0">
+      <children>
+         <HBox prefHeight="514.0" prefWidth="800.0">
+            <children>
+               <VBox prefHeight="513.0" prefWidth="445.0" style="-fx-background-color: red;" />
+               <VBox prefHeight="513.0" prefWidth="388.0" alignment="CENTER">
+                  <HBox alignment="CENTER">
+                     <Text>Nom</Text>
+                     <Text fx:id="creatureNameText"></Text>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <Text>Sexe</Text>
+                     <Text fx:id="creatureSexeText"></Text>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <Text>Poids</Text>
+                     <Text fx:id="creaturePoidsText"></Text>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <HBox>
+                        <Text>Taille</Text>
+                        <Text fx:id="creatureSizeText"></Text>
+                     </HBox>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <HBox>
+                        <Text>Age</Text>
+                        <Text fx:id="creatureAgeText"></Text>
+                     </HBox>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <HBox>
+                        <Text>Sante</Text>
+                        <Text fx:id="creatureHealthText"></Text>
+                     </HBox>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <HBox>
+                        <Text fx:id="creatureHungryText">A faim</Text>
+                     </HBox>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <HBox>
+                        <Text fx:id="creatureSleepText">Dors</Text>
+                     </HBox>
+                  </HBox>
+               </VBox>
+            </children>
+         </HBox>
+      
+          <HBox alignment="CENTER_LEFT" prefHeight="89.0" prefWidth="800.0" fx:id="actionButtonList">
+              <Button fx:id="returnButton" text="Retour" />
+              <Button fx:id="transfererButton" text="Transférer"/>
+          </HBox>
+      </children>
+   </VBox>
 </AnchorPane>

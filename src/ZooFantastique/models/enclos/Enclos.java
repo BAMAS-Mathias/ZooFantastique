@@ -108,6 +108,10 @@ public class Enclos {
         }
     }
 
+    public void lowerProperty(){
+        propreteDegre = propreteDegre.getPrevious();
+    }
+
     public ArrayList<Creature> getCreaturesPresentes() {
         return creaturesPresentes;
     }

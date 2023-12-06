@@ -1,10 +1,13 @@
 package ZooFantastique.view;
 
+import ZooFantastique.controllers.CreatureController;
 import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.models.creatures.Creature;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -13,6 +16,36 @@ public class CreatureView implements Initializable {
 
     @FXML
     private Button returnButton;
+
+    @FXML
+    private Button transfererButton;
+
+    @FXML
+    private HBox actionButtonList;
+
+    @FXML
+    private Text creatureNameText;
+
+    @FXML
+    private Text creatureSexeText;
+
+    @FXML
+    private Text creaturePoidsText;
+
+    @FXML
+    private Text creatureSizeText;
+
+    @FXML
+    private Text creatureAgeText;
+
+    @FXML
+    private Text creatureHealthText;
+
+    @FXML
+    private Text creatureHungryText;
+
+    @FXML
+    private Text creatureSleepText;
 
     private Creature creature;
 
@@ -50,6 +83,53 @@ public class CreatureView implements Initializable {
         returnButton.setOnAction(event -> {
             new EnclosController().examinerEnclos(creature.getEnclos());
         });
+        creatureNameText.setText(creature.getNom());
+        creatureSexeText.setText(creature.getSexe().toString());
+        creatureAgeText.setText(String.valueOf(creature.getAge()));
+        creatureHealthText.setText(String.valueOf(creature.getSante()));
+        creaturePoidsText.setText(String.valueOf(creature.getPoids()));
+        creatureSizeText.setText(String.valueOf(creature.getTaille()));
+
+        if(!creature.isHungry()){
+            creatureHungryText.setVisible(false);
+        }
+        if(!creature.isSleeping()){
+            creatureSleepText.setVisible(false);
+        }
+
+        Button emettreSonButton = new Button("Emettre son");
+        emettreSonButton.setOnAction(actionEvent -> {
+            new CreatureController().emettreSon(creature);
+        });
+
+        transfererButton.setOnAction(actionEvent -> {
+            new CreatureController().transfererCreature(creature);
+        });
+
+
+        actionButtonList.getChildren().add(emettreSonButton);
+
+        if(creature.isHungry()){
+            Button feedCretureButton = new Button("Nourrir");
+            feedCretureButton.setOnAction(actionEvent -> {
+                new CreatureController().nourrirCreature(creature);
+            });
+            actionButtonList.getChildren().add(feedCretureButton);
+        }
+
+        if(creature.getSante() < creature.getSanteMax()){
+            Button healCretureButton = new Button("Soigner");
+            healCretureButton.setOnAction(actionEvent -> {
+                new CreatureController().nourrirCreature(creature);
+            });
+            actionButtonList.getChildren().add(healCretureButton);
+        }
+
+
+
+
+
+
 
 
     }

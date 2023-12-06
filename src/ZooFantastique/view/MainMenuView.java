@@ -33,6 +33,9 @@ public class MainMenuView implements Initializable {
     private Text zooNameText;
 
     @FXML
+    private Text dateText;
+
+    @FXML
     private GridPane enclosContainer;
 
     @FXML
@@ -86,7 +89,7 @@ public class MainMenuView implements Initializable {
         initEnclosContainer();
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.seconds(0.25), e -> {
-                    zooNameText.setText(ZooMain.getTps().getDate());
+                    dateText.setText(ZooMain.getTps().getDate());
                 })
         );
 

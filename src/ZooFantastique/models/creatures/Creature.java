@@ -4,6 +4,8 @@ import ZooFantastique.models.Age;
 import ZooFantastique.models.Sexe;
 import ZooFantastique.models.enclos.Enclos;
 
+import java.util.Random;
+
 /**
  * La classe abstraite {@code Creature} représente une entité vivante générique
  * avec des caractéristiques telles que le nom, le sexe, le poids, la taille, l'âge,
@@ -71,8 +73,20 @@ public abstract class Creature {
         this.enclos = enclos;
         this.sonEmit = sonEmit;
         this.nom = nom;
+        this.sante = santeMax;
+        isSleeping = false;
+        isHungry = false;
+        age = Age.JEUNE;
+        taille = 10;
+        poids = 10;
         enclos.addCreature(this);
         ++nbCreature;
+
+        if(new Random().nextInt(2) == 0) sexe = Sexe.FEMELLE;
+        else{
+            sexe = Sexe.MALE;
+        }
+
     }
 
     /**
@@ -158,5 +172,25 @@ public abstract class Creature {
     public void leaveEnclos(){
         this.enclos.removeCreature(this);
         enclos = null;
+    }
+
+    public double getPoids() {
+        return poids;
+    }
+
+    public double getTaille() {
+        return taille;
+    }
+
+    public Age getAge() {
+        return age;
+    }
+
+    public boolean isHungry() {
+        return isHungry;
+    }
+
+    public boolean isSleeping() {
+        return isSleeping;
     }
 }
