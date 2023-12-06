@@ -8,6 +8,7 @@ public class TimeManager implements Runnable {
     private int jour;
     private String mois;
     private int annee;
+    private final EventManager eManager = new EventManager();
 
     private final ArrayList<String> listeMois = new ArrayList<>(Arrays.asList("Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
             "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"));
@@ -28,7 +29,7 @@ public class TimeManager implements Runnable {
 
         while(true) {
             try {
-                Thread.sleep(250);
+                Thread.sleep(25);
                 if (jour == 28 && mois.equals("Fevrier")) {
                     jour = 1;
                     mois = "Mars";
@@ -43,6 +44,7 @@ public class TimeManager implements Runnable {
                     mois = listeMois.get((listeMois.indexOf(mois) + 1) % 12);
                 } else {
                     jour++;
+                    eManager.handleZooEvent();
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();

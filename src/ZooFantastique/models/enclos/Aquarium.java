@@ -36,6 +36,16 @@ public class Aquarium extends Enclos {
         this.salinite = 35 + new Random().nextInt(5);
     }
 
+    public double getSalinite() {
+        return salinite;
+    }
+
+    public void setSalinite(double salinite) {
+        this.salinite = salinite;
+    }
+
+
+
     /**
      * {@inheritDoc}
      * <p>

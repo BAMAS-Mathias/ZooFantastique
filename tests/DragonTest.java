@@ -1,17 +1,19 @@
 
+
 import ZooFantastique.models.creatures.ovipares.Dragon;
-import ZooFantastique.models.enclos.Proprete;
+import ZooFantastique.models.enclos.Enclos;
 import org.junit.*;
 import org.junit.Test;
 
 import static junit.framework.TestCase.*;
 public class DragonTest {
 
-    private Dragon dragon;
-
+    private Dragon  dragon;
+    private Enclos enclos;
     @Before
     public void setUp() {
-        dragon = new Dragon();
+        enclos = new Enclos("");
+        dragon = new Dragon(enclos);
     }
 
     @Test

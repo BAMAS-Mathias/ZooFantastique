@@ -95,7 +95,6 @@ public class Enclos {
      */
     public void removeCreature(Creature creature) {
         creaturesPresentes.remove(creature);
-        nbCreaturePresente--;
     }
 
     /**
@@ -132,6 +131,8 @@ public class Enclos {
     public void setName(String s) {
         this.nom= s;
     }
+
+    public void setPropreteDegre(Proprete p) { this.propreteDegre = p;}
 
     public int getNbCreatureMax(){
         return nbCreatureMax;

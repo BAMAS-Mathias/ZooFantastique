@@ -4,9 +4,11 @@ public enum Proprete {
 
     MAUVAIS, CORRECT, BON;
 
-    public Proprete getPrevious(){
+    public Proprete getPrevious() {
         if(this != Proprete.MAUVAIS){
             return Proprete.values()[this.ordinal() - 1];
-        }return Proprete.MAUVAIS;
+        }
+        return Proprete.MAUVAIS;
     }
+
 }

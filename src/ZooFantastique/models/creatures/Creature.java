@@ -23,6 +23,8 @@ public abstract class Creature {
 
     private static int nbCreature = 0;
 
+    private Etat etat;
+
     /**
      * Le nom de la créature.
      */
@@ -80,6 +82,7 @@ public abstract class Creature {
         taille = 10;
         poids = 10;
         enclos.addCreature(this);
+        etat = Etat.PLEINE_FORME;
         ++nbCreature;
 
         if(new Random().nextInt(2) == 0) sexe = Sexe.FEMELLE;
@@ -87,6 +90,14 @@ public abstract class Creature {
             sexe = Sexe.MALE;
         }
 
+    }
+
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 
     /**
@@ -122,7 +133,19 @@ public abstract class Creature {
      * Permet à la créature de vieillir.
      */
     public void vieillir() {
-        // Implémentation spécifique pour chaque créature
+        if(age == Age.JEUNE){
+            age = Age.ADULTE;
+        } else if (age == Age.ADULTE){
+            age = Age.VIEUX;
+        }
+    }
+
+    public boolean isDead() {
+        return sante == 0;
+    }
+
+    public Age getAge() {
+        return age;
     }
 
     public String getNom() {
@@ -165,6 +188,15 @@ public abstract class Creature {
         return nbCreature;
     }
 
+
+    public void setHungry(boolean hungry) {
+        isHungry = hungry;
+    }
+
+    public void setSante(double sante) {
+        this.sante = sante;
+    }
+
     public Sexe getSexe() {
         return sexe;
     }
@@ -180,10 +212,6 @@ public abstract class Creature {
 
     public double getTaille() {
         return taille;
-    }
-
-    public Age getAge() {
-        return age;
     }
 
     public boolean isHungry() {
