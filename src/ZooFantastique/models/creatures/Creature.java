@@ -17,7 +17,7 @@ import ZooFantastique.models.enclos.Enclos;
  * @see Sexe
  * @see Age
  */
-public abstract class Creature {
+public class Creature {
 
     private static int nbCreature = 0;
 
@@ -67,7 +67,7 @@ public abstract class Creature {
 
     private String sonEmit;
 
-    public Creature(String nom, Enclos enclos, String sonEmit){
+    public Creature(String nom, Enclos enclos, String sonEmit) {
         this.enclos = enclos;
         this.sonEmit = sonEmit;
         this.nom = nom;
@@ -84,7 +84,7 @@ public abstract class Creature {
     /**
      * Permet à la créature d'émettre un son.
      */
-    public void emettreSon(){
+    public void emettreSon() {
         System.out.println(sonEmit);
     }
 
@@ -114,39 +114,45 @@ public abstract class Creature {
         return nom;
     }
 
-    public String getSonEmit(){
+    public String getSonEmit() {
         return sonEmit;
     }
 
-    public Enclos getEnclos(){
+    public Enclos getEnclos() {
         return enclos;
     }
 
-    public double getSante(){
+    public double getSante() {
         return sante;
     }
 
-    public double getSanteMax(){
+    public double getSanteMax() {
         return santeMax;
     }
 
-    public void heal(){
+    public void heal() {
         sante = santeMax;
     }
 
-    public String getNomEspece(){
+    public String getNomEspece() {
         return nom;
     }
 
-    public void setEnclos(Enclos enclos){
+    public void setEnclos(Enclos enclos) {
         this.enclos = enclos;
-    }
-
-    public void feed(){
-        isHungry = false;
     }
 
     public static int getNbCreature() {
         return nbCreature;
+    }
+
+    public void feed() { isHungry=false; }
+
+    public boolean isHungry() {
+        return isHungry;
+    }
+
+    public void setHungry(boolean hungry) {
+        isHungry = hungry;
     }
 }

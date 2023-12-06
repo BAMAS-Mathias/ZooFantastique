@@ -51,10 +51,8 @@ public class Enclos {
 
     /**
      *
-     * @param nom
-     * @param nbCreatureMax
      */
-    public Enclos(String nom, int nbCreatureMax) {
+    public Enclos() {
         this.nom = nom;
         this.superficie = new Random().nextInt(50) +  30;
         this.nbCreatureMax = (int) superficie / 3;
@@ -64,7 +62,7 @@ public class Enclos {
     }
 
     public Enclos(String nom) {
-        this(nom, 10);
+        this();
     }
 
 
