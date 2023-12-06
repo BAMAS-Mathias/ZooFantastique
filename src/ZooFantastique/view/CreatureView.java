@@ -47,6 +47,9 @@ public class CreatureView implements Initializable {
     @FXML
     private Text creatureSleepText;
 
+    @FXML
+    private Text creatureEtatText;
+
     private Creature creature;
 
     public void displayActions(){
@@ -89,6 +92,7 @@ public class CreatureView implements Initializable {
         creatureHealthText.setText(String.valueOf(creature.getSante()));
         creaturePoidsText.setText(String.valueOf(creature.getPoids()));
         creatureSizeText.setText(String.valueOf(creature.getTaille()));
+        creatureEtatText.setText(creature.getEtat().toString());
 
         if(!creature.isHungry()){
             creatureHungryText.setVisible(false);

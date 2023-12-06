@@ -7,6 +7,7 @@ import ZooFantastique.models.enclos.Aquarium;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.enclos.Proprete;
 import ZooFantastique.ZooMain;
+import ZooFantastique.models.interfaces.IRevive;
 import javafx.application.Platform;
 import org.controlsfx.control.Notifications;
 
@@ -81,7 +82,12 @@ public class EventManager {
         random = new Random();
         if(random.nextDouble() <= P_CREATURE_VIEILLIR) {
             if(creature.getAge() == Age.VIEUX) {
-                // MOURIR (à implémenter)
+                if(creature instanceof IRevive){
+                    IRevive c = (IRevive) creature;
+                    c.revive();
+                }else{
+                    creature.setEtat(Etat.MORT);
+                }
             } else {
                 creature.vieillir();
             }
@@ -97,10 +103,11 @@ public class EventManager {
                     }
                 });
             }
-            if(creature.getEtat() == Etat.MALADE){
-                if(random.nextDouble() <= P_CREATURE_MALADE_PERD_SANTE){
-                    creature.setSante(creature.getSante() - 1);
-                }
+        }
+
+        if(creature.getEtat() == Etat.MALADE){
+            if(random.nextDouble() <= P_CREATURE_MALADE_PERD_SANTE){
+                creature.setSante(creature.getSante() - 1);
             }
         }
 

@@ -82,6 +82,7 @@ public abstract class Creature {
         taille = 10;
         poids = 10;
         sante = 10;
+        santeMax = 10;
         enclos.addCreature(this);
         etat = Etat.PLEINE_FORME;
         ++nbCreature;
@@ -195,7 +196,9 @@ public abstract class Creature {
     }
 
     public void setSante(double sante) {
+        if(sante == 0) etat = Etat.MORT;
         this.sante = sante;
+
     }
 
     public Sexe getSexe() {
@@ -221,5 +224,9 @@ public abstract class Creature {
 
     public boolean isSleeping() {
         return isSleeping;
+    }
+
+    public void setAge(Age age) {
+        this.age = age;
     }
 }

@@ -29,7 +29,7 @@ public class TimeManager implements Runnable {
 
         while(true) {
             try {
-                Thread.sleep(25);
+                Thread.sleep(150);
                 if (jour == 28 && mois.equals("Fevrier")) {
                     jour = 1;
                     mois = "Mars";

@@ -30,12 +30,11 @@ public class TransfereCreatureView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(enclosPossibles.size());
         for(Enclos enclos : enclosPossibles){
             Enclos current = enclos;
             VBox vbox = new VBox();
             vbox.getChildren().add(new Text(enclos.getNom()));
-            vbox.getChildren().add(new Text(String.valueOf(enclos.getCreaturesPresentes())));
+            vbox.getChildren().add(new Text(String.valueOf(enclos.getNbCreaturePresente())));
             vbox.setOnMouseReleased(mouseEvent -> {
                 new CreatureController().transfererCreature(creature, current);
             });

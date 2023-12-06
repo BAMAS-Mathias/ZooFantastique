@@ -20,6 +20,10 @@
                      <Text fx:id="creatureSexeText"></Text>
                   </HBox>
                   <HBox alignment="CENTER">
+                     <Text>Etat</Text>
+                     <Text fx:id="creatureEtatText"></Text>
+                  </HBox>
+                  <HBox alignment="CENTER">
                      <Text>Poids</Text>
                      <Text fx:id="creaturePoidsText"></Text>
                   </HBox>
@@ -51,6 +55,7 @@
                         <Text fx:id="creatureSleepText">Dors</Text>
                      </HBox>
                   </HBox>
+
                </VBox>
             </children>
          </HBox>
