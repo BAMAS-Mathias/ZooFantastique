@@ -81,6 +81,7 @@ public abstract class Creature {
         age = Age.JEUNE;
         taille = 10;
         poids = 10;
+        sante = 10;
         enclos.addCreature(this);
         etat = Etat.PLEINE_FORME;
         ++nbCreature;
