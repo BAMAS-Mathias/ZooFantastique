@@ -21,6 +21,8 @@ public abstract class Creature {
 
     private static int nbCreature = 0;
 
+    private Etat etat;
+
     /**
      * Le nom de la créature.
      */
@@ -71,7 +73,16 @@ public abstract class Creature {
         this.enclos = enclos;
         this.sonEmit = sonEmit;
         this.nom = nom;
+        etat = Etat.PLEINE_FORME;
         ++nbCreature;
+    }
+
+    public Etat getEtat() {
+        return etat;
+    }
+
+    public void setEtat(Etat etat) {
+        this.etat = etat;
     }
 
     /**
@@ -107,7 +118,19 @@ public abstract class Creature {
      * Permet à la créature de vieillir.
      */
     public void vieillir() {
-        // Implémentation spécifique pour chaque créature
+        if(age == Age.JEUNE){
+            age = Age.ADULTE;
+        } else if (age == Age.ADULTE){
+            age = Age.VIEUX;
+        }
+    }
+
+    public boolean isDead() {
+        return sante == 0;
+    }
+
+    public Age getAge() {
+        return age;
     }
 
     public String getNom() {
@@ -148,5 +171,9 @@ public abstract class Creature {
 
     public static int getNbCreature() {
         return nbCreature;
+    }
+
+    public void setSante(double sante) {
+        this.sante = sante;
     }
 }

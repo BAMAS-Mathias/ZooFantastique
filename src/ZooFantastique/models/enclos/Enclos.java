@@ -107,6 +107,10 @@ public class Enclos {
         }
     }
 
+    public void lowerProperty() {
+        propreteDegre = propreteDegre.getPrevious();
+    }
+
     public ArrayList<Creature> getCreaturesPresentes() {
         return creaturesPresentes;
     }
@@ -127,6 +131,8 @@ public class Enclos {
     public void setName(String s) {
         this.nom= s;
     }
+
+    public void setPropreteDegre(Proprete p) { this.propreteDegre = p;}
 
     public int getNbCreatureMax(){
         return nbCreatureMax;
