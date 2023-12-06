@@ -109,6 +109,7 @@
               <Button fx:id="returnButton" text="Retour" />
               <Button fx:id="cleanButton" text="Nettoyer" />
               <Button fx:id="feedAllButton" text="Nourrir les créatures" />
+              <Button fx:id="addCreatureButton" text="Ajouter une créature" />
          </children>
       </HBox>
     </VBox>

@@ -15,7 +15,7 @@ public class Meute {
         coupleAlpha = new CoupleAlpha(maleAlpha, femelleAlpha);
     }
 
-    private void notifyHurlement(Lycanthrope lycanthrope){
+    public void notifyHurlement(Lycanthrope lycanthrope){
         for (Lycanthrope membre : membres){
             if(membre != lycanthrope){
                 membre.hurlementRetour();

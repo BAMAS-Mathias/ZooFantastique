@@ -23,7 +23,7 @@ public class Lycanthrope extends Vivipare implements IRun {
 
     private double force;
     private double facteurDomination;
-    private int rang;
+    private RangDomination rang;
     private double niveau;
     private double impétuosité;
     private Meute meute;
@@ -41,7 +41,7 @@ public class Lycanthrope extends Vivipare implements IRun {
     }
 
     public void hurler() {
-        // TODO : Implémenter le hurlement du Lycanthrope
+        meute.notifyHurlement(this);
     }
 
     public void quitterMeute() {
@@ -54,6 +54,14 @@ public class Lycanthrope extends Vivipare implements IRun {
 
     public void hurlementRetour() {
         // TODO : Implémenter le hurlement de retour du Lycanthrope
+    }
+
+    public void baisserRang(){
+        this.rang = rang.previousRang();
+    }
+
+    public void augmenterRang(){
+        this.rang = rang.nextRang();
     }
 
 

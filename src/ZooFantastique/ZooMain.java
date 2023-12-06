@@ -110,7 +110,7 @@ public class ZooMain extends Application {
                 interactWithZoo();
                 break;
             case 'A':
-                new EnclosController().ajouterCreature(enclos);
+                /*new EnclosController().ajouterCreature(enclos);*/
                 interactWithEnclos(enclos);
                 break;
             case 'D':

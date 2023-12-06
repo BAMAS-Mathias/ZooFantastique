@@ -52,6 +52,9 @@ public class EnclosView implements Initializable {
     @FXML
     private Button feedAllButton;
 
+    @FXML
+    private Button addCreatureButton;
+
     private Enclos enclos;
     private final int creaturePerRow = 3;
 
@@ -138,6 +141,9 @@ public class EnclosView implements Initializable {
         });
         feedAllButton.setOnAction(event -> {
             (new EnclosController()).nourrirAllCreatures(enclos);
+        });
+        addCreatureButton.setOnAction(event -> {
+            (new EnclosController()).addCreature(enclos);
         });
 
         initButtonIfNeeded();

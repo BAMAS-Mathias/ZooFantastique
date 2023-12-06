@@ -105,7 +105,6 @@ public class Enclos {
         for(Creature creature : creaturesPresentes) {
             creature.nourrir();
         }
-        System.out.println("Les créatures ont été nourries avec succès.");
     }
 
     public ArrayList<Creature> getCreaturesPresentes() {
