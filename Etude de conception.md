@@ -5,7 +5,6 @@
 
 - [Etude de cas](#etude-de-cas)
 - [Bilan Technique](#bilan-technique)
-- [Problèmes rencontrés](#problemes-rencontres)
 - [Synthèse](#synthese)
 
 
@@ -99,15 +98,11 @@ Nous avons opté pour une approche orientée objet avec l'utilisation de classes
 
 Le système est conçu pour être scalable en ajoutant de nouveaux types de créatures, enclos, et fonctionnalités. Cependant, une évaluation plus approfondie de la scalabilité peut être nécessaire à mesure que le nombre d'entités et d'actions augmente.
 
-# Problèmes Rencontrés
-
-### Problèmes Majeurs
-
-Coming soon...
-
-### Solutions Apportées
-
-Coming soon...
-
 ## Synthèse
-Coming soon...
+
+En résumé le projet vise à développer une application de simulation de zoo fantastique en Java, en respectant des normes de programmation spécifiées. Le ZooFantastique doit gérer diverses créatures telles que des lycanthropes, des licornes, des nymphes, des krakens, des sirènes, des mégalodons, des phénix et des dragons. Chaque créature possède des caractéristiques communes, notamment le nom, le sexe, le poids, la taille, l'âge, l'indicateur de faim, de sommeil et de santé.
+
+C'est même créatures peuvent effectuer différentes actions telles que manger, émettre un son, être soignées, s'endormir, se réveiller, vieillir et, dans certains cas, donner naissance.Les enclos, pouvant être standards mais aussi spécifiques avec les volières et aquariums avec la salinité de l'eau et la dégradation du toit par exemple.La gestion du ZooFantastique est assurée par un maître de ZooFantastique, capable d'effectuer des actions telles qu'examiner un enclos, nettoyer un enclos, nourrir les créatures et transférer une créature d'un enclos à un autre.
+
+Tout est mis à disposition pour avoir la meilleure immersion possible dans ce ZooFantastique.
+
