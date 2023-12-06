@@ -95,6 +95,7 @@ public class Enclos {
      */
     public void removeCreature(Creature creature) {
         creaturesPresentes.remove(creature);
+        nbCreaturePresente--;
     }
 
     /**

@@ -1,5 +1,8 @@
 package ZooFantastique.models.creatures.vivipares.lycanthrope;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 public class CoupleAlpha {
 
     private Lycanthrope maleAlpha;
@@ -24,5 +27,14 @@ public class CoupleAlpha {
 
     public void setFemelleAlpha(Lycanthrope femelleAlpha) {
         this.femelleAlpha = femelleAlpha;
+    }
+
+    public ArrayList<Lycanthrope> reproduce(){
+        int nbChildren = new Random().nextInt(1,7);
+        ArrayList<Lycanthrope> childrenList = new ArrayList<>();
+        for(int i = 0; i < nbChildren; i++){
+            childrenList.add(new Lycanthrope(maleAlpha.getEnclos()));
+        }
+        return childrenList;
     }
 }

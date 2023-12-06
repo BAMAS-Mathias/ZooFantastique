@@ -1,5 +1,6 @@
 
-import models.creatures.ovipares.Dragon;
+import ZooFantastique.models.creatures.ovipares.Dragon;
+import ZooFantastique.models.enclos.Proprete;
 import org.junit.*;
 import org.junit.Test;
 
@@ -15,6 +16,6 @@ public class DragonTest {
 
     @Test
     public void testPondrePereMere() {
-        assertEquals(dragon, dragon.pondre().getMere());
+        assertEquals(dragon, dragon.lay().getMere());
     }
 }

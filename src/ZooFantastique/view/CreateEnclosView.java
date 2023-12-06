@@ -26,7 +26,7 @@ public class CreateEnclosView implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         typeEnclosDispo.getItems().add("Aquarium");
-        typeEnclosDispo.getItems().add("Volière");
+        typeEnclosDispo.getItems().add("Voliere");
         typeEnclosDispo.getItems().add("Enclos terrestre");
         typeEnclosDispo.setValue("Enclos terrestre");
 

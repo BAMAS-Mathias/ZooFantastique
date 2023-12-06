@@ -1,8 +1,11 @@
 package ZooFantastique.models.creatures.vivipares.lycanthrope;
 
+import ZooFantastique.models.Sexe;
 import ZooFantastique.models.creatures.vivipares.Vivipare;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IRun;
+
+import java.util.Random;
 
 /**
  * La classe {@code Lycanthrope} représente une créature fantastique de type vivipare,
@@ -45,7 +48,33 @@ public class Lycanthrope extends Vivipare implements IRun {
     }
 
     public void quitterMeute() {
-        // TODO : Implémenter le départ du Lycanthrope de la meute
+        meute.getMembres().remove(this);
+        meute = null;
+        rang = null;
+    }
+
+    public boolean canDominate(Lycanthrope lycanthrope){
+        if(lycanthrope.getSexe() == Sexe.FEMELLE && lycanthrope.rang == RangDomination.α) return false;
+        if(lycanthrope.getSexe() == Sexe.MALE && lycanthrope.rang == RangDomination.α) return true;
+        return (this.force >= lycanthrope.force);
+    }
+
+    public void attemptDomination(Lycanthrope lycanthrope){
+        if(lycanthrope.niveau > lycanthrope.niveau) achieveDomination(lycanthrope);
+    }
+
+    public void achieveDomination(Lycanthrope lycanthrope){
+        /* Echange des rangs de domination */
+        if(this.rang.isInferior(lycanthrope.rang)){
+            RangDomination rangA = this.rang;
+            rang=lycanthrope.rang;
+            lycanthrope.rang = rangA;
+        }
+
+        /* Mise a jour des facteurs de domination */
+        double dominationFactorToTake = new Random().nextInt(3) + 1;
+        lycanthrope.facteurDomination = dominationFactorToTake;
+        facteurDomination+=dominationFactorToTake;
     }
 
     public void transformer() {

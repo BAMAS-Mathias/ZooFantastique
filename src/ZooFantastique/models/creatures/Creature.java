@@ -71,6 +71,7 @@ public abstract class Creature {
         this.enclos = enclos;
         this.sonEmit = sonEmit;
         this.nom = nom;
+        enclos.addCreature(this);
         ++nbCreature;
     }
 
@@ -148,5 +149,14 @@ public abstract class Creature {
 
     public static int getNbCreature() {
         return nbCreature;
+    }
+
+    public Sexe getSexe() {
+        return sexe;
+    }
+
+    public void leaveEnclos(){
+        this.enclos.removeCreature(this);
+        enclos = null;
     }
 }

@@ -22,4 +22,9 @@ public class Meute {
             }
         }
     }
+
+    public ArrayList<Lycanthrope> getMembres() {
+        return membres;
+    }
+
 }

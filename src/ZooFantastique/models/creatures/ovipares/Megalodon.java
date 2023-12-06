@@ -1,6 +1,5 @@
 package ZooFantastique.models.creatures.ovipares;
 
-import ZooFantastique.models.Oeuf;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.ISwim;
 
@@ -21,14 +20,6 @@ public class Megalodon extends Ovipare implements ISwim {
 
     public Megalodon(Enclos enclos) {
         super("Megalodon",enclos, "%SON MEGALODON%");
-    }
-
-    /**
-     * Pond des œufs en tant que Megalodon.
-     */
-    @Override
-    public Oeuf lay() {
-        return new Oeuf(this);
     }
 
     /**

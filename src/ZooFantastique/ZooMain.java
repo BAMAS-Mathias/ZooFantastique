@@ -39,7 +39,8 @@ public class ZooMain extends Application {
         zoo.addEnclos(new Enclos("Enclos 1"));
         zoo.addEnclos(new Enclos("Enclos 2"));
         zoo.addEnclos(new Enclos("Enclos de rayan"));
-        zoo.getListeDesEnclos().get(0).addCreature(new Phoenix(zoo.getListeDesEnclos().get(0)));
+        Phoenix phoenix = new Phoenix(zoo.getListeDesEnclos().get(0));
+        phoenix.lay();
         primaryStage.setTitle("Zoo Fantastique");
         new ZooWelcomeView().displayView();
         primaryStage.show();
@@ -157,14 +158,7 @@ public class ZooMain extends Application {
         interactWithCreature(creature);
     }
 
-    public static void editZooName(){
-        Scanner scanner = new Scanner(System.in);
 
-        if(!zoo.hasName()){
-            System.out.println("Merci de changer le nom de votre zoo");
-            new ZooFantastiqueController(zoo).editName(scanner.nextLine());
-        }
-    }
 
 
     public static void clearScreen(){

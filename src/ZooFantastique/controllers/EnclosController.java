@@ -88,7 +88,6 @@ public class EnclosController {
     public void addCreature(Enclos enclos, String creatureName){
         CreatureFactory creatureFactory = new CreatureFactory();
         Creature creature = creatureFactory.createCreature(creatureName, enclos);
-        enclos.addCreature(creature);
         examinerEnclos(enclos);
     }
 
