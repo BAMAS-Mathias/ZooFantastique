@@ -9,7 +9,7 @@
       <children>
          <HBox prefHeight="514.0" prefWidth="800.0">
             <children>
-               <VBox prefHeight="513.0" prefWidth="445.0" style="-fx-background-color: red;" />
+               <VBox prefHeight="513.0" prefWidth="445.0" fx:id="creatureImageContainer" />
                <VBox prefHeight="513.0" prefWidth="388.0" alignment="CENTER">
                   <HBox alignment="CENTER">
                      <Text>Nom</Text>

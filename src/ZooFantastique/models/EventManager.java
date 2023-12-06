@@ -2,6 +2,7 @@ package ZooFantastique.models;
 
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.Etat;
+import ZooFantastique.models.creatures.ovipares.Ovipare;
 import ZooFantastique.models.creatures.vivipares.lycanthrope.Lycanthrope;
 import ZooFantastique.models.enclos.Aquarium;
 import ZooFantastique.models.enclos.Enclos;
@@ -12,7 +13,9 @@ import javafx.application.Platform;
 import org.controlsfx.control.Notifications;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class EventManager {
 
@@ -23,56 +26,35 @@ public class EventManager {
     private final double P_CREATURE_VIEILLIR = 0.005;
     private final double P_CREATURE_MALADE = 0.01;
     private final double P_CREATURE_MALADE_PERD_SANTE = 0.1;
-    private final double P_CREATURE_MALADE_PLUS_MALADE = 0.05;
+    private final double P_CREATURE_A_FAIM = 0.01;
+    private final double P_OVIPARE_POND = 0.001;
 
     // Mettre les probas en variable final private avec le nom en majuscule
     //Ne pas oublier de mettre les notif pour les evenements
     // Cette classe est éxécute tout les x secondes
     public void handleZooEvent(){
-        ArrayList<Enclos> enclosListe = ZooMain.getZoo().getListeDesEnclos();
-        ArrayList<Creature> creatureListe = new ArrayList<>();
+        CopyOnWriteArrayList<Enclos> enclosListe = new CopyOnWriteArrayList<>(ZooMain.getZoo().getListeDesEnclos());
+        CopyOnWriteArrayList<Creature> creatureListe = new CopyOnWriteArrayList<>();
         for (Enclos i : enclosListe){
             handleEnclotEvent(i);
-            for(Creature c : i.getCreaturesPresentes()) {
-                handleCreatureEvent(c);
-            }
         }
-
     }
 
     public void handleEnclotEvent(Enclos enclos){
-        random = new Random();
-        final double P_ENCLOS_DEGRADE_CREATURE = P_ENCLOS_DEGRADE_BASE + (P_ENCLOS_DEGRADE_BASE * enclos.getNbCreaturePresente());
+        CopyOnWriteArrayList<Creature> creatureList = new CopyOnWriteArrayList<>(enclos.getCreaturesPresentes());
+        Iterator<Creature> iterator = creatureList.iterator();
 
-        if(enclos.getPropreteDegre() != Proprete.MAUVAIS){
-            if (random.nextDouble() <= P_ENCLOS_DEGRADE_CREATURE){
-                enclos.lowerProperty();
-                if(enclos.getPropreteDegre() == Proprete.MAUVAIS){
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            Notifications.create().text("L'enclos \"" + enclos.getNom() + "\" est en mauvaise état.\nPensez à nettoyer les enclots !").showWarning();
-                        }
-                    });
-                }
-            }
+        while(iterator.hasNext()){
+            Creature creature = iterator.next();
+            handleCreatureEvent(creature);
         }
-        // à régler
-        /*if(enclos instanceof Aquarium){
-            if(random.nextDouble() <= P_ENCLOS_SALINITE_BASE){
-                if(((Aquarium) enclos).getSalinite() > 0) {
-                    ((Aquarium)enclos).setSalinite(((Aquarium) enclos).getSalinite() - 1);
-                }
-                if(((Aquarium) enclos).getSalinite() == 0) {
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            Notifications.create().text("L'enclos \"" + enclos.getNom() + "\" a une salanité très basse.\nNPensez à vous occuper des enclots !").showWarning();
-                        }
-                    });
-                }
-            }
-        }*/
+
+        if(enclos.getPropreteDegre() != Proprete.MAUVAIS && new Random().nextDouble() <= P_ENCLOS_DEGRADE_BASE * enclos.getNbCreaturePresente()){
+            enclos.lowerProperty();
+            sendNotification("Enclos", "L'enclos \"" + enclos.getNom() + "\" se dégrade !\n" + "Pensez à le nettoyer !");
+        }
+
+
     }
 
     /**
@@ -80,35 +62,42 @@ public class EventManager {
      */
     public void handleCreatureEvent(Creature creature){
         random = new Random();
+
+        /* ----- La créature vieillit ----- */
         if(random.nextDouble() <= P_CREATURE_VIEILLIR) {
-            if(creature.getAge() == Age.VIEUX) {
-                if(creature instanceof IRevive){
-                    IRevive c = (IRevive) creature;
-                    c.revive();
-                }else{
-                    creature.setEtat(Etat.MORT);
-                }
+            creature.vieillir();
+        }
+
+        /* ----- La créature dort ----- */
+        if(random.nextDouble() <= P_CREATURE_DORT) {
+            if(creature.isSleeping()){
+                creature.wakeUp();
             } else {
-                creature.vieillir();
+                creature.sleep();
             }
         }
 
-        if(creature.getEtat() == Etat.PLEINE_FORME) {
-            if(random.nextDouble() <= P_CREATURE_MALADE) {
+        /* ----- La créature tombe malade ----- */
+        if(random.nextDouble() <= P_CREATURE_MALADE){
+            if(creature.getEtat() == Etat.MALADE){
                 creature.setEtat(Etat.MALADE);
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        Notifications.create().text("La créature \"" + creature.getNom() + "\" viens de tomber malade.\nPensez à soigner les créatures malades !").showWarning();
-                    }
-                });
-            }
-        }
-
-        if(creature.getEtat() == Etat.MALADE){
-            if(random.nextDouble() <= P_CREATURE_MALADE_PERD_SANTE){
+                sendNotification("Créature", "La créature \"" + creature.getNom() + "\" viens de tomber malade.\nPensez à soigner les créatures malades !");
+            }else{
                 creature.setSante(creature.getSante() - 1);
             }
+        }
+
+        /* ----- La créature a faim ----- */
+        if(!creature.isHungry() && random.nextDouble() <= P_CREATURE_A_FAIM){
+            creature.setHungry(true);
+            sendNotification("Créature", "La créature \"" + creature.getNom() + "\" a faim !");
+        }
+
+        /* ----- L'ovipare pond ----- */
+        if(creature instanceof Ovipare && random.nextDouble() <= P_OVIPARE_POND){
+            Ovipare ovipare = (Ovipare) creature;
+            ovipare.lay();
+            sendNotification("Créature", "L'ovipare \"" + ovipare.getNom() + "\" a pondu un oeuf !");
         }
 
     }
@@ -116,5 +105,14 @@ public class EventManager {
     public void handleLycanthropeEvent(Lycanthrope lycanthropes){
         //TODO
 
+    }
+
+    public void sendNotification(String title, String message){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Notifications.create().text(message).showWarning();
+            }
+        });
     }
 }

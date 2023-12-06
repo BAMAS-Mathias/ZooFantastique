@@ -6,7 +6,8 @@ import ZooFantastique.models.creatures.Creature;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -50,6 +51,9 @@ public class CreatureView implements Initializable {
     @FXML
     private Text creatureEtatText;
 
+    @FXML
+    private VBox creatureImageContainer;
+
     private Creature creature;
 
     public void displayActions(){
@@ -86,6 +90,10 @@ public class CreatureView implements Initializable {
         returnButton.setOnAction(event -> {
             new EnclosController().examinerEnclos(creature.getEnclos());
         });
+        BackgroundImage myBI= new BackgroundImage(new Image("/assets/creaturePictures/" + creature.getNom() + ".png",500,500,false,true), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        creatureImageContainer.setBackground(new Background(myBI));
+
         creatureNameText.setText(creature.getNom());
         creatureSexeText.setText(creature.getSexe().toString());
         creatureAgeText.setText(String.valueOf(creature.getAge()));

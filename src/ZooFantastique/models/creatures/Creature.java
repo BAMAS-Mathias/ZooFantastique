@@ -62,6 +62,8 @@ public abstract class Creature {
 
     private Enclos enclos;
 
+    private String imagePath;
+
     /**
      * La santé de la créature.
      */
@@ -228,5 +230,21 @@ public abstract class Creature {
 
     public void setAge(Age age) {
         this.age = age;
+    }
+
+    public void sleep(){
+        isSleeping = true;
+    }
+
+    public void wakeUp(){
+        isSleeping = false;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 }
