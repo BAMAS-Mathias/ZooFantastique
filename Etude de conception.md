@@ -5,7 +5,7 @@
 
 - [Etude de cas](#etude-de-cas)
 - [Bilan Technique](#bilan-technique)
-- [Synthèse](#synthese)
+- [Synthèse](#synthèse)
 
 
 ## Etude de cas
