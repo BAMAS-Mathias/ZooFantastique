@@ -173,6 +173,14 @@ public abstract class Creature {
         return nbCreature;
     }
 
+    public boolean isHungry() {
+        return isHungry;
+    }
+
+    public void setHungry(boolean hungry) {
+        isHungry = hungry;
+    }
+
     public void setSante(double sante) {
         this.sante = sante;
     }
