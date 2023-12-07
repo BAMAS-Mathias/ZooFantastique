@@ -3,9 +3,12 @@ package ZooFantastique;
 import ZooFantastique.controllers.CreatureController;
 import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.controllers.ZooFantastiqueController;
+import ZooFantastique.models.Sexe;
 import ZooFantastique.models.TimeManager;
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.ovipares.Phoenix;
+import ZooFantastique.models.creatures.vivipares.lycanthrope.Lycanthrope;
+import ZooFantastique.models.creatures.vivipares.lycanthrope.Meute;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.view.CreatureView;
@@ -17,6 +20,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ZooMain extends Application {
@@ -25,6 +29,7 @@ public class ZooMain extends Application {
     private static Stage primaryStage;
     private static TimeManager tps = new TimeManager();
     private static Thread th = new Thread(tps);
+    private static ArrayList<Meute> colonie = new ArrayList<>();
 
     @FXML
     private Button button;
@@ -39,6 +44,13 @@ public class ZooMain extends Application {
         zoo.addEnclos(new Enclos("Enclos 1"));
         zoo.addEnclos(new Enclos("Enclos 2"));
         zoo.addEnclos(new Enclos("Enclos de rayan"));
+        Enclos enclos3 = zoo.getListeDesEnclos().get(2);
+        Lycanthrope lycanthrope = new Lycanthrope(enclos3, Sexe.MALE);
+        Lycanthrope lycanthrope2 = new Lycanthrope(enclos3, Sexe.FEMELLE);
+        lycanthrope.setNiveau(0);
+        enclos3.addMeute(new Meute(lycanthrope, lycanthrope2));
+        new Lycanthrope(enclos3).rejoindreMeute(colonie.get(0));
+
         Phoenix phoenix = new Phoenix(zoo.getListeDesEnclos().get(0));
         phoenix.lay();
         primaryStage.setTitle("Zoo Fantastique");
@@ -176,5 +188,9 @@ public class ZooMain extends Application {
 
     public static TimeManager getTps() {
         return tps;
+    }
+
+    public static ArrayList<Meute> getColonie() {
+        return colonie;
     }
 }

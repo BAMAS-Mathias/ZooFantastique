@@ -90,7 +90,7 @@ public class CreatureView implements Initializable {
         returnButton.setOnAction(event -> {
             new EnclosController().examinerEnclos(creature.getEnclos());
         });
-        BackgroundImage myBI= new BackgroundImage(new Image("/assets/creaturePictures/" + creature.getNom() + ".png",500,500,false,true), BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+        BackgroundImage myBI= new BackgroundImage(new Image("/assets/creaturePictures/" + creature.getNom() + ".png",700,500,false,true), BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,
                 BackgroundSize.DEFAULT);
         creatureImageContainer.setBackground(new Background(myBI));
 

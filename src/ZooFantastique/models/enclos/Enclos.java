@@ -1,6 +1,7 @@
 package ZooFantastique.models.enclos;
 
 import ZooFantastique.models.creatures.Creature;
+import ZooFantastique.models.creatures.vivipares.lycanthrope.Meute;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -48,6 +49,8 @@ public class Enclos {
      */
     private ArrayList<Creature> creaturesPresentes;
 
+    private Meute meute;
+
 
     /**
      *
@@ -67,7 +70,9 @@ public class Enclos {
         this(nom, 10);
     }
 
-
+    public void addMeute(Meute meute){
+        this.meute = meute;
+    }
 
     @Override
     public String toString() {
@@ -96,16 +101,6 @@ public class Enclos {
     public void removeCreature(Creature creature) {
         creaturesPresentes.remove(creature);
         nbCreaturePresente--;
-    }
-
-    /**
-     * Nourrit toutes les créatures présentes dans l'enclos.
-     * TODO : Implémenter la logique de nourrissage spécifique.
-     */
-    public void feedCreature() {
-        for(Creature creature : creaturesPresentes) {
-            creature.nourrir();
-        }
     }
 
     public void lowerProperty(){
@@ -159,6 +154,10 @@ public class Enclos {
 
     public double getSuperficie() {
         return superficie;
+    }
+
+    public Meute getMeute() {
+        return meute;
     }
 }
 

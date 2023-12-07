@@ -5,6 +5,7 @@ import ZooFantastique.controllers.CreatureController;
 import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.controllers.ZooFantastiqueController;
 import ZooFantastique.models.creatures.Creature;
+import ZooFantastique.models.creatures.vivipares.lycanthrope.Lycanthrope;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.enclos.Proprete;
 import javafx.application.Platform;
@@ -114,9 +115,27 @@ public class EnclosView implements Initializable {
         System.out.println("Toutes les créature ont été nourries avec succès");
     }
 
+    public void displayMeute(){
+        if(enclos.getMeute() != null){
+            VBox meuteVBox = new VBox();
+            meuteVBox.getChildren().add(new Text("Meute de Lycanthropes"));
+            meuteVBox.setPrefSize(100, 100);
+            meuteVBox.setStyle("-fx-background-color: red");
+            meuteVBox.setCursor(Cursor.HAND);
+            creaturesContainer.add(meuteVBox, 0, 0);
+        }
+    }
+
     public void displayCreatures(){
-        for(int i = 0; i < enclos.getNbCreaturePresente(); ++i){
+        for(int i = 1; i < enclos.getNbCreaturePresente(); ++i){
             Creature creature = enclos.getCreaturesPresentes().get(i);
+
+            if(creature instanceof Lycanthrope){
+                if(((Lycanthrope) creature).getMeute() != null){
+                    continue;
+                }
+            }
+
             VBox creatureVBbox = new VBox();
             creatureVBbox.getChildren().add(new Text(creature.getNom()));
             creatureVBbox.setPrefSize(100, 100);
@@ -133,6 +152,7 @@ public class EnclosView implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         displayCreatures();
+        displayMeute();
         returnButton.setOnAction(event -> {
             new ZooFantastiqueController(ZooMain.getZoo()).visitZoo();
         });

@@ -93,7 +93,10 @@ public abstract class Creature {
         else{
             sexe = Sexe.MALE;
         }
+    }
 
+    public Creature(String nom, String sonEmit){
+        this(nom, null, sonEmit);
     }
 
     public Etat getEtat() {
@@ -246,5 +249,9 @@ public abstract class Creature {
 
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
+    }
+
+    public void setSexe(Sexe sexe) {
+        this.sexe = sexe;
     }
 }

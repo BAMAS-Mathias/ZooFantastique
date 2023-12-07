@@ -15,6 +15,10 @@ public abstract class Vivipare extends Creature {
         super(nom, enclos, sonEmit);
     }
 
+    public Vivipare(String nom, String sonEmit) {
+        super(nom, sonEmit);
+    }
+
     public int getGestatingTime(){
         return gestatingTime;
     }

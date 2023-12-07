@@ -29,12 +29,15 @@ public class CoupleAlpha {
         this.femelleAlpha = femelleAlpha;
     }
 
-    public ArrayList<Lycanthrope> reproduce(){
+    public void reproduce(){
         int nbChildren = new Random().nextInt(1,7);
         ArrayList<Lycanthrope> childrenList = new ArrayList<>();
         for(int i = 0; i < nbChildren; i++){
-            childrenList.add(new Lycanthrope(maleAlpha.getEnclos()));
+            if(!maleAlpha.getMeute().containsRang(RangDomination.β)){
+                new Lycanthrope(maleAlpha.getEnclos(), RangDomination.β).rejoindreMeute(maleAlpha.getMeute());
+            }else{
+                new Lycanthrope(maleAlpha.getEnclos(), RangDomination.γ).rejoindreMeute(maleAlpha.getMeute());
+            }
         }
-        return childrenList;
     }
 }
