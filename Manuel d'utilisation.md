@@ -23,7 +23,7 @@ Pour assurer le bon fonctionnement du Zoo, vous pouvez créer des enclos qui acc
 - Chaque enclos ne doit contenir qu'un type de créatures (kraken avec kraken, etc.).
 - Pour nettoyer un enclos, transférez toutes les créatures dans un autre pour assurer leur sécurité.
 - Assurez-vous de nourrir toutes les créatures pour éviter toute perte.
- ![image](Encos.pnng.png)
+ ![image](Encos.png.png)
 
  
 Des rappels apparaîtront sur votre écran pour vous indiquer quelles actions doivent être faites dans l’enceinte du Zoo.
