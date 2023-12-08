@@ -5,9 +5,6 @@ package ZooFantastique.models.enclos;
  * des créatures volantes. Elle étend les fonctionnalités de la classe {@link Enclos}
  * et ajoute une méthode spécifique d'entretien du toit de la volière.
  * <p>
- * @author [Raphael]
- * @version 1.0
- * @see Enclos
  */
 public class Voliere extends Enclos {
 

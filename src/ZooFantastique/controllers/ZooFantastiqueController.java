@@ -13,7 +13,9 @@ import javafx.scene.text.Text;
 import ZooFantastique.ZooMain;
 
 import java.util.ArrayList;
-
+/**
+ * La classe ZooFantastiqueController gère les opérations liées au zoo fantastique.
+ */
 public class ZooFantastiqueController{
 
     @FXML
@@ -27,11 +29,17 @@ public class ZooFantastiqueController{
 
     private ZooFantastique zooFantastique;
 
-
+    /**
+     * Constructeur de la classe ZooFantastiqueController.
+     *
+     * @param zooFantastique Le zoo fantastique à gérer.
+     */
     public ZooFantastiqueController(ZooFantastique zooFantastique){
         this.zooFantastique = zooFantastique;
     }
-
+    /**
+     * Visite le zoo en affichant la vue du menu principal.
+     */
     public void visitZoo(){
         try {
             new MainMenuView().displayView();
@@ -39,7 +47,11 @@ public class ZooFantastiqueController{
             e.printStackTrace();
         }
     }
-
+    /**
+     * Démarre le zoo avec le nom spécifié.
+     *
+     * @param nomZoo Le nom du zoo à démarrer.
+     */
     public void startZoo(String nomZoo){
         zooFantastique.setNom(nomZoo);
         ZooMain.getTh().start();
@@ -52,7 +64,9 @@ public class ZooFantastiqueController{
 
 
     }
-
+    /**
+     * Crée un nouvel enclos en affichant la vue de création d'enclos.
+     */
     public void creerEnclos(){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/CreateEnclosViewFXML.fxml"));
         loader.setControllerFactory(c -> new CreateEnclosView());
@@ -62,12 +76,19 @@ public class ZooFantastiqueController{
             e.printStackTrace();
         }
     }
-
+    /**
+     * Édite le nom du zoo.
+     *
+     * @param name Le nouveau nom du zoo.
+     */
     public void editName(String name){
         zooFantastique.setNom(name);
         /*new ZooFantastiqueView(zooFantastique).showSuccessfullNameEdit();*/
     }
 
+    /**
+     * Liste tous les enclos du zoo.
+     */
     public void listerEnclos(){
         ArrayList<Enclos> listeEnclos =  zooFantastique.getListeDesEnclos();
         /*new ZooFantastiqueView(zooFantastique).displayAllEnclos(listeEnclos);*/

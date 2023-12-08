@@ -10,10 +10,17 @@ import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.models.enclos.Voliere;
 import ZooFantastique.view.ZooWelcomeView;
 import javafx.application.Application;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.fxml.FXML;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import java.util.Scanner;
+/**
+ * La classe ZooMain est la classe principale de l'application ZooFantastique.
+ * Elle étend la classe Application de JavaFX et définit le point d'entrée de l'application.
+ */
 public class ZooMain extends Application {
 
     private static ZooFantastique zoo = new ZooFantastique(10);

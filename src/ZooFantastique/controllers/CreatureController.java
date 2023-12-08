@@ -23,15 +23,25 @@ import org.controlsfx.control.Notifications;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-
+/**
+ * La classe CreatureController gère les opérations liées aux créatures dans le zoo.
+ */
 public class CreatureController {
 
-
+    /**
+     * Émet le son de la créature donnée et l'affiche dans une notification.
+     *
+     * @param creature La créature pour laquelle émettre un son.
+     */
     public void emettreSon(Creature creature){
         CreatureView creatureView = new CreatureView(creature);
         Notifications.create().text(creature.getSonEmit()).title(creature.getNom()).showInformation();
     }
-
+    /**
+     * Soigne la créature donnée, met à jour la vue et affiche une notification.
+     *
+     * @param creature La créature à soigner.
+     */
     public void healCreature(Creature creature){
         creature.heal();
         visiterCreature(creature);
@@ -42,12 +52,20 @@ public class CreatureController {
             }
         });
     }
-
+    /**
+     * Nourrit la créature donnée, met à jour la vue.
+     *
+     * @param creature La créature à nourrir.
+     */
     public void nourrirCreature(Creature creature){
         creature.feed();
         visiterCreature(creature);
     }
-
+    /**
+     * Visite la vue de la créature donnée.
+     *
+     * @param creature La créature à visiter.
+     */
     public void visiterCreature(Creature creature){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/CreatureViewFXML.fxml"));
         loader.setControllerFactory(c -> new CreatureView(creature));
@@ -59,6 +77,11 @@ public class CreatureController {
         }
     }
 
+    /**
+     * Soigne ou affiche un message en fonction de la santé de la créature donnée.
+     *
+     * @param creature La créature à soigner.
+     */
     public void soignerCreature(Creature creature){
         CreatureView creatureView =  new CreatureView(creature);
         if(creature.getSante() == creature.getSanteMax()){
@@ -68,7 +91,11 @@ public class CreatureController {
             creatureView.displayHealMessage();
         }
     }
-
+    /**
+     * Transfère la créature donnée vers un enclos sélectionné.
+     *
+     * @param creature La créature à transférer.
+     */
     public void transfererCreature(Creature creature){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../fxml/TransfererCreatureView.fxml"));
         loader.setControllerFactory(c -> new TransfereCreatureView(creature,getEnclosPossibles(creature)));
@@ -79,7 +106,12 @@ public class CreatureController {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Transfère la créature donnée vers l'enclos spécifié.
+     *
+     * @param creature La créature à transférer.
+     * @param enclos   L'enclos cible.
+     */
     public void transfererCreature(Creature creature, Enclos enclos){
         creature.leaveEnclos();
         try{
@@ -92,7 +124,12 @@ public class CreatureController {
 
         new EnclosController().examinerEnclos(creature.getEnclos());
     }
-
+    /**
+     * Récupère la liste des enclos possibles pour la créature en fonction de ses capacités.
+     *
+     * @param creature La créature pour laquelle trouver les enclos possibles.
+     * @return Une liste d'enclos possibles pour la créature.
+     */
     private ArrayList<Enclos> getEnclosPossibles(Creature creature){
         ArrayList<Enclos> enclosList = new ArrayList<>();
         for(Enclos enclos : ZooMain.getZoo().getListeDesEnclos()){
@@ -108,7 +145,12 @@ public class CreatureController {
         }
         return enclosList;
     }
-
+    /**
+     * Récupère la liste des enclos possibles pour le transfert de la créature.
+     *
+     * @param creature La créature à transférer.
+     * @return Une liste d'enclos possibles pour le transfert de la créature.
+     */
     private ArrayList<Enclos> getEnclosForTransfer(Creature creature){
         ZooFantastique zooFantastique = ZooMain.getZoo();
         ArrayList<Enclos> enclosPossible = new ArrayList<>();
@@ -125,7 +167,11 @@ public class CreatureController {
         System.out.println(enclosPossible.size());
         return enclosPossible;
     }
-
+    /**
+     * Fait vieillir la créature et affiche une notification en cas de décès ou de vieillissement.
+     *
+     * @param creature La créature à faire vieillir.
+     */
     public void viellir(Creature creature){
         creature.vieillir();
         if(creature.getEtat() == Etat.MORT){
