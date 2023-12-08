@@ -1,8 +1,10 @@
 package ZooFantastique.controllers;
 
 import ZooFantastique.ZooMain;
+import ZooFantastique.models.Age;
 import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.models.creatures.Creature;
+import ZooFantastique.models.creatures.Etat;
 import ZooFantastique.models.enclos.Aquarium;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.enclos.Voliere;
@@ -12,6 +14,8 @@ import ZooFantastique.models.interfaces.ISwim;
 import ZooFantastique.view.CreatureView;
 import ZooFantastique.view.EnclosView;
 import ZooFantastique.view.TransfereCreatureView;
+import controllers.Exceptions.EnclosFullException;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import org.controlsfx.control.Notifications;
@@ -26,6 +30,17 @@ public class CreatureController {
     public void emettreSon(Creature creature){
         CreatureView creatureView = new CreatureView(creature);
         Notifications.create().text(creature.getSonEmit()).title(creature.getNom()).showInformation();
+    }
+
+    public void healCreature(Creature creature){
+        creature.heal();
+        visiterCreature(creature);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Notifications.create().title("Soigner").text("La creature " + creature.getNom() + " a été soignée !").showError();
+            }
+        });
     }
 
     public void nourrirCreature(Creature creature){
@@ -67,10 +82,15 @@ public class CreatureController {
 
     public void transfererCreature(Creature creature, Enclos enclos){
         creature.leaveEnclos();
-        enclos.addCreature(creature);
-        creature.setEnclos(enclos);
+        try{
+            enclos.addCreature(creature);
+            creature.setEnclos(enclos);
+            Notifications.create().title("Transfert").text("Transféré avec succés").showConfirm();
+        }catch (EnclosFullException e){
+            Notifications.create().title("Enclos plein").text("L'enclos " + enclos.getNom() + " est plein").showError();
+        }
+
         new EnclosController().examinerEnclos(creature.getEnclos());
-        Notifications.create().title("Transfert").text("Transféré avec succés").showConfirm();
     }
 
     private ArrayList<Enclos> getEnclosPossibles(Creature creature){
@@ -104,5 +124,24 @@ public class CreatureController {
         }
         System.out.println(enclosPossible.size());
         return enclosPossible;
+    }
+
+    public void viellir(Creature creature){
+        creature.vieillir();
+        if(creature.getEtat() == Etat.MORT){
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    Notifications.create().title("Mort").text("La creature " + creature.getNom() + " est mort dans " + creature.getEnclos().getNom()).showError();
+                }
+            });
+        }else{
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    Notifications.create().title(creature.getNom()).text(creature.getNom() + " a pris de l'age").showError();
+                }
+            });
+        }
     }
 }

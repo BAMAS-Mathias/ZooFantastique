@@ -1,13 +1,18 @@
 package ZooFantastique.models;
 
+import ZooFantastique.models.creatures.vivipares.lycanthrope.Lycanthrope;
+import javafx.application.Platform;
+import javafx.geometry.Pos;
+import org.controlsfx.control.Notifications;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class TimeManager implements Runnable {
 
-    private int jour;
-    private String mois;
-    private int annee;
+    private static int jour;
+    private static String mois;
+    private static int annee;
     private final EventManager eManager = new EventManager();
 
     private final ArrayList<String> listeMois = new ArrayList<>(Arrays.asList("Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
@@ -29,7 +34,7 @@ public class TimeManager implements Runnable {
 
         while(true) {
             try {
-                Thread.sleep(500);
+                Thread.sleep(150);
                 if (jour == 28 && mois.equals("Fevrier")) {
                     jour = 1;
                     mois = "Mars";
@@ -46,10 +51,32 @@ public class TimeManager implements Runnable {
                     jour++;
                     eManager.handleZooEvent();
                 }
+
+                if(jour == 1 && mois.equals(Lycanthrope.getMoisSaisonAmour().get(0))){
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Notifications.create().text("Debut de la saison des amours").position(Pos.TOP_CENTER).showInformation();
+                        }
+                    });
+                }
+                if(jour == 30 && mois.equals(Lycanthrope.getMoisSaisonAmour().get(Lycanthrope.getMoisSaisonAmour().size()-1))){
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            Notifications.create().text("Fin de la saison des amours").position(Pos.TOP_CENTER).showInformation();
+                        }
+                    });
+                }
+
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    public static String getMois() {
+        return mois;
+    }
 }

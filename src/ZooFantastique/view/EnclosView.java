@@ -3,6 +3,7 @@ package ZooFantastique.view;
 import ZooFantastique.ZooMain;
 import ZooFantastique.controllers.CreatureController;
 import ZooFantastique.controllers.EnclosController;
+import ZooFantastique.controllers.MeuteController;
 import ZooFantastique.controllers.ZooFantastiqueController;
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.vivipares.lycanthrope.Lycanthrope;
@@ -123,11 +124,15 @@ public class EnclosView implements Initializable {
             meuteVBox.setStyle("-fx-background-color: red");
             meuteVBox.setCursor(Cursor.HAND);
             creaturesContainer.add(meuteVBox, 0, 0);
+
+            meuteVBox.setOnMouseClicked(event -> {
+                new MeuteController().visitMeute(enclos.getMeute());
+            });
         }
     }
 
     public void displayCreatures(){
-        for(int i = 1; i < enclos.getNbCreaturePresente(); ++i){
+        for(int i = 0; i < enclos.getNbCreaturePresente(); ++i){
             Creature creature = enclos.getCreaturesPresentes().get(i);
 
             if(creature instanceof Lycanthrope){

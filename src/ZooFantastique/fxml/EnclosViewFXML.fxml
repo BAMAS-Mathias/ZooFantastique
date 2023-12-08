@@ -104,12 +104,24 @@
             </VBox>
             <GridPane fx:id="creaturesContainer" layoutX="261.0" layoutY="64.0" prefHeight="445.0" prefWidth="514.0" />
         </HBox>
-      <HBox prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20">
          <children>
-              <Button fx:id="returnButton" text="Retour" />
-              <Button fx:id="cleanButton" text="Nettoyer" />
-              <Button fx:id="feedAllButton" text="Nourrir les créatures" />
-              <Button fx:id="addCreatureButton" text="Ajouter une créature" />
+              <Button fx:id="returnButton" prefHeight="48.0" prefWidth="133.0" text="Retour">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+              <Button fx:id="cleanButton" prefHeight="48.0" prefWidth="115.0" text="Nettoyer">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+              <Button fx:id="feedAllButton" prefHeight="48.0" prefWidth="170.0" text="Nourrir les créatures">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+              <Button fx:id="addCreatureButton" prefHeight="46.0" prefWidth="179.0" text="Ajouter une créature">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
          </children>
       </HBox>
     </VBox>

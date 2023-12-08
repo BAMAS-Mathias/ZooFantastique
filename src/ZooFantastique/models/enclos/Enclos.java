@@ -2,6 +2,7 @@ package ZooFantastique.models.enclos;
 
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.vivipares.lycanthrope.Meute;
+import controllers.Exceptions.EnclosFullException;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -88,7 +89,10 @@ public class Enclos {
      *
      * @param creature La créature à ajouter.
      */
-    public void addCreature(Creature creature) {
+    public void addCreature(Creature creature) throws EnclosFullException {
+        if(nbCreaturePresente >= nbCreatureMax){
+            throw new EnclosFullException();
+        }
         nbCreaturePresente++;
         creaturesPresentes.add(creature);
     }
@@ -158,6 +162,10 @@ public class Enclos {
 
     public Meute getMeute() {
         return meute;
+    }
+
+    public boolean isFull(){
+        return nbCreaturePresente >= nbCreatureMax;
     }
 }
 

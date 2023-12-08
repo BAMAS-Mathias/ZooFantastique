@@ -25,11 +25,15 @@ public enum Age {
     /**
      * Représente le stade de vie "VIEUX".
      */
-    VIEUX;
+    VIEUX,
 
-    /*public Age getNextAge() {
+    MORT;
+
+
+    public Age getNextAge() {
         if(this != Age.VIEUX){
             return Age.values()[this.ordinal() + 1];
         }
-    }*/
+        return Age.VIEUX;
+    }
 }

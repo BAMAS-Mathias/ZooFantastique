@@ -3,6 +3,7 @@ package ZooFantastique.view;
 import ZooFantastique.controllers.CreatureController;
 import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.models.creatures.Creature;
+import ZooFantastique.models.creatures.Etat;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -110,6 +111,7 @@ public class CreatureView implements Initializable {
         }
 
         Button emettreSonButton = new Button("Emettre son");
+        emettreSonButton.setPrefSize(120,40);
         emettreSonButton.setOnAction(actionEvent -> {
             new CreatureController().emettreSon(creature);
         });
@@ -123,16 +125,18 @@ public class CreatureView implements Initializable {
 
         if(creature.isHungry()){
             Button feedCretureButton = new Button("Nourrir");
+            feedCretureButton.setPrefSize(120,40);
             feedCretureButton.setOnAction(actionEvent -> {
                 new CreatureController().nourrirCreature(creature);
             });
             actionButtonList.getChildren().add(feedCretureButton);
         }
 
-        if(creature.getSante() < creature.getSanteMax()){
+        if(creature.getSante() < creature.getSanteMax() || creature.getEtat() == Etat.MALADE){
             Button healCretureButton = new Button("Soigner");
+            healCretureButton.setPrefSize(120,40);
             healCretureButton.setOnAction(actionEvent -> {
-                new CreatureController().nourrirCreature(creature);
+                new CreatureController().healCreature(creature);
             });
             actionButtonList.getChildren().add(healCretureButton);
         }

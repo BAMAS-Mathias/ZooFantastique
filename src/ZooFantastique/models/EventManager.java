@@ -1,11 +1,16 @@
 package ZooFantastique.models;
 
+import ZooFantastique.controllers.CreatureController;
+import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.controllers.LycantropeController;
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.Etat;
+import ZooFantastique.models.creatures.ovipares.Oeuf;
 import ZooFantastique.models.creatures.ovipares.Ovipare;
+import ZooFantastique.models.creatures.vivipares.Vivipare;
 import ZooFantastique.models.creatures.vivipares.lycanthrope.Lycanthrope;
 import ZooFantastique.models.creatures.vivipares.lycanthrope.Meute;
+import ZooFantastique.models.creatures.vivipares.lycanthrope.RangDomination;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.enclos.Proprete;
 import ZooFantastique.ZooMain;
@@ -20,17 +25,18 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class EventManager {
 
     private Random random;
-    private final double P_ENCLOS_DEGRADE_BASE = 0.01;
+    private final double P_ENCLOS_DEGRADE_BASE = (double) 1 /500;
     private final double P_ENCLOS_SALINITE_BASE = 0.01;
-    private final double P_CREATURE_DORT = 0.0005;
-    private final double P_CREATURE_VIEILLIR = 0.005;
-    private final double P_CREATURE_MALADE = 0.01;
-    private final double P_CREATURE_MALADE_PERD_SANTE = 0.1;
-    private final double P_CREATURE_A_FAIM = 0.01;
-    private final double P_OVIPARE_POND = 0.001;
-    private final double P_LYCANTROPE_HURLE = 0.001;
-    private final double P_LYCANTROPE_TENTE_DOMINATION = 0.05;
-    private final double P_LYCANTROPE_REPRODUCE = 0.01;
+    private final double P_CREATURE_DORT = (double) 1 /1000;
+    private final double P_CREATURE_VIEILLIR = (double) 1 /1500;
+    private final double P_CREATURE_MALADE = (double) 1 /1250;
+    private final double P_CREATURE_MALADE_PERD_SANTE = (double) 1 /100;
+    private final double P_CREATURE_A_FAIM = (double) 1 /400;
+    private final double P_OVIPARE_POND = (double) 1 /1000;
+    private final double P_LYCANTROPE_HURLE = (double) 1 /600;
+    private final double P_LYCANTROPE_TENTE_DOMINATION = (double) 1 /50;
+    private final double P_LYCANTROPE_REPRODUCE = (double) 1 /300;
+    private final double P_VIVIPARE_NAISSANCE = (double) 1 /1000;
 
     // Mettre les probas en variable final private avec le nom en majuscule
     //Ne pas oublier de mettre les notif pour les evenements
@@ -60,7 +66,19 @@ public class EventManager {
             sendNotification("Enclos", "L'enclos \"" + enclos.getNom() + "\" se dégrade !\n" + "Pensez à le nettoyer !");
         }
 
-
+        if(enclos.getMeute() == null){
+            Lycanthrope male = null, femmelle = null;
+            for(Creature creature : enclos.getCreaturesPresentes()){
+                if(creature instanceof Lycanthrope){
+                    Lycanthrope lycanthrope = (Lycanthrope) creature;
+                    if(lycanthrope.getSexe() == Sexe.MALE) male = lycanthrope;
+                    if(lycanthrope.getSexe() == Sexe.FEMELLE) femmelle = lycanthrope;
+                }
+            }
+            if (male != null && femmelle != null) {
+                new EnclosController().creerMeute(male, femmelle, enclos);
+            }
+        }
     }
 
     /**
@@ -69,13 +87,16 @@ public class EventManager {
     public void handleCreatureEvent(Creature creature){
         random = new Random();
 
+        if(creature instanceof Oeuf) return;
+        if(creature.isSleeping()) return;
+
         if(creature instanceof Lycanthrope){
             handleLycanthropeEvent((Lycanthrope) creature);
         }
 
         /* ----- La créature vieillit ----- */
         if(random.nextDouble() <= P_CREATURE_VIEILLIR) {
-            creature.vieillir();
+            new CreatureController().viellir(creature);
         }
 
         /* ----- La créature dort ----- */
@@ -104,10 +125,17 @@ public class EventManager {
         }
 
         /* ----- L'ovipare pond ----- */
-        if(creature instanceof Ovipare && random.nextDouble() <= P_OVIPARE_POND){
+        if(creature instanceof Ovipare && random.nextDouble() <= P_OVIPARE_POND && !creature.getEnclos().isFull()){
             Ovipare ovipare = (Ovipare) creature;
             ovipare.lay();
             sendNotification("Créature", "L'ovipare \"" + ovipare.getNom() + "\" a pondu un oeuf !");
+        }
+
+        /* ----- Le vivipare donne naissance ----- */
+        if(creature instanceof Vivipare && random.nextDouble() <= P_VIVIPARE_NAISSANCE && !creature.getEnclos().isFull() && !(creature instanceof Lycanthrope)){
+            Vivipare vivipare = (Vivipare) creature;
+            vivipare.giveBirth();
+            sendNotification("Créature", vivipare.getNom() + "\" a donné naissance !");
         }
 
     }
@@ -115,11 +143,11 @@ public class EventManager {
     public void handleLycanthropeEvent(Lycanthrope lycanthrope){
         Random random = new Random();
 
-        if(random.nextDouble() <= P_LYCANTROPE_HURLE){
+        if(random.nextDouble() <= P_LYCANTROPE_HURLE && lycanthrope.getMeute() != null){
             lycanthrope.hurler();
         }
 
-        if(random.nextDouble() <= P_LYCANTROPE_TENTE_DOMINATION){
+        if(random.nextDouble() <= P_LYCANTROPE_TENTE_DOMINATION && lycanthrope.getMeute() != null){
             ArrayList<Lycanthrope> possibleDomination = new ArrayList<>();
             for(Lycanthrope l : lycanthrope.getMeute().getMembres()){
                 if(lycanthrope.canDominate(l)) possibleDomination.add(l);
@@ -129,11 +157,15 @@ public class EventManager {
                 new LycantropeController().attempDomination(lycanthrope, lycanthropeDomine);
             }
         }
+
+        if(lycanthrope.getRang() != null && lycanthrope.getFacteurDomination() < lycanthrope.getRang().getRangPuissance() * 10 && lycanthrope.getRang() != RangDomination.α){
+            lycanthrope.setRang(lycanthrope.getRang().previousRang());
+        }
     }
 
     public void handleMeuteEvent(Meute meute){
         Random random = new Random();
-        if(random.nextDouble() <= P_LYCANTROPE_REPRODUCE){
+        if(random.nextDouble() <= P_LYCANTROPE_REPRODUCE && Lycanthrope.getMoisSaisonAmour().contains(TimeManager.getMois())){
             meute.getCoupleAlpha().reproduce();
             sendNotification("Repoduction", "Un couple de lycanthrope a donné naissance à des nouveaux lycanthropes !");
         }

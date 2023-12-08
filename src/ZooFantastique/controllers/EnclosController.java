@@ -3,11 +3,14 @@ package ZooFantastique.controllers;
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.CreatureFactory;
 import ZooFantastique.models.ZooFantastique;
+import ZooFantastique.models.creatures.vivipares.lycanthrope.Lycanthrope;
+import ZooFantastique.models.creatures.vivipares.lycanthrope.Meute;
 import ZooFantastique.models.enclos.*;
 import ZooFantastique.view.AddCreatureView;
 import ZooFantastique.view.CreateEnclosView;
 import ZooFantastique.view.EnclosView;
 import ZooFantastique.ZooMain;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -120,6 +123,16 @@ public class EnclosController {
         enclos.nourrirAllCreature();
         enclosView.displaySuccessFeedMessage();
         Notifications.create().title("Enclos").text("Les créatures ont été nourries").hideAfter(Duration.seconds(1)).position(Pos.TOP_RIGHT).showInformation();
+    }
+
+    public void creerMeute(Lycanthrope male, Lycanthrope femmelle, Enclos enclos){
+        enclos.addMeute(new Meute(male, femmelle));
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Notifications.create().title("Meute créee").text("Une meute a été créee dans l'enclos " + enclos.getNom()).showInformation();
+            }
+        });
     }
 
 }

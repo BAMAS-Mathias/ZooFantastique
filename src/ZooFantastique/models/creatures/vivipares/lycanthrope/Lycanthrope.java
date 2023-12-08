@@ -1,5 +1,6 @@
 package ZooFantastique.models.creatures.vivipares.lycanthrope;
 
+import ZooFantastique.models.Age;
 import ZooFantastique.models.Sexe;
 import ZooFantastique.models.creatures.vivipares.Vivipare;
 import ZooFantastique.models.enclos.Enclos;
@@ -8,6 +9,8 @@ import javafx.application.Platform;
 import javafx.geometry.Pos;
 import org.controlsfx.control.Notifications;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -34,6 +37,8 @@ public class Lycanthrope extends Vivipare implements IRun {
     private double impétuosité;
     private Meute meute;
 
+    private static ArrayList<String> moisSaisonAmour = new ArrayList<>(Arrays.asList("Février", "Mars", "Avril", "Mai"));
+
 
     public Lycanthrope(Enclos enclos) {
         super("Lycanthrope", enclos, "%SON LYCANTHROPE%");
@@ -56,7 +61,7 @@ public class Lycanthrope extends Vivipare implements IRun {
     public void initStats(){
         Random random = new Random();
         impétuosité = random.nextDouble();
-        facteurDomination = 10;
+        facteurDomination = rang.getRangPuissance() * 10 + 5;
         force = random.nextInt(1,50);
         niveau = force * facteurDomination * rang.getRangPuissance();
     }
@@ -84,20 +89,37 @@ public class Lycanthrope extends Vivipare implements IRun {
         rang = null;
     }
 
+    @Override
+    public void die() {
+        if(meute != null) {
+            meute.getMembres().remove(this);
+            meute.updateCoupleAlpha(meute.getStrongestMale());
+            meute = null;
+        }
+        super.die();
+    }
+
     public boolean canDominate(Lycanthrope lycanthrope){
         if(lycanthrope.getSexe() == Sexe.FEMELLE && lycanthrope.rang == RangDomination.α) return false;
         if(lycanthrope.getRang() == RangDomination.α && this.getRang() == RangDomination.α) return false;
         if(lycanthrope == this) return false;
+        if(lycanthrope.getRang() == RangDomination.α && this.getSexe() == Sexe.FEMELLE) return false;
         if(lycanthrope.getSexe() == Sexe.MALE && lycanthrope.rang == RangDomination.α) return true;
         return (this.force >= lycanthrope.force);
     }
 
     public boolean attemptDomination(Lycanthrope lycanthrope){
-        System.out.println(this.getSexe() + " " + this.getRang() + " " + this.niveau);
-        System.out.println(lycanthrope.getSexe() + " " + lycanthrope.getRang() + " " + lycanthrope.niveau);
-        if(this.niveau > lycanthrope.niveau){
+        if(this.niveau > lycanthrope.niveau || lycanthrope.getRang() == RangDomination.ω){
             achieveDomination(lycanthrope);
             return true;
+        }else{
+            if(lycanthrope.getRang() == RangDomination.α){
+                Random random = new Random();
+                if(random.nextDouble() < 1){
+                    quitterMeute();
+                    return false;
+                }
+            }
         }
         return false;
     }
@@ -110,14 +132,18 @@ public class Lycanthrope extends Vivipare implements IRun {
 
         /* Echange des rangs de domination */
         if(getRang().isInferior(lycanthrope.getRang())){
+            if(lycanthrope.getRang() == RangDomination.α){
+                getMeute().getCoupleAlpha().getFemelleAlpha().setRang(getRang());
+            }
             RangDomination rangA = getRang();
             setRang(lycanthrope.getRang());
             lycanthrope.setRang(rangA);
+
         }
 
         /* Mise a jour des facteurs de domination */
         double dominationFactorToTake = new Random().nextInt(3) + 1;
-        lycanthrope.facteurDomination = dominationFactorToTake;
+        lycanthrope.facteurDomination -= dominationFactorToTake;
         facteurDomination+=dominationFactorToTake;
     }
 
@@ -136,6 +162,7 @@ public class Lycanthrope extends Vivipare implements IRun {
             }
         });
     }
+
 
     public void baisserRang(){
         this.rang = rang.previousRang();
@@ -163,5 +190,13 @@ public class Lycanthrope extends Vivipare implements IRun {
 
     public void setNiveau(double niveau) {
         this.niveau = niveau;
+    }
+
+    public double getFacteurDomination() {
+        return facteurDomination;
+    }
+
+    public static ArrayList<String> getMoisSaisonAmour() {
+        return moisSaisonAmour;
     }
 }

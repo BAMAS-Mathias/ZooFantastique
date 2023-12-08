@@ -59,4 +59,9 @@ public class Phoenix extends Ovipare implements IRevive, IFly {
         super.setSante(sante);
         if(sante == 0) this.revive();
     }
+
+    @Override
+    public void die(){
+        this.revive();
+    }
 }

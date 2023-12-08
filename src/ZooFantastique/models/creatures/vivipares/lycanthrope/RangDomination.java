@@ -6,6 +6,7 @@ public enum RangDomination {
     α(26),β(25),γ(24),δ(23),ε(22),ζ(21),η(20),θ(19),ι(18),κ(17),λ(16),μ(15),ν(14),ξ(13),ο(12),π(11),ρ(10),σ(9),τ(8),υ(7),φ(6),χ(5),ψ(4),ω(3);
 
     private int rangPuissance;
+
     private RangDomination(int rangPuissance){
         this.rangPuissance = rangPuissance;
     }

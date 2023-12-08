@@ -3,6 +3,7 @@ package ZooFantastique.models.creatures;
 import ZooFantastique.models.Age;
 import ZooFantastique.models.Sexe;
 import ZooFantastique.models.enclos.Enclos;
+import controllers.Exceptions.EnclosFullException;
 
 import java.util.Random;
 
@@ -85,13 +86,17 @@ public abstract class Creature {
         poids = 10;
         sante = 10;
         santeMax = 10;
-        enclos.addCreature(this);
         etat = Etat.PLEINE_FORME;
         ++nbCreature;
-
         if(new Random().nextInt(2) == 0) sexe = Sexe.FEMELLE;
         else{
             sexe = Sexe.MALE;
+        }
+
+        try{
+            enclos.addCreature(this);
+        }catch (EnclosFullException e){
+            e.printStackTrace();
         }
     }
 
@@ -140,12 +145,17 @@ public abstract class Creature {
      * Permet à la créature de vieillir.
      */
     public void vieillir() {
-        if(age == Age.JEUNE){
-            age = Age.ADULTE;
-        } else if (age == Age.ADULTE){
-            age = Age.VIEUX;
+        if(age == Age.VIEUX) die();
+        else{
+            age = age.getNextAge();
         }
     }
+
+    public void die(){
+        enclos.removeCreature(this);
+        etat = Etat.MORT;
+    }
+
 
     public boolean isDead() {
         return sante == 0;
@@ -176,6 +186,7 @@ public abstract class Creature {
     }
 
     public void heal(){
+        etat = Etat.PLEINE_FORME;
         sante = santeMax;
     }
 
@@ -254,4 +265,6 @@ public abstract class Creature {
     public void setSexe(Sexe sexe) {
         this.sexe = sexe;
     }
+
+
 }

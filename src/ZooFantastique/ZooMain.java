@@ -47,7 +47,6 @@ public class ZooMain extends Application {
         Enclos enclos3 = zoo.getListeDesEnclos().get(2);
         Lycanthrope lycanthrope = new Lycanthrope(enclos3, Sexe.MALE);
         Lycanthrope lycanthrope2 = new Lycanthrope(enclos3, Sexe.FEMELLE);
-        lycanthrope.setNiveau(0);
         enclos3.addMeute(new Meute(lycanthrope, lycanthrope2));
         new Lycanthrope(enclos3).rejoindreMeute(colonie.get(0));
 

@@ -1,6 +1,7 @@
 package ZooFantastique.models.creatures.vivipares;
 
 import ZooFantastique.models.creatures.Creature;
+import ZooFantastique.models.creatures.CreatureFactory;
 import ZooFantastique.models.enclos.Enclos;
 
 import java.util.ArrayList;
@@ -34,6 +35,10 @@ public abstract class Vivipare extends Creature {
 
     public void setIsReadyToGivebirth(boolean state) {
         isReadyToGiveBirth = state;
+    }
+
+    public void giveBirth(){
+        Creature baby = new CreatureFactory().createCreature(this.getNom(), this.getEnclos());
     }
 
 }

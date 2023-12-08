@@ -33,6 +33,10 @@ public class CoupleAlpha {
         int nbChildren = new Random().nextInt(1,7);
         ArrayList<Lycanthrope> childrenList = new ArrayList<>();
         for(int i = 0; i < nbChildren; i++){
+            if(maleAlpha.getEnclos().getNbCreaturePresente() >= maleAlpha.getEnclos().getNbCreatureMax()){
+                break;
+            }
+
             if(!maleAlpha.getMeute().containsRang(RangDomination.β)){
                 new Lycanthrope(maleAlpha.getEnclos(), RangDomination.β).rejoindreMeute(maleAlpha.getMeute());
             }else{
