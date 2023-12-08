@@ -5,11 +5,10 @@ import ZooFantastique.models.creatures.Etat;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IFly;
 import ZooFantastique.models.interfaces.IRevive;
-import javafx.application.Platform;
 import javafx.geometry.Pos;
 import org.controlsfx.control.Notifications;
 import utils.NotificationUtils;
-;import java.util.Random;
+import java.util.Random;
 
 /**
  * La classe {@code Phoenix} représente une créature légendaire de type ovipare
