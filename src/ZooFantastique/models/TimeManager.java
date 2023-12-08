@@ -7,7 +7,10 @@ import org.controlsfx.control.Notifications;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+/**
+ * La classe TimeManager gère la gestion du temps dans le zoo fantastique.
+ * Elle implémente l'interface Runnable pour permettre l'exécution en tant que thread.
+ */
 public class TimeManager implements Runnable {
 
     private static int jour;
@@ -17,17 +20,26 @@ public class TimeManager implements Runnable {
 
     private final ArrayList<String> listeMois = new ArrayList<>(Arrays.asList("Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
             "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"));
-
+    /**
+     * Constructeur de la classe TimeManager qui initialise la date de départ.
+     */
     public TimeManager() {
         jour = 1;
         mois = "Janvier";
         annee = 2023;
     }
-
+    /**
+     * Récupère la date actuelle sous forme de chaîne de caractères.
+     *
+     * @return La date actuelle au format jour mois année.
+     */
     public String getDate(){
         return jour + " " + mois + " " + annee;
     }
-
+    /**
+     * Méthode exécutée lorsqu'un thread est démarré.
+     * Elle gère l'avancement du temps et déclenche les événements liés au temps.
+     */
     @Override
     public void run() {
         ArrayList<String> mois31Jours = new ArrayList<>(Arrays.asList("Janvier", "Mars", "Mai", "Juillet", "Août", "Octobre", "Décembre"));

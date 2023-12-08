@@ -2,9 +2,16 @@ package ZooFantastique.controllers;
 
 import ZooFantastique.models.creatures.vivipares.lycanthrope.Lycanthrope;
 import ZooFantastique.models.creatures.vivipares.lycanthrope.RangDomination;
-
+/**
+ * La classe LycantropeController gère les opérations liées aux lycanthropes dans le zoo fantastique.
+ */
 public class LycantropeController {
-
+    /**
+     * Tente une domination entre deux lycanthropes.
+     *
+     * @param dominant Le lycanthrope dominant.
+     * @param dominé   Le lycanthrope dominé.
+     */
     public void attempDomination(Lycanthrope dominant, Lycanthrope dominé){
         boolean dominationSuccess = dominant.attemptDomination(dominé);
         if(dominé.getRang() == RangDomination.α && dominationSuccess){

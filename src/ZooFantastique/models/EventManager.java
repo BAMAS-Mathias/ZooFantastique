@@ -21,7 +21,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 import java.util.concurrent.CopyOnWriteArrayList;
-
+/**
+ * La classe EventManager gère les événements se produisant dans le zoo fantastique.
+ * Elle s'occupe de gérer les actions périodiques liées aux enclos, aux créatures et aux meutes.
+ */
 public class EventManager {
 
     private Random random;
@@ -51,7 +54,11 @@ public class EventManager {
             handleMeuteEvent(meute);
         }
     }
-
+    /**
+     * Gère les événements liés à un enclos, tels que les actions périodiques sur les créatures présentes.
+     *
+     * @param enclos L'enclos à traiter.
+     */
     public void handleEnclotEvent(Enclos enclos){
         CopyOnWriteArrayList<Creature> creatureList = new CopyOnWriteArrayList<>(enclos.getCreaturesPresentes());
         Iterator<Creature> iterator = creatureList.iterator();
@@ -139,7 +146,11 @@ public class EventManager {
         }
 
     }
-
+    /**
+     * Gère les événements spécifiques aux lycanthropes, tels que le hurlement, la domination, etc.
+     *
+     * @param lycanthrope Le lycanthrope à traiter.
+     */
     public void handleLycanthropeEvent(Lycanthrope lycanthrope){
         Random random = new Random();
 
@@ -162,7 +173,11 @@ public class EventManager {
             lycanthrope.setRang(lycanthrope.getRang().previousRang());
         }
     }
-
+    /**
+     * Gère les événements liés à une meute, tels que la reproduction.
+     *
+     * @param meute La meute à traiter.
+     */
     public void handleMeuteEvent(Meute meute){
         Random random = new Random();
         if(random.nextDouble() <= P_LYCANTROPE_REPRODUCE && Lycanthrope.getMoisSaisonAmour().contains(TimeManager.getMois())){
@@ -170,7 +185,12 @@ public class EventManager {
             sendNotification("Repoduction", "Un couple de lycanthrope a donné naissance à des nouveaux lycanthropes !");
         }
     }
-
+    /**
+     * Envoie une notification visuelle.
+     *
+     * @param title   Le titre de la notification.
+     * @param message Le message de la notification.
+     */
     public void sendNotification(String title, String message){
         Platform.runLater(new Runnable() {
             @Override

@@ -8,9 +8,6 @@ import java.util.Random;
  * {@link Enclos} et ajoute des attributs spécifiques tels que la profondeur et la
  * salinité de l'aquarium.
  * <p>
- * @author [Raphael]
- * @version 1.0
- * @see Enclos
  */
 public class Aquarium extends Enclos {
 

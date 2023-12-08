@@ -22,7 +22,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/**
+ * La classe ZooMain est la classe principale de l'application ZooFantastique.
+ * Elle étend la classe Application de JavaFX et définit le point d'entrée de l'application.
+ */
 public class ZooMain extends Application {
 
     private static ZooFantastique zoo = new ZooFantastique(10);
@@ -36,7 +39,12 @@ public class ZooMain extends Application {
 
     @FXML
     private TextArea text;
-
+    /**
+     * La méthode start() est appelée au lancement de l'application JavaFX.
+     *
+     * @param primaryStage La fenêtre principale de l'application.
+     * @throws IOException En cas d'erreur lors du chargement des ressources graphiques.
+     */
     @Override
     public void start(Stage primaryStage) throws IOException {
         ZooMain.primaryStage = primaryStage;

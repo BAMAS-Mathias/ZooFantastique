@@ -71,6 +71,8 @@ public class Enclos {
         this(nom, 10);
     }
 
+
+
     public void addMeute(Meute meute){
         this.meute = meute;
     }

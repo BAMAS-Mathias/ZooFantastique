@@ -32,10 +32,6 @@ import java.util.Scanner;
  * </p>
  * <p>
  *
- * @author [Raphael]
- * @version 1.0
- * @see Enclos
- * @see ZooFantastique.view.EnclosView
  */
 public class EnclosController {
 
