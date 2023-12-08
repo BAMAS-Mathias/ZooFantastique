@@ -71,6 +71,8 @@ public class Meute {
             dissoudreMeute();
             return;
         }
+        getCoupleAlpha().getMaleAlpha().setRang(newAlphaMale.getRang());
+        getCoupleAlpha().getFemelleAlpha().setRang(newAlphaMale.getRang());
         getCoupleAlpha().setMaleAlpha(newAlphaMale);
         getCoupleAlpha().setFemelleAlpha(strongestFemale);
     }

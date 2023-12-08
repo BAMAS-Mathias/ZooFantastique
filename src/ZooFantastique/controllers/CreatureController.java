@@ -1,7 +1,6 @@
 package ZooFantastique.controllers;
 
 import ZooFantastique.ZooMain;
-import ZooFantastique.models.Age;
 import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.Etat;
@@ -12,17 +11,15 @@ import ZooFantastique.models.interfaces.IFly;
 import ZooFantastique.models.interfaces.IRun;
 import ZooFantastique.models.interfaces.ISwim;
 import ZooFantastique.view.CreatureView;
-import ZooFantastique.view.EnclosView;
 import ZooFantastique.view.TransfereCreatureView;
-import controllers.Exceptions.EnclosFullException;
+import Exceptions.EnclosFullException;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import org.controlsfx.control.Notifications;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+
 /**
  * La classe CreatureController gère les opérations liées aux créatures dans le zoo.
  */

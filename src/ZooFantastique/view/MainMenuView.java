@@ -15,6 +15,8 @@ import javafx.scene.Cursor;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -64,11 +66,17 @@ public class MainMenuView implements Initializable {
         for(int i = 0; i < enclosList.size(); ++i) {
             Enclos enclos = enclosList.get(i);
             VBox enclosTile = new VBox();
+            Text enclosTypeText = new Text(enclos.getClass().getSimpleName());
+            enclosTile.getChildren().add(enclosTypeText);
+            Image image = new Image("/assets/enclosIcons/" + enclos.getClass().getSimpleName() + ".png");
+            ImageView iconEnclos = new ImageView(image);
+            iconEnclos.setFitHeight(100);
+            iconEnclos.setFitWidth(100);
+            enclosTile.getChildren().add(iconEnclos);
             enclosTile.getChildren().add(new Text(enclos.getNom()));
-            enclosTile.getChildren().add(new Text(String.valueOf(enclos.getNbCreaturePresente())));
+            enclosTile.getChildren().add(new Text(String.valueOf(enclos.getNbCreaturePresente()) + " Créatures"));
             enclosTile.setAlignment(Pos.CENTER);
             enclosTile.setPrefSize(100, 100);
-            enclosTile.setStyle("-fx-background-color: red");
             enclosTile.setCursor(Cursor.HAND);
             enclosContainer.add(enclosTile, i % nbEnclosParLigne, i / nbEnclosParLigne);
 

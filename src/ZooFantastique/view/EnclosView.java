@@ -58,7 +58,7 @@ public class EnclosView implements Initializable {
     private Button addCreatureButton;
 
     private Enclos enclos;
-    private final int creaturePerRow = 3;
+    private final int creaturePerRow = 5;
 
     public EnclosView(){}
 

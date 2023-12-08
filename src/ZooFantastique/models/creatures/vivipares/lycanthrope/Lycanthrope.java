@@ -137,17 +137,14 @@ public class Lycanthrope extends Vivipare implements IRun {
     public void achieveDomination(Lycanthrope lycanthrope){
         if(lycanthrope.getRang() == RangDomination.α){
             this.getMeute().updateCoupleAlpha(this);
+            return;
         }
 
         /* Echange des rangs de domination */
         if(getRang().isInferior(lycanthrope.getRang())){
-            if(lycanthrope.getRang() == RangDomination.α){
-                getMeute().getCoupleAlpha().getFemelleAlpha().setRang(getRang());
-            }
             RangDomination rangA = getRang();
             setRang(lycanthrope.getRang());
             lycanthrope.setRang(rangA);
-
         }
 
         /* Mise a jour des facteurs de domination */

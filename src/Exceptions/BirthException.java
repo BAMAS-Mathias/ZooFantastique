@@ -1,4 +1,4 @@
-package controllers.Exceptions;
+package Exceptions;
 
 public class BirthException extends Exception{
 

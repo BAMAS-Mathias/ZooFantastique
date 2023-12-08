@@ -2,7 +2,7 @@ package ZooFantastique.models.enclos;
 
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.vivipares.lycanthrope.Meute;
-import controllers.Exceptions.EnclosFullException;
+import Exceptions.EnclosFullException;
 
 import java.util.ArrayList;
 import java.util.Random;

@@ -3,7 +3,7 @@ package ZooFantastique.models.creatures;
 import ZooFantastique.models.Age;
 import ZooFantastique.models.Sexe;
 import ZooFantastique.models.enclos.Enclos;
-import controllers.Exceptions.EnclosFullException;
+import Exceptions.EnclosFullException;
 
 import java.util.Random;
 
@@ -199,7 +199,9 @@ public abstract class Creature {
     }
 
     public void feed(){
-        isHungry = false;
+        if(!isSleeping){
+            isHungry = false;
+        }
     }
 
     public static int getNbCreature() {

@@ -1,69 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ZooFantastique.view.CreatureView">
    <VBox prefHeight="600.0" prefWidth="800.0">
-      <children>
-         <HBox prefHeight="514.0" prefWidth="800.0">
-            <children>
-               <VBox fx:id="creatureImageContainer" prefHeight="513.0" prefWidth="445.0" />
-               <VBox alignment="CENTER" prefHeight="513.0" prefWidth="388.0">
-                  <HBox alignment="CENTER">
-                     <Text>Nom</Text>
-                     <Text fx:id="creatureNameText" />
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <Text>Sexe</Text>
-                     <Text fx:id="creatureSexeText" />
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <Text>Etat</Text>
-                     <Text fx:id="creatureEtatText" />
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <Text>Poids</Text>
-                     <Text fx:id="creaturePoidsText" />
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <HBox>
-                        <Text>Taille</Text>
-                        <Text fx:id="creatureSizeText" />
-                     </HBox>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <HBox>
-                        <Text>Age</Text>
-                        <Text fx:id="creatureAgeText" />
-                     </HBox>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <HBox>
-                        <Text>Sante</Text>
-                        <Text fx:id="creatureHealthText" />
-                     </HBox>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <HBox>
-                        <Text fx:id="creatureHungryText">A faim</Text>
-                     </HBox>
-                  </HBox>
-                  <HBox alignment="CENTER">
-                     <HBox>
-                        <Text fx:id="creatureSleepText">Dors</Text>
-                     </HBox>
-                  </HBox>
+      <HBox prefHeight="514.0" prefWidth="800.0">
+         <VBox fx:id="creatureImageContainer" prefHeight="513.0" prefWidth="445.0">
+            <HBox.margin>
+               <Insets bottom="50.0" left="50.0" top="50.0"/>
+            </HBox.margin>
+         </VBox>
+         <GridPane alignment="CENTER" hgap="10.0" prefHeight="513.0" prefWidth="388.0" vgap="10.0">
+            <Text GridPane.rowIndex="0">Nom</Text>
+            <Text GridPane.rowIndex="0" GridPane.columnIndex="1" fx:id="creatureNameText"/>
 
-               </VBox>
-            </children>
-         </HBox>
-      
-          <HBox fx:id="actionButtonList" alignment="CENTER" prefHeight="89.0" prefWidth="800.0" spacing="15">
-              <Button fx:id="returnButton" prefHeight="40.0" prefWidth="120.0" text="Retour" />
-              <Button fx:id="transfererButton" prefHeight="42.0" prefWidth="118.0" text="Transférer" />
-          </HBox>
-      </children>
+            <Text GridPane.rowIndex="1">Sexe</Text>
+            <Text GridPane.rowIndex="1" GridPane.columnIndex="1" fx:id="creatureSexeText"/>
+
+            <Text GridPane.rowIndex="2">Etat</Text>
+            <Text GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="creatureEtatText"/>
+
+            <Text GridPane.rowIndex="3">Poids</Text>
+            <Text GridPane.rowIndex="3" GridPane.columnIndex="1" fx:id="creaturePoidsText"/>
+
+            <Text GridPane.rowIndex="4">Taille</Text>
+            <Text GridPane.rowIndex="4" GridPane.columnIndex="1" fx:id="creatureSizeText"/>
+
+            <Text GridPane.rowIndex="5">Age</Text>
+            <Text GridPane.rowIndex="5" GridPane.columnIndex="1" fx:id="creatureAgeText"/>
+
+            <Text GridPane.rowIndex="6">Sante</Text>
+            <Text GridPane.rowIndex="6" GridPane.columnIndex="1" fx:id="creatureHealthText"/>
+
+            <VBox>
+               <Text GridPane.rowIndex="7" fx:id="creatureHungryText">A faim</Text>
+               <Text GridPane.rowIndex="8" fx:id="creatureSleepText">Dors</Text>
+            </VBox>
+
+
+
+            <columnConstraints>
+               <ColumnConstraints/>
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints/>
+            </rowConstraints>
+
+         </GridPane>
+      </HBox>
+
+      <HBox fx:id="actionButtonList" alignment="CENTER" prefHeight="89.0" prefWidth="800.0" spacing="15">
+         <Button fx:id="returnButton" prefHeight="40.0" prefWidth="120.0" text="Retour"/>
+         <Button fx:id="transfererButton" prefHeight="42.0" prefWidth="118.0" text="Transférer"/>
+      </HBox>
    </VBox>
 </AnchorPane>

@@ -123,7 +123,7 @@ public class CreatureView implements Initializable {
 
         actionButtonList.getChildren().add(emettreSonButton);
 
-        if(creature.isHungry()){
+        if(creature.isHungry() && !creature.isSleeping()){
             Button feedCretureButton = new Button("Nourrir");
             feedCretureButton.setPrefSize(120,40);
             feedCretureButton.setOnAction(actionEvent -> {
