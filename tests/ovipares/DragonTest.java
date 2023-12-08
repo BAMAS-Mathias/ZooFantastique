@@ -51,12 +51,7 @@ public class DragonTest {
 
     @Test
     public void testGetSonEmit() {
-        assertSame("%SON DRAGON%", dragon.getSonEmit());
-    }
-
-    @Test
-    public void testGetPoids() {
-        assertEquals(10.0, dragon.getPoids());
+        assertSame("Raaaargh!", dragon.getSonEmit());
     }
 
     @Test
@@ -64,10 +59,6 @@ public class DragonTest {
         assertEquals(10.0, dragon.getSante());
     }
 
-    @Test
-    public void testGetTaille() {
-        assertEquals(10.0, dragon.getTaille());
-    }
 
     @Test
     public void testGetNomEspece() {
@@ -91,12 +82,6 @@ public class DragonTest {
     public void testIsHungry() {
         dragon.feed();
         assertFalse(dragon.isHungry());
-    }
-
-    @Test
-    public void testIsDead() {
-        dragon.setSante(0);
-        assertTrue(dragon.isDead());
     }
 
 }

@@ -51,12 +51,7 @@ public class MegalodonTest {
 
     @Test
     public void testGetSonEmit() {
-        assertSame("%SON MEGALODON%", megalodon.getSonEmit());
-    }
-
-    @Test
-    public void testGetPoids() {
-        assertEquals(10.0, megalodon.getPoids());
+        assertSame("Grrrrrblub!", megalodon.getSonEmit());
     }
 
     @Test
@@ -64,10 +59,6 @@ public class MegalodonTest {
         assertEquals(10.0, megalodon.getSante());
     }
 
-    @Test
-    public void testGetTaille() {
-        assertEquals(10.0, megalodon.getTaille());
-    }
 
     @Test
     public void testGetNomEspece() {

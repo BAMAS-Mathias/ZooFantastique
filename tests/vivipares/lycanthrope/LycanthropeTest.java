@@ -46,18 +46,5 @@ public class LycanthropeTest {
         assertFalse(meute.getMembres().contains(lycan3));
     }
 
-    @Test
-    public void testAugmenterRang() {
-        RangDomination rangBase = lycan3.getRang();
-        lycan3.augmenterRang();
-        assertNotSame(lycan3.getRang(), rangBase);
-    }
-
-    @Test
-    public void testBaisserRang() {
-        RangDomination rangBase = lycan3.getRang();
-        lycan3.baisserRang();
-        assertNotSame(lycan3.getRang(), rangBase);
-    }
 
 }

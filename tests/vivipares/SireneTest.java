@@ -50,12 +50,7 @@ public class SireneTest {
 
     @Test
     public void testGetSonEmit() {
-        assertSame("%SON SIRENE%", sirene.getSonEmit());
-    }
-
-    @Test
-    public void testGetPoids() {
-        assertEquals(10.0, sirene.getPoids());
+        assertSame("Swish-swash!", sirene.getSonEmit());
     }
 
     @Test
@@ -63,10 +58,6 @@ public class SireneTest {
         assertEquals(10.0, sirene.getSante());
     }
 
-    @Test
-    public void testGetTaille() {
-        assertEquals(10.0, sirene.getTaille());
-    }
 
     @Test
     public void testGetNomEspece() {

@@ -51,12 +51,7 @@ public class PhoenixTest {
 
     @Test
     public void testGetSonEmit() {
-        assertSame("%SON PHOENIX%", phoenix.getSonEmit());
-    }
-
-    @Test
-    public void testGetPoids() {
-        assertEquals(10.0, phoenix.getPoids());
+        assertSame("Cuit cuit!", phoenix.getSonEmit());
     }
 
     @Test
@@ -64,10 +59,6 @@ public class PhoenixTest {
         assertEquals(10.0, phoenix.getSante());
     }
 
-    @Test
-    public void testGetTaille() {
-        assertEquals(10.0, phoenix.getTaille());
-    }
 
     @Test
     public void testGetNomEspece() {

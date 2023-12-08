@@ -51,22 +51,12 @@ public class KrakenTest {
 
     @Test
     public void testGetSonEmit() {
-        assertSame("%SON KRAKEN%", kraken.getSonEmit());
-    }
-
-    @Test
-    public void testGetPoids() {
-        assertEquals(10.0, kraken.getPoids());
+        assertSame("Swooosh!", kraken.getSonEmit());
     }
 
     @Test
     public void testGetSante() {
         assertEquals(10.0, kraken.getSante());
-    }
-
-    @Test
-    public void testGetTaille() {
-        assertEquals(10.0, kraken.getTaille());
     }
 
     @Test

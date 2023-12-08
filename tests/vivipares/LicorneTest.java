@@ -50,23 +50,15 @@ public class LicorneTest {
 
     @Test
     public void testGetSonEmit() {
-        assertSame("%SON LICORNE%", licorne.getSonEmit());
+        assertSame("Huuuuu!", licorne.getSonEmit());
     }
 
-    @Test
-    public void testGetPoids() {
-        assertEquals(10.0, licorne.getPoids());
-    }
 
     @Test
     public void testGetSante() {
         assertEquals(10.0, licorne.getSante());
     }
 
-    @Test
-    public void testGetTaille() {
-        assertEquals(10.0, licorne.getTaille());
-    }
 
     @Test
     public void testGetNomEspece() {

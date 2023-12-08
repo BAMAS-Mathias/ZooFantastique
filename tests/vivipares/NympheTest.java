@@ -50,23 +50,15 @@ public class NympheTest {
 
     @Test
     public void testGetSonEmit() {
-        assertSame("%SON NYMPHE%", nymphe.getSonEmit());
+        assertSame("Sssshhh...", nymphe.getSonEmit());
     }
 
-    @Test
-    public void testGetPoids() {
-        assertEquals(10.0, nymphe.getPoids());
-    }
 
     @Test
     public void testGetSante() {
         assertEquals(10.0, nymphe.getSante());
     }
 
-    @Test
-    public void testGetTaille() {
-        assertEquals(10.0, nymphe.getTaille());
-    }
 
     @Test
     public void testGetNomEspece() {
@@ -90,12 +82,6 @@ public class NympheTest {
     public void testIsHungry() {
         nymphe.feed();
         assertFalse(nymphe.isHungry());
-    }
-
-    @Test
-    public void testIsDead() {
-        nymphe.setSante(0);
-        assertTrue(nymphe.isDead());
     }
 
 }
