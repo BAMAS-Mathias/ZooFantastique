@@ -8,7 +8,11 @@ import ZooFantastique.models.interfaces.IRevive;
 import ZooFantastique.models.interfaces.IRun;
 import ZooFantastique.models.interfaces.ISwim;
 import javafx.application.Platform;
+import javafx.geometry.Pos;
 import org.controlsfx.control.Notifications;
+import utils.NotificationUtils;
+
+import java.util.Random;
 
 /**
  * La classe {@code Dragon} représente une créature fantastique qui étend les
@@ -31,23 +35,20 @@ public class Dragon extends Ovipare implements IRun, ISwim, IFly, IRevive {
 
 
     public Dragon(Enclos enclos) {
-        super("Dragon", enclos, "%SON DRAGON%");
+        super("Dragon", enclos, "Raaaargh!");
+        this.setTaille(new Random().nextInt(10,50));
+        this.setPoids(new Random().nextInt(1000,10000));
     }
 
-    /**
-     * Permet au dragon de voler.
-     */
+
     @Override
     public void fly() {
-        System.out.println("Le dragon vole");
+        Notifications.create().title("Vol").text("Le dragon vole").position(Pos.TOP_CENTER).showInformation();
     }
 
-    /**
-     * Fait courir le dragon.
-     */
     @Override
     public void run() {
-        System.out.println("Le dragon court");
+        Notifications.create().title("Course").text("Le dragon court").position(Pos.TOP_CENTER).showInformation();
     }
 
     /**
@@ -55,21 +56,22 @@ public class Dragon extends Ovipare implements IRun, ISwim, IFly, IRevive {
      */
     @Override
     public void swim() {
-        System.out.println("Le dragon nage");
+        Notifications.create().title("Nage").text("Le dragon nage").position(Pos.TOP_CENTER).showInformation();
     }
 
+    /**
+     * Permet au dragon de ressusciter.
+     */
     public void revive() {
         super.setSante(getSanteMax());
         setEtat(Etat.PLEINE_FORME);
         setAge(Age.JEUNE);
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                Notifications.create().title("Resurrection").text("Le dragon ressucite").showInformation();
-            }
-        });
+        NotificationUtils.showNotification("Resurrection", "Le dragon ressucite");
     }
 
+    /**
+     * Permet au dragon de mourir. Quand il meurt, il ressuscite.
+     */
     @Override
     public void die(){
         this.revive();

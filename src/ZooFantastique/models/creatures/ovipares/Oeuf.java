@@ -6,14 +6,19 @@ import ZooFantastique.models.enclos.Enclos;
 import javafx.application.Platform;
 import org.controlsfx.control.Notifications;
 
+import java.util.Random;
+
 
 public class Oeuf extends Creature implements Runnable{
 
     private Ovipare mother;
+    private int incubationTime = 60000;
 
     public Oeuf(String nom, Enclos enclos, String sonEmit, Ovipare mother) {
         super("Oeuf", enclos, "rrrr");
         this.mother = mother;
+        this.setTaille(new Random().nextInt(1,2));
+        this.setPoids(new Random().nextInt(3,8));
         Thread oeufThread = new Thread(this);
         oeufThread.start();
     }
@@ -21,7 +26,7 @@ public class Oeuf extends Creature implements Runnable{
     @Override
     public void run() {
         try {
-            Thread.sleep(10000);
+            Thread.sleep(incubationTime);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

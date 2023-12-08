@@ -29,17 +29,16 @@ public class EventManager {
 
     private Random random;
     private final double P_ENCLOS_DEGRADE_BASE = (double) 1 /500;
-    private final double P_ENCLOS_SALINITE_BASE = 0.01;
     private final double P_CREATURE_DORT = (double) 1 /1000;
-    private final double P_CREATURE_VIEILLIR = (double) 1 /250;
-    private final double P_CREATURE_MALADE = (double) 1 /1250;
-    private final double P_CREATURE_MALADE_PERD_SANTE = (double) 1 /100;
-    private final double P_CREATURE_A_FAIM = (double) 1 /400;
-    private final double P_OVIPARE_POND = (double) 1 /1000;
-    private final double P_LYCANTROPE_HURLE = (double) 1 /1500;
-    private final double P_LYCANTROPE_TENTE_DOMINATION = (double) 1 /50;
-    private final double P_LYCANTROPE_REPRODUCE = (double) 1 /100;
-    private final double P_VIVIPARE_NAISSANCE = (double) 1 /1000;
+    private final double P_CREATURE_VIEILLIR = (double) 1 /2500;
+    private final double P_CREATURE_MALADE = (double) 1 /2500;
+    private final double P_CREATURE_MALADE_PERD_SANTE = (double) 1 /10;
+    private final double P_CREATURE_A_FAIM = (double) 1 /1000;
+    private final double P_OVIPARE_POND = (double) 1 /2000;
+    private final double P_LYCANTROPE_HURLE = (double) 1 /2000;
+    private final double P_LYCANTROPE_TENTE_DOMINATION = (double) 1 /200;
+    private final double P_LYCANTROPE_REPRODUCE = (double) 1 /1000;
+    private final double P_VIVIPARE_NAISSANCE = (double) 1 /1500;
 
     // Mettre les probas en variable final private avec le nom en majuscule
     //Ne pas oublier de mettre les notif pour les evenements
@@ -120,9 +119,12 @@ public class EventManager {
             if(creature.getEtat() != Etat.MALADE){
                 creature.setEtat(Etat.MALADE);
                 sendNotification("Créature", "La créature \"" + creature.getNom() + "\" viens de tomber malade.\nPensez à soigner les créatures malades !");
-            }else{
-                creature.setSante(creature.getSante() - 1);
             }
+        }
+
+        /* ----- La créature perd de la santé ----- */
+        if(creature.getEtat() == Etat.MALADE && random.nextDouble() <= P_CREATURE_MALADE_PERD_SANTE){
+            creature.setSante(creature.getSante() - 1);
         }
 
         /* ----- La créature a faim ----- */

@@ -7,6 +7,8 @@ import ZooFantastique.models.interfaces.IRevive;
 import javafx.application.Platform;
 import org.controlsfx.control.Notifications;
 
+import java.util.Random;
+
 /**
  * La classe {@code Nymphe} représente une créature fantastique de type vivipare
  * qui a la capacité d'être ressuscitée. Elle étend les fonctionnalités de la classe
@@ -24,19 +26,16 @@ import org.controlsfx.control.Notifications;
 public class Nymphe extends Vivipare implements IRevive {
 
     public Nymphe(Enclos enclos) {
-        super("Nymphe", enclos, "%SON NYMPHE%");
+        super("Nymphe", enclos, "Sssshhh...");
+        this.setTaille(1.7);
+        this.setPoids(new Random().nextInt(60,100));
     }
 
     public void revive() {
         super.setSante(getSanteMax());
         setEtat(Etat.PLEINE_FORME);
         setAge(Age.JEUNE);
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                Notifications.create().title("Resurrection").text("La nymphe ressucite").showInformation();
-            }
-        });
+        Notifications.create().title("Resurrection").text("La nymphe ressucite").showInformation();
     }
 
     @Override

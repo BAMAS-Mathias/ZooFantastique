@@ -214,8 +214,12 @@ public abstract class Creature {
     }
 
     public void setSante(double sante) {
-        if(sante == 0) etat = Etat.MORT;
+        if(sante == 0){
+            etat = Etat.MORT;
+            die();
+        }
         this.sante = sante;
+
 
     }
 
@@ -256,17 +260,16 @@ public abstract class Creature {
         isSleeping = false;
     }
 
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
     public void setSexe(Sexe sexe) {
         this.sexe = sexe;
     }
 
 
+    public void setPoids(double poids) {
+        this.poids = poids;
+    }
+
+    public void setTaille(double taille) {
+        this.taille = taille;
+    }
 }

@@ -1,31 +1,16 @@
 package ZooFantastique.controllers;
 
-import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.view.CreateEnclosView;
 import ZooFantastique.view.MainMenuView;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextArea;
-import javafx.scene.text.Text;
 import ZooFantastique.ZooMain;
 
-import java.util.ArrayList;
 /**
  * La classe ZooFantastiqueController gère les opérations liées au zoo fantastique.
  */
 public class ZooFantastiqueController{
-
-    @FXML
-    private TextArea zooNameArea;
-
-    @FXML
-    private Button confirmEditButton;
-
-    @FXML
-    private Text zooNameText;
 
     private ZooFantastique zooFantastique;
 
@@ -47,6 +32,8 @@ public class ZooFantastiqueController{
             e.printStackTrace();
         }
     }
+
+
     /**
      * Démarre le zoo avec le nom spécifié.
      *
@@ -61,9 +48,10 @@ public class ZooFantastiqueController{
         }catch(Exception e){
             e.printStackTrace();
         }
-
-
     }
+
+
+
     /**
      * Crée un nouvel enclos en affichant la vue de création d'enclos.
      */
@@ -75,22 +63,5 @@ public class ZooFantastiqueController{
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
-    /**
-     * Édite le nom du zoo.
-     *
-     * @param name Le nouveau nom du zoo.
-     */
-    public void editName(String name){
-        zooFantastique.setNom(name);
-        /*new ZooFantastiqueView(zooFantastique).showSuccessfullNameEdit();*/
-    }
-
-    /**
-     * Liste tous les enclos du zoo.
-     */
-    public void listerEnclos(){
-        ArrayList<Enclos> listeEnclos =  zooFantastique.getListeDesEnclos();
-        /*new ZooFantastiqueView(zooFantastique).displayAllEnclos(listeEnclos);*/
     }
 }

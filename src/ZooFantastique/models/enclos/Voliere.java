@@ -1,5 +1,8 @@
 package ZooFantastique.models.enclos;
 
+import javafx.geometry.Pos;
+import utils.NotificationUtils;
+
 /**
  * La classe {@code Voliere} représente un type spécifique d'enclos destiné à héberger
  * des créatures volantes. Elle étend les fonctionnalités de la classe {@link Enclos}
@@ -31,9 +34,9 @@ public class Voliere extends Enclos {
 
     /**
      * Effectue l'entretien du toit de la volière.
-     * TODO : Implémenter la logique d'entretien du toit spécifique.
+     *
      */
     private void entretientToit() {
-        // TODO : Implémenter la logique d'entretien du toit spécifique.
+        NotificationUtils.showNotification("Volière", "Entretien du toit de la volière", Pos.TOP_CENTER);
     }
 }

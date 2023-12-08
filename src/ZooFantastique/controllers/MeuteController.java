@@ -2,7 +2,6 @@ package ZooFantastique.controllers;
 
 import ZooFantastique.ZooMain;
 import ZooFantastique.models.creatures.vivipares.lycanthrope.Meute;
-import ZooFantastique.view.EnclosView;
 import ZooFantastique.view.MeuteView;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

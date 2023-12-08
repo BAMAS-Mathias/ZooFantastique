@@ -2,6 +2,10 @@ package ZooFantastique.models.creatures.vivipares;
 
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IRun;
+import javafx.geometry.Pos;
+import org.controlsfx.control.Notifications;
+
+import java.util.Random;
 
 /**
  * La classe {@code Licorne} représente une créature fantastique de type vivipare
@@ -20,7 +24,9 @@ import ZooFantastique.models.interfaces.IRun;
 public class Licorne extends Vivipare implements IRun {
 
     public Licorne(Enclos enclos) {
-        super("Licorne", enclos,"%SON LICORNE%");
+        super("Licorne", enclos,"Huuuuu!");
+        this.setTaille(new Random().nextInt(1,2));
+        this.setPoids(new Random().nextInt(300,700));
     }
 
 
@@ -29,6 +35,6 @@ public class Licorne extends Vivipare implements IRun {
      */
     @Override
     public void run() {
-        // Implémentation spécifique de la course pour la Licorne
+        Notifications.create().title("Court").text("La Licorne court").position(Pos.TOP_CENTER).showInformation();
     }
 }

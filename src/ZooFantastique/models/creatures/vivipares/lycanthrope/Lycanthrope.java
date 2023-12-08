@@ -1,8 +1,6 @@
 package ZooFantastique.models.creatures.vivipares.lycanthrope;
 
-import ZooFantastique.models.Age;
 import ZooFantastique.models.Sexe;
-import ZooFantastique.models.creatures.Etat;
 import ZooFantastique.models.creatures.vivipares.Vivipare;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IRun;
@@ -42,16 +40,18 @@ public class Lycanthrope extends Vivipare implements IRun {
 
 
     public Lycanthrope(Enclos enclos) {
-        super("Lycanthrope", enclos, "%SON LYCANTHROPE%");
+        super("Lycanthrope", enclos, "Awoooo!");
         Random random = new Random();
         rang = RangDomination.values()[random.nextInt(1,RangDomination.values().length)];
         initStats();
     }
 
+
     public Lycanthrope(Enclos enclos, Sexe sexe){
         this(enclos);
         this.setSexe(sexe);
     }
+
 
     public Lycanthrope(Enclos enclos, RangDomination rang){
         this(enclos);
@@ -59,20 +59,23 @@ public class Lycanthrope extends Vivipare implements IRun {
         initStats();
     }
 
+    /**
+     * Initialise les statistiques du Lycanthrope.
+     */
     public void initStats(){
         Random random = new Random();
         impétuosité = random.nextDouble();
         facteurDomination = rang.getRangPuissance() * 10 + 5;
         force = random.nextInt(1,50);
         niveau = force * facteurDomination * rang.getRangPuissance();
+        this.setTaille(new Random().nextInt(1,3));
+        this.setPoids(new Random().nextInt(100,250));
     }
 
-    /**
-     * Permet au Lycanthrope de courir avec agilité.
-     */
+
     @Override
     public void run() {
-        // Implémentation spécifique de la course pour le Lycanthrope
+        Notifications.create().title("Court").text("Le Lycanthrope court").position(Pos.TOP_CENTER).showInformation();
     }
 
     public void hurler() {
@@ -108,6 +111,12 @@ public class Lycanthrope extends Vivipare implements IRun {
         super.setEnclos(enclos);
     }
 
+
+    /**
+     * Indique si le lycanthrope peut dominer un autre lycanthrope.
+     * @param lycanthrope
+     * @return
+     */
     public boolean canDominate(Lycanthrope lycanthrope){
         if(lycanthrope.getSexe() == Sexe.FEMELLE && lycanthrope.rang == RangDomination.α) return false;
         if(lycanthrope.getRang() == RangDomination.α && this.getRang() == RangDomination.α) return false;
@@ -117,6 +126,12 @@ public class Lycanthrope extends Vivipare implements IRun {
         return (this.force >= lycanthrope.force);
     }
 
+
+    /**
+     * Tente de dominer un lycanthrope.
+     * @param lycanthrope
+     * @return
+     */
     public boolean attemptDomination(Lycanthrope lycanthrope){
         if(this.niveau > lycanthrope.niveau || lycanthrope.getRang() == RangDomination.ω){
             achieveDomination(lycanthrope);
@@ -124,7 +139,7 @@ public class Lycanthrope extends Vivipare implements IRun {
         }else{
             if(lycanthrope.getRang() == RangDomination.α){
                 Random random = new Random();
-                if(random.nextDouble() < 1){
+                if(random.nextDouble() < 0.1){ // 10% de chance quitter la meute si domine par un alpha
                     quitterMeute();
                     return false;
                 }
@@ -134,6 +149,10 @@ public class Lycanthrope extends Vivipare implements IRun {
     }
 
 
+    /**
+     * Domine un lycanthrope.
+     * @param lycanthrope
+     */
     public void achieveDomination(Lycanthrope lycanthrope){
         if(lycanthrope.getRang() == RangDomination.α){
             this.getMeute().updateCoupleAlpha(this);
@@ -159,6 +178,10 @@ public class Lycanthrope extends Vivipare implements IRun {
         // TODO : Implémenter la transformation du Lycanthrope
     }
 
+
+    /**
+     * Permet au licanthrope de repondre a un hurlement.
+     */
     public void hurlementRetour() {
         Platform.runLater(new Runnable() {
             @Override
@@ -167,15 +190,6 @@ public class Lycanthrope extends Vivipare implements IRun {
 
             }
         });
-    }
-
-
-    public void baisserRang(){
-        this.rang = rang.previousRang();
-    }
-
-    public void augmenterRang(){
-        this.rang = rang.nextRang();
     }
 
     public RangDomination getRang() {
@@ -194,10 +208,6 @@ public class Lycanthrope extends Vivipare implements IRun {
         return force;
     }
 
-    public void setNiveau(double niveau) {
-        this.niveau = niveau;
-    }
-
     public double getFacteurDomination() {
         return facteurDomination;
     }
@@ -208,5 +218,9 @@ public class Lycanthrope extends Vivipare implements IRun {
 
     public void setMeute(Meute meute) {
         this.meute = meute;
+    }
+
+    public double getNiveau() {
+        return niveau;
     }
 }

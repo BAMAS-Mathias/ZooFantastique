@@ -12,6 +12,7 @@ import ZooFantastique.models.enclos.Proprete;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -119,6 +120,7 @@ public class EnclosView implements Initializable {
     public void displayMeute(){
         if(enclos.getMeute() != null){
             VBox meuteVBox = new VBox();
+            meuteVBox.setAlignment(Pos.CENTER);
             meuteVBox.getChildren().add(new Text("Meute de Lycanthropes"));
             meuteVBox.setPrefSize(100, 100);
             meuteVBox.setStyle("-fx-background-color: red");
@@ -132,7 +134,11 @@ public class EnclosView implements Initializable {
     }
 
     public void displayCreatures(){
-        for(int i = 0; i < enclos.getNbCreaturePresente(); ++i){
+        int i = 0;
+        if(enclos.getMeute() != null){
+            i = 1;
+        }
+        for(; i < enclos.getNbCreaturePresente(); ++i){
             Creature creature = enclos.getCreaturesPresentes().get(i);
 
             if(creature instanceof Lycanthrope){
@@ -142,6 +148,7 @@ public class EnclosView implements Initializable {
             }
 
             VBox creatureVBbox = new VBox();
+            creatureVBbox.setAlignment(Pos.CENTER);
             creatureVBbox.getChildren().add(new Text(creature.getNom()));
             creatureVBbox.setPrefSize(100, 100);
             creatureVBbox.setStyle("-fx-background-color: green");
@@ -183,6 +190,10 @@ public class EnclosView implements Initializable {
         if(enclos.getPropreteDegre() == Proprete.BON || !enclos.isEmpty()){
             cleanButton.setVisible(false);
             cleanButton.setManaged(false);
+        }
+        if(enclos.getNbCreaturePresente() == enclos.getNbCreatureMax()){
+            addCreatureButton.setVisible(false);
+            addCreatureButton.setManaged(false);
         }
     }
 

@@ -1,7 +1,6 @@
 package ZooFantastique.controllers;
 
 import ZooFantastique.ZooMain;
-import ZooFantastique.models.ZooFantastique;
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.Etat;
 import ZooFantastique.models.enclos.Aquarium;
@@ -17,6 +16,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import org.controlsfx.control.Notifications;
+import utils.NotificationUtils;
 
 import java.util.ArrayList;
 
@@ -24,6 +24,8 @@ import java.util.ArrayList;
  * La classe CreatureController gère les opérations liées aux créatures dans le zoo.
  */
 public class CreatureController {
+
+
 
     /**
      * Émet le son de la créature donnée et l'affiche dans une notification.
@@ -34,6 +36,9 @@ public class CreatureController {
         CreatureView creatureView = new CreatureView(creature);
         Notifications.create().text(creature.getSonEmit()).title(creature.getNom()).showInformation();
     }
+
+
+
     /**
      * Soigne la créature donnée, met à jour la vue et affiche une notification.
      *
@@ -49,6 +54,9 @@ public class CreatureController {
             }
         });
     }
+
+
+
     /**
      * Nourrit la créature donnée, met à jour la vue.
      *
@@ -58,6 +66,9 @@ public class CreatureController {
         creature.feed();
         visiterCreature(creature);
     }
+
+
+
     /**
      * Visite la vue de la créature donnée.
      *
@@ -74,22 +85,11 @@ public class CreatureController {
         }
     }
 
-    /**
-     * Soigne ou affiche un message en fonction de la santé de la créature donnée.
-     *
-     * @param creature La créature à soigner.
-     */
-    public void soignerCreature(Creature creature){
-        CreatureView creatureView =  new CreatureView(creature);
-        if(creature.getSante() == creature.getSanteMax()){
-            creatureView.displayCreatureFullHealthMessage();
-        }else{
-            creature.heal();
-            creatureView.displayHealMessage();
-        }
-    }
+
+
     /**
      * Transfère la créature donnée vers un enclos sélectionné.
+     * Dans ce cas l'enclos n'est pas spécifié. On ouvre donc le menu de sélection d'enclos.
      *
      * @param creature La créature à transférer.
      */
@@ -103,6 +103,8 @@ public class CreatureController {
             e.printStackTrace();
         }
     }
+
+
     /**
      * Transfère la créature donnée vers l'enclos spécifié.
      *
@@ -121,6 +123,9 @@ public class CreatureController {
 
         new EnclosController().examinerEnclos(creature.getEnclos());
     }
+
+
+
     /**
      * Récupère la liste des enclos possibles pour la créature en fonction de ses capacités.
      *
@@ -142,28 +147,9 @@ public class CreatureController {
         }
         return enclosList;
     }
-    /**
-     * Récupère la liste des enclos possibles pour le transfert de la créature.
-     *
-     * @param creature La créature à transférer.
-     * @return Une liste d'enclos possibles pour le transfert de la créature.
-     */
-    private ArrayList<Enclos> getEnclosForTransfer(Creature creature){
-        ZooFantastique zooFantastique = ZooMain.getZoo();
-        ArrayList<Enclos> enclosPossible = new ArrayList<>();
-        for(Enclos enclos : zooFantastique.getListeDesEnclos()){
-            if(enclos.isEmpty()) enclosPossible.add(enclos);
-            else{
-                if(enclos.getCreaturesPresentes().get(0).getNomEspece().equals(creature.getNomEspece())){
-                    if(enclos.getNbCreaturePresente() < enclos.getNbCreatureMax()){
-                        enclosPossible.add(enclos);
-                    }
-                }
-            }
-        }
-        System.out.println(enclosPossible.size());
-        return enclosPossible;
-    }
+
+
+
     /**
      * Fait vieillir la créature et affiche une notification en cas de décès ou de vieillissement.
      *
@@ -172,19 +158,9 @@ public class CreatureController {
     public void viellir(Creature creature){
         creature.vieillir();
         if(creature.getEtat() == Etat.MORT){
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    Notifications.create().title("Mort").text("La creature " + creature.getNom() + " est mort dans " + creature.getEnclos().getNom()).showError();
-                }
-            });
+            NotificationUtils.showErrorNotification("Mort", "La creature " + creature.getNom() + " est mort dans " + creature.getEnclos().getNom());
         }else{
-            Platform.runLater(new Runnable() {
-                @Override
-                public void run() {
-                    Notifications.create().title(creature.getNom()).text(creature.getNom() + " a pris de l'age").showError();
-                }
-            });
+            NotificationUtils.showErrorNotification(creature.getNom(), creature.getNom() + " a vieillit dans " + creature.getEnclos().getNom());
         }
     }
 }

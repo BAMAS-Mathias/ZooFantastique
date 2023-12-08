@@ -13,24 +13,32 @@ public class CoupleAlpha {
         this.femelleAlpha = femelleAlpha;
     }
 
+
     public Lycanthrope getMaleAlpha() {
         return maleAlpha;
     }
+
 
     public void setMaleAlpha(Lycanthrope maleAlpha) {
         this.maleAlpha = maleAlpha;
         maleAlpha.setRang(RangDomination.α);
     }
 
+
     public Lycanthrope getFemelleAlpha() {
         return femelleAlpha;
     }
+
 
     public void setFemelleAlpha(Lycanthrope femelleAlpha) {
         this.femelleAlpha = femelleAlpha;
         femelleAlpha.setRang(RangDomination.α);
     }
 
+    /**
+     * Reproduit le couple alpha
+     * Si l'enclos est plein, la reproduction ne se fait pas
+     */
     public void reproduce(){
         int nbChildren = new Random().nextInt(1,7);
         ArrayList<Lycanthrope> childrenList = new ArrayList<>();

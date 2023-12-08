@@ -1,5 +1,8 @@
 package ZooFantastique.models.enclos;
 
+import javafx.geometry.Pos;
+import utils.NotificationUtils;
+
 import java.util.Random;
 
 /**
@@ -41,8 +44,6 @@ public class Aquarium extends Enclos {
         this.salinite = salinite;
     }
 
-
-
     /**
      * {@inheritDoc}
      * <p>
@@ -52,7 +53,7 @@ public class Aquarium extends Enclos {
      */
     @Override
     public void entretient() {
-        // TODO: Vérifier la profondeur et la salinité lors de l'entretien de l'aquarium
+        NotificationUtils.showNotification("Aquarium","Vérification de la profondeur et de la salinité de l'aquarium...", Pos.TOP_CENTER);
         super.entretient();
     }
 

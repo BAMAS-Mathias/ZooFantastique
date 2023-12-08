@@ -4,6 +4,10 @@ import ZooFantastique.controllers.CreatureController;
 import ZooFantastique.controllers.EnclosController;
 import ZooFantastique.models.creatures.Creature;
 import ZooFantastique.models.creatures.Etat;
+import ZooFantastique.models.creatures.vivipares.lycanthrope.Lycanthrope;
+import ZooFantastique.models.interfaces.IFly;
+import ZooFantastique.models.interfaces.IRun;
+import ZooFantastique.models.interfaces.ISwim;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -53,7 +57,22 @@ public class CreatureView implements Initializable {
     private Text creatureEtatText;
 
     @FXML
+    private Text creatureForceText;
+
+    @FXML
+    private Text creatureDominationText;
+
+    @FXML
+    private Text creatureRangText;
+
+    @FXML
+    private Text creatureLevelText;
+
+    @FXML
     private VBox creatureImageContainer;
+
+    @FXML
+    private GridPane lycanthropeStatsContainer;
 
     private Creature creature;
 
@@ -88,6 +107,8 @@ public class CreatureView implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        lycanthropeStatsContainer.setVisible(false);
+
         returnButton.setOnAction(event -> {
             new EnclosController().examinerEnclos(creature.getEnclos());
         });
@@ -140,6 +161,47 @@ public class CreatureView implements Initializable {
             });
             actionButtonList.getChildren().add(healCretureButton);
         }
+
+        if(creature instanceof Lycanthrope){
+            Lycanthrope lycanthrope = (Lycanthrope) creature;
+            creatureForceText.setText(String.valueOf(lycanthrope.getForce()));
+            creatureDominationText.setText(String.valueOf(lycanthrope.getFacteurDomination()));
+            creatureRangText.setText(String.valueOf(lycanthrope.getRang()));
+            creatureLevelText.setText(String.valueOf(lycanthrope.getNiveau()));
+            lycanthropeStatsContainer.setVisible(true);
+        }
+
+        if(creature instanceof IRun){
+            IRun iRun = (IRun) creature;
+            Button runButton = new Button("Courir");
+            runButton.setPrefSize(120,40);
+            runButton.setOnAction(actionEvent -> {
+                iRun.run();
+            });
+            actionButtonList.getChildren().add(runButton);
+        }
+
+        if(creature instanceof IFly){
+            IFly iFly = (IFly) creature;
+            Button flyButton = new Button("Voler");
+            flyButton.setPrefSize(120,40);
+            flyButton.setOnAction(actionEvent -> {
+                iFly.fly();
+            });
+            actionButtonList.getChildren().add(flyButton);
+        }
+
+        if(creature instanceof ISwim){
+            ISwim iSwim = (ISwim) creature;
+            Button swimButton = new Button("Nage");
+            swimButton.setPrefSize(120,40);
+            swimButton.setOnAction(actionEvent -> {
+                iSwim.swim();
+            });
+            actionButtonList.getChildren().add(swimButton);
+        }
+
+
 
 
 

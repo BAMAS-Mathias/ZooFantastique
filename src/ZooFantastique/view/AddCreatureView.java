@@ -16,6 +16,9 @@ public class AddCreatureView implements Initializable {
     @FXML
     private HBox buttonList;
 
+    @FXML
+    private Button retourButton;
+
     private Enclos enclos;
     private ArrayList<String> possibleCreatureSpeciesToAdd;
 
@@ -30,10 +33,15 @@ public class AddCreatureView implements Initializable {
         System.out.println(possibleCreatureSpeciesToAdd.size());
         for(String creatureSpecies : possibleCreatureSpeciesToAdd){
             Button button = new Button(creatureSpecies);
+            button.setPrefSize(100,50);
             button.setOnAction(actionEvent -> {
                 new EnclosController().addCreature(enclos, button.getText());
             });
             buttonList.getChildren().add(button);
         }
+
+        retourButton.setOnAction(actionEvent -> {
+            new EnclosController().examinerEnclos(enclos);
+        });
     }
 }

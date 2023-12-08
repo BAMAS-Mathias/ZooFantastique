@@ -9,7 +9,6 @@ public class ApplicationLoader {
     /**
      * Point d'entrée principal de l'application. Lance l'application JavaFX ZooFantastique.
      *
-     * @param args Les arguments de la ligne de commande (non utilisés dans cet exemple).
      */
     public static void main(String[] args) {
         Application.launch(ZooMain.class, args);
