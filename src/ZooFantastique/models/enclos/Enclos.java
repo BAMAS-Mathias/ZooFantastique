@@ -93,7 +93,7 @@ public class Enclos {
      */
     public void addCreature(Creature creature) throws EnclosFullException {
         if(nbCreaturePresente >= nbCreatureMax){
-            throw new EnclosFullException();
+            throw new EnclosFullException("Limite de créature atteinte !");
         }
         nbCreaturePresente++;
         creaturesPresentes.add(creature);
