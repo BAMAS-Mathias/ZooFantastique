@@ -42,12 +42,15 @@ public class ZooFantastiqueController{
 
     public void startZoo(String nomZoo){
         zooFantastique.setNom(nomZoo);
+        ZooMain.getTh().start();
 
         try{
             new MainMenuView().displayView();
         }catch(Exception e){
             e.printStackTrace();
         }
+
+
     }
 
     public void creerEnclos(){

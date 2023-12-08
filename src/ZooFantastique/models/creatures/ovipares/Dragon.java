@@ -1,10 +1,14 @@
 package ZooFantastique.models.creatures.ovipares;
 
+import ZooFantastique.models.Age;
+import ZooFantastique.models.creatures.Etat;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IFly;
 import ZooFantastique.models.interfaces.IRevive;
 import ZooFantastique.models.interfaces.IRun;
 import ZooFantastique.models.interfaces.ISwim;
+import javafx.application.Platform;
+import org.controlsfx.control.Notifications;
 
 /**
  * La classe {@code Dragon} représente une créature fantastique qui étend les
@@ -39,14 +43,6 @@ public class Dragon extends Ovipare implements IRun, ISwim, IFly, IRevive {
     }
 
     /**
-     * Ressuscite le dragon par magie.
-     */
-    @Override
-    public void revive() {
-        System.out.println("Le dragon revis par magie");
-    }
-
-    /**
      * Fait courir le dragon.
      */
     @Override
@@ -60,6 +56,23 @@ public class Dragon extends Ovipare implements IRun, ISwim, IFly, IRevive {
     @Override
     public void swim() {
         System.out.println("Le dragon nage");
+    }
+
+    public void revive() {
+        super.setSante(getSanteMax());
+        setEtat(Etat.PLEINE_FORME);
+        setAge(Age.JEUNE);
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Notifications.create().title("Resurrection").text("Le dragon ressucite").showInformation();
+            }
+        });
+    }
+
+    @Override
+    public void die(){
+        this.revive();
     }
 
 }

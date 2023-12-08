@@ -125,14 +125,14 @@ public class EventManager {
         }
 
         /* ----- L'ovipare pond ----- */
-        if(creature instanceof Ovipare && random.nextDouble() <= P_OVIPARE_POND && !creature.getEnclos().isFull()){
+        if(creature instanceof Ovipare && random.nextDouble() <= P_OVIPARE_POND && !creature.getEnclos().isFull() && creature.getSexe() == Sexe.FEMELLE){
             Ovipare ovipare = (Ovipare) creature;
             ovipare.lay();
             sendNotification("Créature", "L'ovipare \"" + ovipare.getNom() + "\" a pondu un oeuf !");
         }
 
         /* ----- Le vivipare donne naissance ----- */
-        if(creature instanceof Vivipare && random.nextDouble() <= P_VIVIPARE_NAISSANCE && !creature.getEnclos().isFull() && !(creature instanceof Lycanthrope)){
+        if(creature instanceof Vivipare && random.nextDouble() <= P_VIVIPARE_NAISSANCE && creature.getSexe() == Sexe.FEMELLE && !creature.getEnclos().isFull() && !(creature instanceof Lycanthrope)){
             Vivipare vivipare = (Vivipare) creature;
             vivipare.giveBirth();
             sendNotification("Créature", vivipare.getNom() + "\" a donné naissance !");

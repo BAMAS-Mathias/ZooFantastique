@@ -3,6 +3,7 @@ package ZooFantastique.models.creatures.vivipares.lycanthrope;
 
 import ZooFantastique.ZooMain;
 import ZooFantastique.models.Sexe;
+import ZooFantastique.models.creatures.Etat;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
 import org.controlsfx.control.Notifications;
@@ -24,11 +25,24 @@ public class Meute {
         ZooMain.getColonie().add(this);
     }
 
+    public void dissoudreMeute(){
+        getMembres().get(0).getEnclos().setMeute(null);
+        for(Lycanthrope lycanthrope : getMembres()){
+            lycanthrope.setMeute(null);
+        }
+        membres.clear();
+        ZooMain.getColonie().remove(this);
+    }
+
     public void notifyHurlement(Lycanthrope lycanthrope){
         for (int i = 0; i < getMembres().size(); i++){
-            if(membres.get(i) != lycanthrope){
-                membres.get(i).hurlementRetour();
+            Lycanthrope membre = getMembres().get(i);
+            if(membre.isSleeping() || membre.getEtat() == Etat.MALADE) continue;
+
+            if(membre != lycanthrope){
+                membre.hurlementRetour();
             }
+            
             if(i == 4){
                 Platform.runLater(new Runnable() {
                     @Override
@@ -52,14 +66,19 @@ public class Meute {
     }
 
     public void updateCoupleAlpha(Lycanthrope newAlphaMale){
+        Lycanthrope strongestFemale = getStrongestFemale();
+        if(newAlphaMale == null || strongestFemale == null) {
+            dissoudreMeute();
+            return;
+        }
         getCoupleAlpha().setMaleAlpha(newAlphaMale);
-        getCoupleAlpha().setFemelleAlpha(getStrongestFemale());
+        getCoupleAlpha().setFemelleAlpha(strongestFemale);
     }
 
     public Lycanthrope getStrongestFemale(){
-        Lycanthrope strongest = membres.get(0);
+        Lycanthrope strongest = null;
         for(Lycanthrope membre : membres){
-            if(membre.getSexe() == Sexe.FEMELLE && membre.getForce() > strongest.getForce()){
+            if(membre.getSexe() == Sexe.FEMELLE && (strongest == null || membre.getForce() > strongest.getForce())){
                 strongest = membre;
             }
         }
@@ -67,9 +86,9 @@ public class Meute {
     }
 
     public Lycanthrope getStrongestMale(){
-        Lycanthrope strongest = membres.get(0);
+        Lycanthrope strongest = null;
         for(Lycanthrope membre : membres){
-            if(membre.getSexe() == Sexe.MALE && membre.getForce() > strongest.getForce()){
+            if(membre.getSexe() == Sexe.MALE && (strongest == null || membre.getForce() > strongest.getForce())){
                 strongest = membre;
             }
         }
@@ -86,6 +105,18 @@ public class Meute {
             }
         }
         return lycanthropes;
+    }
+
+    public void removeMembre(Lycanthrope lycanthrope){
+        getMembres().remove(lycanthrope);
+        if(lycanthrope.getRang() != null && lycanthrope.getRang() == RangDomination.α){
+            if(lycanthrope.getSexe() == Sexe.FEMELLE){
+                updateCoupleAlpha(this.getCoupleAlpha().getMaleAlpha());
+            }
+            else{
+                updateCoupleAlpha(getStrongestMale());
+            }
+        }
     }
 
 

@@ -2,6 +2,7 @@ package ZooFantastique.models.creatures.vivipares.lycanthrope;
 
 import ZooFantastique.models.Age;
 import ZooFantastique.models.Sexe;
+import ZooFantastique.models.creatures.Etat;
 import ZooFantastique.models.creatures.vivipares.Vivipare;
 import ZooFantastique.models.enclos.Enclos;
 import ZooFantastique.models.interfaces.IRun;
@@ -84,7 +85,7 @@ public class Lycanthrope extends Vivipare implements IRun {
     }
 
     public void quitterMeute() {
-        meute.getMembres().remove(this);
+        meute.removeMembre(this);
         meute = null;
         rang = null;
     }
@@ -97,6 +98,14 @@ public class Lycanthrope extends Vivipare implements IRun {
             meute = null;
         }
         super.die();
+    }
+
+    @Override
+    public void setEnclos(Enclos enclos){
+        if(enclos != this.getEnclos()){
+            quitterMeute();
+        }
+        super.setEnclos(enclos);
     }
 
     public boolean canDominate(Lycanthrope lycanthrope){
@@ -198,5 +207,9 @@ public class Lycanthrope extends Vivipare implements IRun {
 
     public static ArrayList<String> getMoisSaisonAmour() {
         return moisSaisonAmour;
+    }
+
+    public void setMeute(Meute meute) {
+        this.meute = meute;
     }
 }

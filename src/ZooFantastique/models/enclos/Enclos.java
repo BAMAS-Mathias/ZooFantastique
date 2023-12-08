@@ -167,6 +167,10 @@ public class Enclos {
     public boolean isFull(){
         return nbCreaturePresente >= nbCreatureMax;
     }
+
+    public void setMeute(Meute meute) {
+        this.meute = meute;
+    }
 }
 
 

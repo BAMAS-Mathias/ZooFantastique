@@ -19,6 +19,7 @@ public class CoupleAlpha {
 
     public void setMaleAlpha(Lycanthrope maleAlpha) {
         this.maleAlpha = maleAlpha;
+        maleAlpha.setRang(RangDomination.α);
     }
 
     public Lycanthrope getFemelleAlpha() {
@@ -27,6 +28,7 @@ public class CoupleAlpha {
 
     public void setFemelleAlpha(Lycanthrope femelleAlpha) {
         this.femelleAlpha = femelleAlpha;
+        femelleAlpha.setRang(RangDomination.α);
     }
 
     public void reproduce(){
