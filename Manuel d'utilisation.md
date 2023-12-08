@@ -8,7 +8,7 @@ Pour bien commencer le ZooFantastique, je vais vous présenter les fonctionnalit
 
 Pour débuter, rendez-vous sur l’accueil du jeu où vous pourrez entrer le nom de votre Zoo.
 
- ![image]()
+ ![image](Accueil.png)
 
 
 ## Exploration du Zoo
