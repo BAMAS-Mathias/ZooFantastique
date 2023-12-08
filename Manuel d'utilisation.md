@@ -24,7 +24,7 @@ Pour assurer le bon fonctionnement du Zoo, vous pouvez créer des enclos qui acc
 - Pour nettoyer un enclos, transférez toutes les créatures dans un autre pour assurer leur sécurité.
 - Assurez-vous de nourrir toutes les créatures pour éviter toute perte.
 
- ![image](Encos.png)
+ ![image](Encos.png.png)
 Des rappels apparaîtront sur votre écran pour vous indiquer quelles actions doivent être faites dans l’enceinte du Zoo.
 
 Toutes les informations nécessaires ont été mises à votre disposition.
