@@ -8,14 +8,14 @@ Pour bien commencer le ZooFantastique, je vais vous présenter les fonctionnalit
 
 Pour débuter, rendez-vous sur l’accueil du jeu où vous pourrez entrer le nom de votre Zoo.
 
- ![image](Accueil.png)
+ ![image](Accueil(1).png)
 
 
 ## Exploration du Zoo
 
 Une fois le nom entré, vous vous retrouvez dans le vif du sujet. Le zoo est à votre entière disposition, et vous seul êtes maîtres de ce Zoo.
 
- ![image]()
+ ![image](Principal.png)
 
 
 Pour assurer le bon fonctionnement du Zoo, vous pouvez créer des enclos qui accueilleront les créatures fantastiques. Cependant, veillez à respecter quelques règles pour éviter l'anarchie dans le Zoo :
@@ -24,9 +24,9 @@ Pour assurer le bon fonctionnement du Zoo, vous pouvez créer des enclos qui acc
 - Pour nettoyer un enclos, transférez toutes les créatures dans un autre pour assurer leur sécurité.
 - Assurez-vous de nourrir toutes les créatures pour éviter toute perte.
 
-
+ ![image](Encos.png)
 Des rappels apparaîtront sur votre écran pour vous indiquer quelles actions doivent être faites dans l’enceinte du Zoo.
- ![image]()
+
 Toutes les informations nécessaires ont été mises à votre disposition.
 
 Lancez-vous ! Et surtout, bonne chance!
