@@ -15,7 +15,7 @@ Pour débuter, rendez-vous sur l’accueil du jeu où vous pourrez entrer le nom
 
 Une fois le nom entré, vous vous retrouvez dans le vif du sujet. Le zoo est à votre entière disposition, et vous seul êtes maîtres de ce Zoo.
 
- ![image](Principal.png)
+ ![image](Enclos.png)
 
 
 Pour assurer le bon fonctionnement du Zoo, vous pouvez créer des enclos qui accueilleront les créatures fantastiques. Cependant, veillez à respecter quelques règles pour éviter l'anarchie dans le Zoo :
