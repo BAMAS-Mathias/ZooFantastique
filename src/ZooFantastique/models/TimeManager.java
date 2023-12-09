@@ -13,20 +13,22 @@ import java.util.Arrays;
  */
 public class TimeManager implements Runnable {
 
-    private static int jour;
-    private static String mois;
-    private static int annee;
+    private static int jour = 1;
+    private static String mois = "Janvier";
+    private static int annee = 2023;
     private final EventManager eManager = new EventManager();
+    private static TimeManager instance;
 
     private final ArrayList<String> listeMois = new ArrayList<>(Arrays.asList("Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
             "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"));
     /**
      * Constructeur de la classe TimeManager qui initialise la date de départ.
      */
-    public TimeManager() {
-        jour = 1;
-        mois = "Janvier";
-        annee = 2023;
+    public static TimeManager getInstance(){
+        if(instance == null){
+            instance = new TimeManager();
+        }
+        return instance;
     }
     /**
      * Récupère la date actuelle sous forme de chaîne de caractères.

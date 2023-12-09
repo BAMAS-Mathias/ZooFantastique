@@ -25,7 +25,7 @@ public class ZooMain extends Application {
 
     private static ZooFantastique zoo = new ZooFantastique(10);
     private static Stage primaryStage;
-    private static TimeManager tps = new TimeManager();
+    private static TimeManager tps = TimeManager.getInstance();
     private static Thread th = new Thread(tps);
     private static ArrayList<Meute> colonie = new ArrayList<>();
 
